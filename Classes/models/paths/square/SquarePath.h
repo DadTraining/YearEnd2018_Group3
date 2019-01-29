@@ -26,7 +26,7 @@
 
  public:
 	 SquarePath(cocos2d::Scene* scene, const int& squareWidthSize, 
-		 const std::string& balloonNamePath, const std::string& pathNamePath, 
+		 const std::string& pathNamePath, const std::string& balloonNamePath,
 		 const float& pathPositionY, const float& ballooonMovingSpeed);
 
 	 /**

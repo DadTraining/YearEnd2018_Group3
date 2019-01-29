@@ -10,19 +10,19 @@ enum Direction
 };
 
 SquarePath::SquarePath(cocos2d::Scene* scene, const int& squareWidthSize,
-	const std::string& balloonNamePath, const std::string& pathNamePath,
+	const std::string& pathNamePath, const std::string& balloonNamePath,
 	const float& pathPositionY, const float& ballooonMovingSpeed) : CorePath(pathPositionY, ballooonMovingSpeed)
 {
 	/*Change variables here to fit your needs*/
+	mSquareWidthSize = squareWidthSize;
 	mSquareHeightSize = squareWidthSize - 2;
 	/*****************************************/
 
 	mPathSprite = cocos2d::Sprite::create(pathNamePath);
 	mPathSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, mPathPositionY));
-	mBalloonSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, 
-		mSquareHeightSize / 2 + mPathSprite->getPositionY()));
-	 
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
+	mBalloonSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2,
+		mSquareHeightSize / 2 + mPathSprite->getPositionY()));
 
 	scene->addChild(mPathSprite);
 	scene->addChild(mBalloonSprite);
@@ -34,6 +34,8 @@ SquarePath::SquarePath(cocos2d::Scene* scene, const int& squareWidthSize,
 	mPoint2 = cocos2d::Vec2(mPoint1.x + mLength, mPoint1.y);
 	mPoint3 = cocos2d::Vec2(mPoint2.x, mPoint2.y - mLength);
 	mPoint4 = cocos2d::Vec2(mPoint1.x, mPoint3.y);
+
+	mBalloonSprite->setPosition(mPoint1);
 
 	mDirection = TOP;
 
