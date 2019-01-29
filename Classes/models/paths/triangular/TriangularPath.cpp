@@ -1,8 +1,8 @@
 #include "TriangularPath.h"
 
 TriangularPath::TriangularPath(cocos2d::Scene* scene, const float& lengthPath,
-	const std::string& balloonNamePath, const std::string& pathNamePath,
-	const float& pathPositionY, const float& ballooonMovingSpeed) : CorePath(pathPositionY, ballooonMovingSpeed)
+	const std::string& pathNamePath, const std::string& balloonNamePath,
+	const float& pathPositionY, const float& balloonMovingSpeed) : CorePath(pathPositionY, balloonMovingSpeed)
 {
     /* Change variables here to fit your needs */
     mVisibleSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -26,14 +26,15 @@ TriangularPath::TriangularPath(cocos2d::Scene* scene, const float& lengthPath,
         mPointRight = cocos2d::Vect(mPointRight.x + mBalloonMovingSpeed, mPointRight.y - mBalloonMovingSpeed);
     }
 
-	// create sprite //
+	// Create path //
+    mPathSprite = cocos2d::Sprite::create(pathNamePath);
 	mPathSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	mPathSprite->setPosition(cocos2d::Vec2(mVisibleSize.width / 2, mPathPositionY));
 	scene->addChild(mPathSprite);
 
+	// Create balloon //
     mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
     mBalloonSprite->setPosition(mPointTop);
-    mPathSprite = cocos2d::Sprite::create(pathNamePath);
     scene->addChild(mBalloonSprite);
 
     // Create Event onTouch

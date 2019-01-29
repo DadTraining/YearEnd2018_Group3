@@ -19,8 +19,8 @@ private:
 
 public:
     TriangularPath(cocos2d::Scene* scene, const float& lengthPath,
-		const std::string& balloonNamePath, const std::string& pathNamePath,
-		const float& pathPositionY, const float& ballooonMovingSpeed);
+                   const std::string& pathNamePath, const std::string& balloonNamePath,
+                   const float& pathPositionY, const float& balloonMovingSpeed);
     ~TriangularPath();
 
     /**
