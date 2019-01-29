@@ -54,12 +54,12 @@ include_directories(
 )
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
+     Classes/common/appdelegate/AppDelegate.cpp
+     Classes/scenes/gameplay/GamePlayScene.cpp
      )
 list(APPEND GAME_HEADER
-     Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
+     Classes/common/appdelegate/AppDelegate.h
+     Classes/scenes/gameplay/GamePlayScene.h
      )
 
 if(ANDROID)
@@ -70,7 +70,7 @@ if(ANDROID)
          )
 elseif(LINUX)
     list(APPEND GAME_SOURCE
-         proj.linux/main.cpp
+            proj.linux/main.cpp
          )
 elseif(WINDOWS)
     list(APPEND GAME_HEADER
@@ -115,30 +115,86 @@ elseif(APPLE)
 endif()
 
 # mark app complie info and libs info
-set(APP_SRC
-    ${GAME_SOURCE}
+set(all_code_files
     ${GAME_HEADER}
-    )
-cocos_build_app(${APP_NAME}
-                APP_SRC "${APP_SRC}"
-                DEPEND_COMMON_LIBS "cocos2d"
-                DEPEND_ANDROID_LIBS "cocos2d_android"
-                )
+    ${GAME_SOURCE}
+        Classes/common/Definition.h
+        Classes/common/appdelegate/AppDelegate.h
+        Classes/common/appdelegate/AppDelegate.cpp
+        Classes/common/definitionlevels/DefinitionLevel1.h
+        Classes/models/core/CoreModel.h
+        Classes/models/core/CoreModel.cpp
+        Classes/models/levels/core/corelevel/CoreLevel.h
+        Classes/models/levels/core/corelevel/CoreLevel.cpp
+        Classes/models/levels/core/corelevelframe/CoreLevelFrame.h
+        Classes/models/levels/core/corelevelframe/CoreLevelFrame.cpp
+        Classes/models/levels/level1/Level1.h
+        Classes/models/levels/level1/Level1.cpp
+        Classes/models/levels/level1/frames/Level1Frame1.h
+        Classes/models/levels/level1/frames/Level1Frame1.cpp
+        Classes/models/objects/obstacles/RectagleBarrier.h
+        Classes/models/objects/obstacles/RectagleBarrier.cpp
+        Classes/models/objects/orther/Enemy.h
+        Classes/models/objects/orther/Enemy.cpp
+        Classes/models/paths/core/CorePath.h
+        Classes/models/paths/core/CorePath.cpp
+        Classes/models/paths/circle/CirclePath.h
+        Classes/models/paths/circle/CirclePath.cpp
+        Classes/models/paths/horizontalline/HorizontalLinePath.h
+        Classes/models/paths/horizontalline/HorizontalLinePath.cpp
+        Classes/models/paths/square/SquarePath.h
+        Classes/models/paths/square/SquarePath.cpp
+        Classes/models/paths/triangular/TriangularPath.h
+        Classes/models/paths/triangular/TriangularPath.cpp
+        Classes/models/paths/verticalline/VerticalLinePath.h
+        Classes/models/paths/verticalline/VerticalLinePath.cpp
+        Classes/scenes/gameplay/GamePlayScene.h
+        Classes/scenes/gameplay/GamePlayScene.cpp
+        Classes/scenes/intro/IntroStart.h
+        Classes/scenes/intro/IntroStart.cpp
+        Classes/scenes/intro/IntroEnd.h
+        Classes/scenes/intro/IntroEnd.cpp
+        Classes/scenes/ui/gameover/GameOver.h
+        Classes/scenes/ui/gameover/GameOver.cpp
+        Classes/scenes/ui/menu/MenuScene.h
+        Classes/scenes/ui/menu/MenuScene.cpp
+        Classes/scenes/ui/splash/SplashScreenScene.h
+        Classes/scenes/ui/splash/SplashScreenScene.cpp
+        Classes/utils/helper/Helper.h
+        Classes/utils/helper/Helper.cpp
+        Classes/utils/levels/level1/Level1Helper.h
+        Classes/utils/levels/level1/Level1Helper.cpp
+        )
+if(NOT ANDROID)
+    add_executable(${APP_NAME} ${all_code_files})
+else()
+    add_library(${APP_NAME} SHARED ${all_code_files})
+    add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos/platform/android ${ENGINE_BINARY_PATH}/cocos/platform)
+    target_link_libraries(${APP_NAME} -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
+endif()
 
+target_link_libraries(${APP_NAME} cocos2d)
+target_include_directories(${APP_NAME}
+        PRIVATE Classes
+        PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+        )
+
+# mark app resources
+setup_cocos_app_config(${APP_NAME})
 if(APPLE)
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
     if(MACOSX)
         set_target_properties(${APP_NAME} PROPERTIES
-                              MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist"
-                              )
+                MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist"
+                )
     elseif(IOS)
         cocos_pak_xcode(${APP_NAME} INFO_PLIST "iOSBundleInfo.plist.in")
         set_xcode_property(${APP_NAME} ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon")
     endif()
 elseif(WINDOWS)
-    cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
+    cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_RES_DIR}/..)
 endif()
 
 if(LINUX OR WINDOWS)
-    cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
+    cocos_copy_res(COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
