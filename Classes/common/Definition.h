@@ -1,0 +1,8 @@
+#pragma once
+
+#define FPS 60
+
+#define SREEEN_RESOLUTION_WIDTH 450
+#define SREEEN_RESOLUTION_HEIGHT 800
+
+#define GRAVITY -1200
