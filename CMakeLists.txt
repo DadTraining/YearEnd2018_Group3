@@ -164,7 +164,7 @@ set(all_code_files
         Classes/utils/helper/Helper.cpp
         Classes/utils/levels/level1/Level1Helper.h
         Classes/utils/levels/level1/Level1Helper.cpp
-        )
+        Classes/utils/physics/PhysicsShapeCache.cpp Classes/utils/physics/PhysicsShapeCache.h)
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()
