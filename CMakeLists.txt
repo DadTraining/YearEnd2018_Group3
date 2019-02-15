@@ -164,7 +164,17 @@ set(all_code_files
         Classes/utils/helper/Helper.cpp
         Classes/utils/levels/level1/Level1Helper.h
         Classes/utils/levels/level1/Level1Helper.cpp
-        Classes/utils/physics/PhysicsShapeCache.cpp Classes/utils/physics/PhysicsShapeCache.h)
+        Classes/utils/physics/PhysicsShapeCache.cpp
+        Classes/utils/physics/PhysicsShapeCache.h
+        Classes/models/levels/level3/Level3.cpp
+        Classes/models/levels/level3/Level3.h
+        Classes/models/levels/level3/frames/frame1/Level3Frame1.cpp
+        Classes/models/levels/level3/frames/frame1/Level3Frame1.h
+        Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.cpp
+        Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.h
+        Classes/models/objects/obstacles/level3/circleline/CircleLineModel.cpp
+        Classes/models/objects/obstacles/level3/circleline/CircleLineModel.h
+        Classes/common/definitionlevels/DefinitionLevel3.h)
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()
