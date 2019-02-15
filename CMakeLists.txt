@@ -164,8 +164,8 @@ set(all_code_files
         Classes/utils/helper/Helper.cpp
         Classes/utils/levels/level1/Level1Helper.h
         Classes/utils/levels/level1/Level1Helper.cpp
-        Classes/utils/physics/PhysicsShapeCache.cpp
-        Classes/utils/physics/PhysicsShapeCache.h
+        Classes/utils/physics/CustomPhysicsBody.cpp
+        Classes/utils/physics/CustomPhysicsBody.h
         Classes/models/levels/level3/Level3.cpp
         Classes/models/levels/level3/Level3.h
         Classes/models/levels/level3/frames/frame1/Level3Frame1.cpp
