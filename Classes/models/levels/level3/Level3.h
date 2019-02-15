@@ -1,14 +1,17 @@
-//
-// Created by tung on 14/02/2019.
-//
+#pragma once
 
-#ifndef TEMPLATECPP_LEVEL3_H
-#define TEMPLATECPP_LEVEL3_H
+#include "models/levels/core/corelevel/CoreLevel.h"
+#include "frames/frame1/Level3Frame1.h"
 
+class Level3 : public CoreLevel
+{
+private:
+    Level3Frame1* mLevel3Frame1;
 
-class Level3 {
+public:
+    Level3(cocos2d::Scene* scene);
+    ~Level3();
 
+    void Init() override;
+    void Update() override;
 };
-
-
-#endif //TEMPLATECPP_LEVEL3_H
