@@ -1,3 +1,3 @@
 #pragma once
 
-#define EXAMPLE 5
+#define TEST 5

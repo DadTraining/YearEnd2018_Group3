@@ -108,14 +108,13 @@ cocos2d/cocos/2d/Release.*/
 cocos2d/cocos/editor-support/spine/proj.win32/Release.*/
 cocos2d/external/Box2D/proj.win32/Release.*/
 cocos2d/external/recast/proj.win32/Release.*/
-proj.win32/*.sdf
-proj.win32/*.opensdf
-proj.win32/Debug.*/
-proj.win32/Release.*/
+
+proj.win32/*
+!proj.win32/TheHopefulLetter.sln
+!proj.win32/TheHopefulLetter.vcxproj
 
 # others
 cocos2d/*
 proj.android/*
 proj.ios_mac/*
 proj.linux/*
-proj.win32/*

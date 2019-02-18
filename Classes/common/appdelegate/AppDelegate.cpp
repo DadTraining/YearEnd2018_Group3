@@ -28,6 +28,8 @@ void AppDelegate::initOpenGL()
 #endif
 		director->setOpenGLView(glview);
 	}
+
+	director->setDisplayStats(true);
 }
 
 void AppDelegate::initDirector()
