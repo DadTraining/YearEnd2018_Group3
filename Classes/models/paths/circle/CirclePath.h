@@ -22,5 +22,8 @@ public:
 		const std::string& balloonNamePath, const std::string& pathNamePath,
 		const float& pathPositionY, const float& ballooonMovingSpeed);
 
+	/**
+	 *  Update every single frame
+	 */
 	void Update() override;
 };

@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -159,6 +160,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\models\objects\obstacles\RectagleBarrier.cpp" />
     <ClCompile Include="..\Classes\models\objects\orther\Enemy.cpp" />
     <ClCompile Include="..\Classes\models\objects\orther\line\Line.cpp" />
+    <ClCompile Include="..\Classes\models\levels\level8\Level8.cpp" />
+    <ClCompile Include="..\Classes\models\objects\obstacles\level8\Bar.cpp" />
+    <ClCompile Include="..\Classes\models\objects\obstacles\level8\core\CoreObstacle.cpp" />
+    <ClCompile Include="..\Classes\models\objects\obstacles\level8\Spike.cpp" />
+    <ClCompile Include="..\Classes\models\objects\other\level8\ObstaclesCreation.cpp" />
     <ClCompile Include="..\Classes\models\paths\circle\CirclePath.cpp" />
     <ClCompile Include="..\Classes\models\paths\core\CorePath.cpp" />
     <ClCompile Include="..\Classes\models\paths\horizontalline\HorizontalLinePath.cpp" />
@@ -167,18 +173,18 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\models\paths\verticalline\VerticalLinePath.cpp" />
     <ClCompile Include="..\Classes\scenes\gameplay\GamePlayScene.cpp" />
     <ClCompile Include="..\Classes\scenes\intro\IntroEnd.cpp" />
-    <ClCompile Include="..\Classes\scenes\intro\IntroStart.cpp" />
+    <ClCompile Include="..\Classes\scenes\intro\IntroStart.cpp" /> 
     <ClCompile Include="..\Classes\scenes\ui\gameover\GameOver.cpp" />
     <ClCompile Include="..\Classes\scenes\ui\menu\MenuScene.cpp" />
-    <ClCompile Include="..\Classes\scenes\ui\splash\SplashScreenScene.cpp" />
+    <ClCompile Include="..\Classes\scenes\ui\splash\SplashScreenScene.cpp" /> 
+    <ClCompile Include="..\Classes\utils\levels\level1\Level1Helper.cpp" /> 
     <ClCompile Include="..\Classes\utils\helper\Helper.cpp" />
-    <ClCompile Include="..\Classes\utils\levels\level1\Level1Helper.cpp" />
+    <ClCompile Include="..\Classes\utils\levels\level8\Level8Helper.cpp" />
+    <ClCompile Include="..\Classes\utils\physics\MyBodyParser.cpp" /> 
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\common\appdelegate\AppDelegate.h" />
-    <ClInclude Include="..\Classes\common\Definition - Copy.h" />
-    <ClInclude Include="..\Classes\common\Definition.h" />
     <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel1.h" />
     <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel5.h" />
     <ClInclude Include="..\Classes\models\core\CoreModel.h" />
@@ -191,6 +197,17 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\models\objects\obstacles\RectagleBarrier.h" />
     <ClInclude Include="..\Classes\models\objects\orther\Enemy.h" />
     <ClInclude Include="..\Classes\models\objects\orther\line\Line.h" />
+    <ClInclude Include="..\Classes\common\Definition.h" />
+    <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel8.h" />
+    <ClInclude Include="..\Classes\common\definitionpaths\verticalline\DefinitionVerticalLine.h" />
+    <ClInclude Include="..\Classes\models\core\CoreModel.h" />
+    <ClInclude Include="..\Classes\models\levels\core\corelevelframe\CoreLevelFrame.h" />
+    <ClInclude Include="..\Classes\models\levels\core\corelevel\CoreLevel.h" />
+    <ClInclude Include="..\Classes\models\levels\level8\Level8.h" />
+    <ClInclude Include="..\Classes\models\objects\obstacles\level8\Bar.h" />
+    <ClInclude Include="..\Classes\models\objects\obstacles\level8\core\CoreObstacle.h" />
+    <ClInclude Include="..\Classes\models\objects\obstacles\level8\Spike.h" />
+    <ClInclude Include="..\Classes\models\objects\other\level8\ObstaclesCreation.h" />
     <ClInclude Include="..\Classes\models\paths\circle\CirclePath.h" />
     <ClInclude Include="..\Classes\models\paths\core\CorePath.h" />
     <ClInclude Include="..\Classes\models\paths\horizontalline\HorizontalLinePath.h" />
@@ -205,6 +222,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\scenes\ui\splash\SplashScreenScene.h" />
     <ClInclude Include="..\Classes\utils\helper\Helper.h" />
     <ClInclude Include="..\Classes\utils\levels\level1\Level1Helper.h" />
+    <ClInclude Include="..\Classes\utils\helper\Helper.h" />
+    <ClInclude Include="..\Classes\utils\levels\level8\Level8Helper.h" />
+    <ClInclude Include="..\Classes\utils\physics\MyBodyParser.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

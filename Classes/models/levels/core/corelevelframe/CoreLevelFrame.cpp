@@ -2,7 +2,7 @@
 
 CoreLevelFrame::CoreLevelFrame()
 {
-	mFrameCount = 0;
+	mFrameCount = 0; 
 	mHasFinishMoving = false;
 }
 

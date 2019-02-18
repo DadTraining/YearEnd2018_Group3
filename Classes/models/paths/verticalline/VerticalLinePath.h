@@ -4,11 +4,24 @@
 
 #include "cocos2d.h"
 
+enum Stage
+{
+	STAGE_1,
+	STAGE_2,
+	STAGE_3,
+	STAGE_4,
+	STAGE_5,
+	STAGE_6,
+	DONE
+};
+
 class VerticalLinePath : public CorePath
 {
 private:
 	bool mIsMovingDown;
 	float mCenterPositionX;
+	int mFrameCount;
+	Stage mStage;
 
 	/* Change variables here to fit your needs */
 	float mDistanceBetweenBaloonAndThePath; // Corresponding to your picture's width and height
@@ -25,5 +38,14 @@ public:
 		const std::string& balloonNamePath, const std::string& pathNamePath,
 		const float& pathPositionY);
 
+	/**
+	 *  Update every single frame
+	 */
 	void Update() override;
+
+	/**
+	* Get the current stage of the path
+	* @return Stage
+	*/
+	Stage GetStage();
 };
