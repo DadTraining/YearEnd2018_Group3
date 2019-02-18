@@ -112,6 +112,7 @@ cocos2d/external/recast/proj.win32/Release.*/
 proj.win32/*
 !proj.win32/TheHopefulLetter.sln
 !proj.win32/TheHopefulLetter.vcxproj
+!proj.win32/TheHopefulLetter.vcxproj.filters
 
 # others
 cocos2d/*

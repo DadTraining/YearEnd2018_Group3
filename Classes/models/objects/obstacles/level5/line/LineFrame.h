@@ -4,12 +4,13 @@
 
 #include "cocos2d.h"
 
-class Line : public CoreModel {
+class LineFrame : public CoreModel {
 private:
 	bool mIsAlive;
 public:
-	Line(cocos2d::Scene* scene, std::string name, std::string lineNamePath);
-    ~Line();
+	LineFrame(cocos2d::Scene* scene, std::string name, std::string lineNamePath);
+    ~LineFrame();
+
 	/**
 	* Change line frame
 	*/

@@ -27,7 +27,7 @@ void AppDelegate::initOpenGL()
 		glview = cocos2d::GLViewImpl::create("The Hopeful Letter");
 #endif
 		director->setOpenGLView(glview);
-	} 
+	}
 }
 
 void AppDelegate::initDirector()

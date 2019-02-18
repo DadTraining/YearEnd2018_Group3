@@ -155,11 +155,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\models\levels\core\corelevel\CoreLevel.cpp" />
     <ClCompile Include="..\Classes\models\levels\level1\frames\Level1Frame1.cpp" />
     <ClCompile Include="..\Classes\models\levels\level1\Level1.cpp" />
-    <ClCompile Include="..\Classes\models\levels\level5\frames\Level5Frame1.cpp" />
     <ClCompile Include="..\Classes\models\levels\level5\Level5.cpp" />
+    <ClCompile Include="..\Classes\models\objects\obstacles\level5\line\LineFrame.cpp" />
     <ClCompile Include="..\Classes\models\objects\obstacles\RectagleBarrier.cpp" />
     <ClCompile Include="..\Classes\models\objects\orther\Enemy.cpp" />
-    <ClCompile Include="..\Classes\models\objects\orther\line\Line.cpp" />
     <ClCompile Include="..\Classes\models\levels\level8\Level8.cpp" />
     <ClCompile Include="..\Classes\models\objects\obstacles\level8\Bar.cpp" />
     <ClCompile Include="..\Classes\models\objects\obstacles\level8\core\CoreObstacle.cpp" />
@@ -185,6 +184,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\common\appdelegate\AppDelegate.h" />
+    <ClInclude Include="..\Classes\common\Definition.h" />
     <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel1.h" />
     <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel5.h" />
     <ClInclude Include="..\Classes\models\core\CoreModel.h" />
@@ -192,11 +192,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\models\levels\core\corelevel\CoreLevel.h" />
     <ClInclude Include="..\Classes\models\levels\level1\frames\Level1Frame1.h" />
     <ClInclude Include="..\Classes\models\levels\level1\Level1.h" />
-    <ClInclude Include="..\Classes\models\levels\level5\frames\Level5Frame1.h" />
     <ClInclude Include="..\Classes\models\levels\level5\Level5.h" />
+    <ClInclude Include="..\Classes\models\objects\obstacles\level5\line\LineFrame.h" />
     <ClInclude Include="..\Classes\models\objects\obstacles\RectagleBarrier.h" />
     <ClInclude Include="..\Classes\models\objects\orther\Enemy.h" />
-    <ClInclude Include="..\Classes\models\objects\orther\line\Line.h" />
     <ClInclude Include="..\Classes\common\Definition.h" />
     <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel8.h" />
     <ClInclude Include="..\Classes\common\definitionpaths\verticalline\DefinitionVerticalLine.h" />

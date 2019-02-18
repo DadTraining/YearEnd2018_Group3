@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{08eaadf2-2812-4456-a968-7e9c612aaf70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models">
+      <UniqueIdentifier>{bfd0a3f5-3eb1-446a-bab1-278652318597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes">
+      <UniqueIdentifier>{b1a2747c-ec84-4b23-85c4-610ef40899d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{5a9bbfe2-c074-4e28-8311-4c65967abefa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common\appdelegate">
+      <UniqueIdentifier>{4b4c2504-b257-4f38-99be-6a340091159b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common\definitionlevels">
+      <UniqueIdentifier>{3dedce85-2b47-4995-9bb3-003e1ba87bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\core">
+      <UniqueIdentifier>{f287db23-7136-4a53-a687-1cc8cb281b1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels">
+      <UniqueIdentifier>{c12fdd86-29ea-430f-bf6f-44b68b4b7460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\objects">
+      <UniqueIdentifier>{57bcb1b3-6185-4e85-b775-adc2682dd2bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths">
+      <UniqueIdentifier>{a78258e8-5c27-42b9-b03f-21effa23bf4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\core">
+      <UniqueIdentifier>{e0963c31-34c0-4a96-bc95-739f72a3588d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\core\corelevel">
+      <UniqueIdentifier>{97d11803-3b9c-409c-bfaf-a96c667c9e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\core\corelevelframe">
+      <UniqueIdentifier>{a64effd6-fe1e-46e9-915a-cb552d22ce4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\core">
+      <UniqueIdentifier>{c7729045-3f22-4e8f-9c8e-6846f76df7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\circle">
+      <UniqueIdentifier>{13d13953-73a6-47b3-b3d5-60e3d2ba9f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\square">
+      <UniqueIdentifier>{47947be4-055d-43b3-9da6-7cee297e78b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\horizontalline">
+      <UniqueIdentifier>{f7614bbb-9cdb-43c4-a468-53652b6eed3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\triangular">
+      <UniqueIdentifier>{387fdf35-3d8f-474f-ad1a-8c379a4993a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\paths\verticalline">
+      <UniqueIdentifier>{4ee67caf-2526-4afc-b3c8-5a95bbf34b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\objects\obstacles">
+      <UniqueIdentifier>{87504707-232e-48a6-95e7-fe21ae3dfb67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\objects\orther">
+      <UniqueIdentifier>{04c01c0c-1073-4a9c-b409-246fba72bd76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\levels">
+      <UniqueIdentifier>{7e88b446-77b2-447b-9e5b-f7c9cbe24579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\helper">
+      <UniqueIdentifier>{739b2503-7a0b-4ffc-855a-8f1bbb479c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\levels\level1">
+      <UniqueIdentifier>{673f6b00-97a9-4074-a275-1bd9c7977a7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\gameplay">
+      <UniqueIdentifier>{3bfff3d6-4b5e-4b57-9266-dadffa9139b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\intro">
+      <UniqueIdentifier>{3b0bbe5a-d50c-4297-8792-e05f7fd49c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\ui">
+      <UniqueIdentifier>{4eee9124-c71f-4559-8c67-86400457833c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\ui\menu">
+      <UniqueIdentifier>{d3e29e94-58b6-45cb-b8df-dc5b0bdd6fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\ui\gameover">
+      <UniqueIdentifier>{427a56cb-4caa-4a42-8ea2-eb92f32faae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scenes\ui\splash">
+      <UniqueIdentifier>{8241d47f-be2c-4eb4-8910-ee5354f6acb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\level1">
+      <UniqueIdentifier>{df3f0d6e-b0b5-4fa1-a7d8-88d464f931df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\level1\frames">
+      <UniqueIdentifier>{f746bc3c-d260-4d26-a146-2f88a18394b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\levels\level5">
+      <UniqueIdentifier>{776d13d4-a498-4e6f-a8ed-1ed166bfafd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\objects\obstacles\level5">
+      <UniqueIdentifier>{c6712819-a488-4ae0-9f0c-d6eff7665672}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\models\objects\obstacles\level5\line">
+      <UniqueIdentifier>{2a5ec8e7-7d31-4fd3-a413-c29ef0f6b7e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\appdelegate\AppDelegate.cpp">
+      <Filter>src\common\appdelegate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\levels\core\corelevel\CoreLevel.cpp">
+      <Filter>src\models\levels\core\corelevel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\levels\core\corelevelframe\CoreLevelFrame.cpp">
+      <Filter>src\models\levels\core\corelevelframe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\circle\CirclePath.cpp">
+      <Filter>src\models\paths\circle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\core\CorePath.cpp">
+      <Filter>src\models\paths\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\horizontalline\HorizontalLinePath.cpp">
+      <Filter>src\models\paths\horizontalline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\verticalline\VerticalLinePath.cpp">
+      <Filter>src\models\paths\verticalline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\triangular\TriangularPath.cpp">
+      <Filter>src\models\paths\triangular</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\paths\square\SquarePath.cpp">
+      <Filter>src\models\paths\square</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\core\CoreModel.cpp">
+      <Filter>src\models\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\objects\obstacles\RectagleBarrier.cpp">
+      <Filter>src\models\objects\obstacles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\objects\orther\Enemy.cpp">
+      <Filter>src\models\objects\orther</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\levels\level1\Level1Helper.cpp">
+      <Filter>src\utils\levels\level1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\helper\Helper.cpp">
+      <Filter>src\utils\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\gameplay\GamePlayScene.cpp">
+      <Filter>src\scenes\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\intro\IntroStart.cpp">
+      <Filter>src\scenes\intro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\intro\IntroEnd.cpp">
+      <Filter>src\scenes\intro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\ui\gameover\GameOver.cpp">
+      <Filter>src\scenes\ui\gameover</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\ui\menu\MenuScene.cpp">
+      <Filter>src\scenes\ui\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scenes\ui\splash\SplashScreenScene.cpp">
+      <Filter>src\scenes\ui\splash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\levels\level1\Level1.cpp">
+      <Filter>src\models\levels\level1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\levels\level1\frames\Level1Frame1.cpp">
+      <Filter>src\models\levels\level1\frames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\levels\level5\Level5.cpp">
+      <Filter>src\models\levels\level5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\models\objects\obstacles\level5\line\LineFrame.cpp">
+      <Filter>src\models\objects\obstacles\level5\line</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\appdelegate\AppDelegate.h">
+      <Filter>src\common\appdelegate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\Definition.h">
+      <Filter>src\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel1.h">
+      <Filter>src\common\definitionlevels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\levels\core\corelevel\CoreLevel.h">
+      <Filter>src\models\levels\core\corelevel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\levels\core\corelevelframe\CoreLevelFrame.h">
+      <Filter>src\models\levels\core\corelevelframe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\circle\CirclePath.h">
+      <Filter>src\models\paths\circle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\core\CorePath.h">
+      <Filter>src\models\paths\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\horizontalline\HorizontalLinePath.h">
+      <Filter>src\models\paths\horizontalline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\verticalline\VerticalLinePath.h">
+      <Filter>src\models\paths\verticalline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\triangular\TriangularPath.h">
+      <Filter>src\models\paths\triangular</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\paths\square\SquarePath.h">
+      <Filter>src\models\paths\square</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\core\CoreModel.h">
+      <Filter>src\models\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\objects\obstacles\RectagleBarrier.h">
+      <Filter>src\models\objects\obstacles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\levels\level1\Level1Helper.h">
+      <Filter>src\utils\levels\level1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\helper\Helper.h">
+      <Filter>src\utils\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\objects\orther\Enemy.h">
+      <Filter>src\models\objects\orther</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\gameplay\GamePlayScene.h">
+      <Filter>src\scenes\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\intro\IntroStart.h">
+      <Filter>src\scenes\intro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\intro\IntroEnd.h">
+      <Filter>src\scenes\intro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\ui\gameover\GameOver.h">
+      <Filter>src\scenes\ui\gameover</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\ui\menu\MenuScene.h">
+      <Filter>src\scenes\ui\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scenes\ui\splash\SplashScreenScene.h">
+      <Filter>src\scenes\ui\splash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\levels\level1\Level1.h">
+      <Filter>src\models\levels\level1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\levels\level1\frames\Level1Frame1.h">
+      <Filter>src\models\levels\level1\frames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\levels\level5\Level5.h">
+      <Filter>src\models\levels\level5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\definitionlevels\DefinitionLevel5.h">
+      <Filter>src\common\definitionlevels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\models\objects\obstacles\level5\line\LineFrame.h">
+      <Filter>src\models\objects\obstacles\level5\line</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

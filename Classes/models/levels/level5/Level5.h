@@ -4,7 +4,7 @@
 
 #include "models/levels/core/corelevel/CoreLevel.h"
 #include "models/levels/level1/frames/Level1Frame1.h"
-#include "models/objects/orther/line/Line.h"
+#include "models/objects/obstacles/level5/line/LineFrame.h"
 #include "common/Definition.h"
 #include "models/paths/horizontalline/HorizontalLinePath.h"
 #include "common/definitionlevels/DefinitionLevel5.h"
@@ -14,9 +14,9 @@
 class Level5 : public CoreLevel 
 {
 private:
-	Line* mFirstLine;
-	Line* mSecondLine;
-	Line* mThirdLine;
+	LineFrame* mFirstLine;
+	LineFrame* mSecondLine;
+	LineFrame* mThirdLine;
 	HorizontalLinePath* mHorizontalLinePath;
 	int mFrameCount;
 public:

@@ -5,9 +5,9 @@ Level5::Level5(cocos2d::Scene *scene)
 	mHorizontalLinePath = new HorizontalLinePath(scene, "sprites/gameplay/paths/horizontal_line_path.png",
 		"sprites/gameplay/balloon/balloon.png", 100, 5);
 
-	mFirstLine = new Line(scene, "line_frame_0", GetLineFramePath());
-	mSecondLine = new Line(scene, "line_frame_1", GetLineFramePath());
-	mThirdLine = new Line(scene, "line_frame_2", GetLineFramePath());	
+	mFirstLine = new LineFrame(scene, "line_frame_0", GetLineFramePath());
+	mSecondLine = new LineFrame(scene, "line_frame_1", GetLineFramePath());
+	mThirdLine = new LineFrame(scene, "line_frame_2", GetLineFramePath());
 }
 
 Level5::~Level5()

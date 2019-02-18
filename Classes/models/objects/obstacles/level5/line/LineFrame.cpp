@@ -1,7 +1,7 @@
-#include "Line.h"
+#include "LineFrame.h"
 #include "common/Definition.h"
 
-Line::Line(cocos2d::Scene* scene, std::string name, std::string lineNamePath) : CoreModel(name)
+LineFrame::LineFrame(cocos2d::Scene* scene, std::string name, std::string lineNamePath) : CoreModel(name)
 {
     mCoreSprite = cocos2d::Sprite::create(lineNamePath);
 	SetActive(false);
@@ -9,22 +9,22 @@ Line::Line(cocos2d::Scene* scene, std::string name, std::string lineNamePath) : 
 	scene->addChild(mCoreSprite);
 }
 
-Line::~Line()
+LineFrame::~LineFrame()
 {
 	// Destructor
 }
 
-void Line::setTexture(std::string linenamepath)
+void LineFrame::setTexture(std::string linenamepath)
 {
 	mCoreSprite->setTexture(linenamepath);
 }
 
-void Line::Init()
+void LineFrame::Init()
 {
 	SetActive(true);
 }
 
-void Line::Update()
+void LineFrame::Update()
 {
 	if (IsActive())
 	{
