@@ -22,11 +22,13 @@ bool GamePlayScene::init()
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
+	mLevel5 = new Level5(this);
+	mLevel5->Init();
 	this->scheduleUpdate();
 	return true;
 }
 
 void GamePlayScene::update(float dt)
 {
-	
+	mLevel5->Update();
 }
