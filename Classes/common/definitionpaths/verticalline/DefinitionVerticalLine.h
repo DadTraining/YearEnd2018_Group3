@@ -1,0 +1,6 @@
+#pragma once
+
+#define TIME_RUNNING_STAGE_2 15
+#define TIME_RUNNING_STAGE_4 15
+#define TIME_RUNNING_STAGE_5 30
+#define FADING_OUT_TIME_DURATION 2
