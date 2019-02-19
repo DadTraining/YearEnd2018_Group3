@@ -134,8 +134,8 @@ set(all_code_files
         Classes/models/levels/level1/frames/Level1Frame1.cpp
         Classes/models/objects/obstacles/RectagleBarrier.h
         Classes/models/objects/obstacles/RectagleBarrier.cpp
-        Classes/models/objects/orther/Enemy.h
-        Classes/models/objects/orther/Enemy.cpp
+        Classes/models/objects/other/Enemy.h
+        Classes/models/objects/other/Enemy.cpp
         Classes/models/paths/core/CorePath.h
         Classes/models/paths/core/CorePath.cpp
         Classes/models/paths/circle/CirclePath.h
@@ -164,7 +164,23 @@ set(all_code_files
         Classes/utils/helper/Helper.cpp
         Classes/utils/levels/level1/Level1Helper.h
         Classes/utils/levels/level1/Level1Helper.cpp
-        )
+        Classes/utils/physics/CustomPhysicsBody.cpp
+        Classes/utils/physics/CustomPhysicsBody.h
+        Classes/models/levels/level3/Level3.cpp
+        Classes/models/levels/level3/Level3.h
+        Classes/models/levels/level3/frames/frame1/Level3Frame1.cpp
+        Classes/models/levels/level3/frames/frame1/Level3Frame1.h
+        Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.cpp
+        Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.h
+        Classes/models/objects/obstacles/level3/circleline/CircleLineModel.cpp
+        Classes/models/objects/obstacles/level3/circleline/CircleLineModel.h
+        Classes/common/definitionlevels/DefinitionLevel3.h
+        Classes/models/objects/obstacles/level3/coin/CoinModel.cpp
+        Classes/models/objects/obstacles/level3/coin/CoinModel.h
+        Classes/utils/levels/level3/animation/GetAnimation.cpp
+        Classes/utils/levels/level3/animation/GetAnimation.h
+        Classes/models/objects/obstacles/level3/rectagle/RectagleModel.cpp
+        Classes/models/objects/obstacles/level3/rectagle/RectagleModel.h)
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()
