@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "models/levels/core/corelevel/CoreLevel.h"
-#include "models/levels/level1/frames/Level1Frame1.h"
 
 #include "cocos2d.h"
 
