@@ -13,10 +13,19 @@ protected:
     cocos2d::Node* mGroupNode;
     bool mHasFinishMoving;
 	int mFrameCount;
+	bool mIsBelowCenter;
 
 public:
 	CoreLevelFrame();
     ~CoreLevelFrame();
+
+    /**
+     * Check frame below center of screen
+     *
+     * @return true : below center screen
+     * @return false : not below center screen
+     */
+    bool IsBelowCenter();
 
 	virtual void Init() = 0;
 	virtual void Update() = 0;

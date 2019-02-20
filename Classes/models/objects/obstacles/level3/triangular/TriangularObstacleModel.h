@@ -1,0 +1,14 @@
+//
+// Created by Nguyễn Tùng on 2019-02-20.
+//
+
+#ifndef TEMPLATECPP_TRIANGULAROBSTACLEMODEL_H
+#define TEMPLATECPP_TRIANGULAROBSTACLEMODEL_H
+
+
+class TriangularObstacleModel {
+
+};
+
+
+#endif //TEMPLATECPP_TRIANGULAROBSTACLEMODEL_H
