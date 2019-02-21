@@ -6,7 +6,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails  
 ._*# OSX - https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store
@@ -17,7 +16,7 @@ Icon
 Icon
 
 
-# Thumbnails 
+# Thumbnails
 ._*
 
 # Files that might appear in the root of a volume
@@ -116,7 +115,6 @@ cocos2d/external/Box2D/proj.win32/Debug.*/
 cocos2d/external/recast/proj.win32/Debug.*/
 cocos2d/cocos/2d/Release.*/
 cocos2d/cocos/editor-support/spine/proj.win32/Release.*/
-cocos2d/external/Box2D/proj.win32/Release.*/
 cocos2d/external/recast/proj.win32/Release.*/ 
 
 proj.win32/*
@@ -227,7 +225,6 @@ cocos2d/cocos/2d/Release.*/
 cocos2d/cocos/editor-support/spine/proj.win32/Release.*/
 cocos2d/external/Box2D/proj.win32/Release.*/
 cocos2d/external/recast/proj.win32/Release.*/
->>>>>>> Almost polish level 8
 proj.win32/*.sdf
 proj.win32/*.opensdf
 proj.win32/Debug.*/

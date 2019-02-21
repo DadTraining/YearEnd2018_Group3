@@ -26,18 +26,20 @@ private:
 	float mCenterPositionX; 
 	int mFrameCount;
 	Stage mCurrentStage; 
+	bool mIsMovingDown;
+	float mCenterPositionX;
 
 	/* Change variables here to fit your needs */
 	float mDistanceBetweenBaloonAndThePath; // Corresponding to your picture's width and height
 	float mPathMovingSpeed;
 	float mThresholdMovingDistance;
 	/*******************************************/
-	 
+
 	/**
 	 *  Move the path with pre-defined directions
 	 */
 	void MoveThePath();
-	 
+
 	bool OnTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
 	void OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event) override;
 
@@ -46,7 +48,7 @@ public:
 		const float& pathMovingSpeed, const float& thresholdMovingDistance,
 		const std::string& balloonNamePath, const std::string& pathNamePath,
 		const float& pathPositionY);
-	  
+
 	/**
 	 *  Update every single frame
 	 */
@@ -62,4 +64,6 @@ public:
 	* Stop all operations when the balloon is exploded
 	*/
 	void Disappear(); 
+
+	void Update() override;
 };

@@ -27,3 +27,7 @@
 
 // Horizontal
 #define HORIZONTAL_LINE_NAME_PATH "sprites/gameplay/level3/horizontalline/horizontal_line_path.png"
+#define HORIZONTAL_LINE_SIZE_CIRCLE_OBSTACLE 5
+
+// Level 3 frame 1
+#define HORIZONTAL_LINE_SIZE 4

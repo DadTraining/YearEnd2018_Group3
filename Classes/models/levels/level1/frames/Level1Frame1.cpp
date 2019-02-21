@@ -22,10 +22,12 @@ void Level1Frame1::Init()
 	// Initalization
 }
 
-void Level1Frame1::Update() 
+void Level1Frame1::Update()
 {
+    CoreLevelFrame::Update();
+
     mGroupNode->setPosition(mGroupNode->getPosition().x, mGroupNode->getPosition().y - 1);
-    if (mGroupNode->getPositionY() < -cocos2d::Director::getInstance()->getVisibleSize().height)
+    if (mGroupNode->getPositionY() < -cocos2d::Director::getInstance()->getVisibleSize().height / 2)
     {
         mHasFinishMoving = true;
     }

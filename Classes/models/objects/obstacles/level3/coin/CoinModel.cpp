@@ -31,15 +31,15 @@ void CoinModel::Init()
     mCoreSprite->runAction(GetAnimation::GetInstance()->GetAnimationRepeatForever(mSpriteFrames));
 
     CustomPhysicsBody::getInstance()->parseJsonFile(COIN_PHYSICS_JSON);
-    auto coinPhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, COIN_PHYSICS_NAME, cocos2d::PhysicsMaterial( 1, 1, 0 ));
+    mCorePhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, COIN_PHYSICS_NAME, cocos2d::PhysicsMaterial( 1, 1, 0 ));
 
-    if (coinPhysicsBody != nullptr)
+    if (mCorePhysicsBody != nullptr)
     {
-        coinPhysicsBody->setDynamic(false);
-        coinPhysicsBody->setCategoryBitmask(COIN_COLLISION_BITMASK);
-        coinPhysicsBody->setContactTestBitmask(true);
+        mCorePhysicsBody->setDynamic(false);
+        mCorePhysicsBody->setCollisionBitmask(COIN_COLLISION_BITMASK);
+        mCorePhysicsBody->setContactTestBitmask(true);
 
-        mCoreSprite->setPhysicsBody(coinPhysicsBody);
+        mCoreSprite->setPhysicsBody(mCorePhysicsBody);
     }
 }
 

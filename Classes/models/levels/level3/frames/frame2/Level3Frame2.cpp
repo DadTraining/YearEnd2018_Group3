@@ -1,5 +1,56 @@
-//
-// Created by Nguyễn Tùng on 2019-02-20.
-//
-
 #include "Level3Frame2.h"
+
+Level3Frame2::Level3Frame2(cocos2d::Scene *scene)
+{
+    Init();
+    scene->addChild(mGroupNode);
+}
+
+Level3Frame2::~Level3Frame2()
+{
+    // Destructor
+}
+
+void Level3Frame2::Init()
+{
+    mGroupNode = cocos2d::Node::create();
+    mGroupNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
+    mGroupNode->setPositionY(cocos2d::Director::getInstance()->getVisibleSize().height);
+
+    mCircleLineModel = new CircleLineModel(mGroupNode);
+    mCircleLineModel->SetPosition(mGroupNode->getContentSize().width / 2, mGroupNode->getContentSize().height * 0.4);
+
+	// Init horizontal line //
+	int rand = cocos2d::RandomHelper::random_int(0, 10);
+	if (rand % 2 == 0)
+	{
+		mHorizontalLine = new HorizontalLine(mGroupNode, HorizontalLine::MODE_TRIANGULAR);
+		mHorizontal = new HorizontalLine(mGroupNode, HorizontalLine::MODE_CIRCLE);
+	}
+	else if (rand % 2 != 0)
+	{
+		mHorizontalLine = new HorizontalLine(mGroupNode, HorizontalLine::MODE_CIRCLE);
+		mHorizontal = new HorizontalLine(mGroupNode, HorizontalLine::MODE_TRIANGULAR);
+	}
+    mHorizontalLine->SetPosition(mGroupNode->getContentSize().width / 2, mGroupNode->getContentSize().height * 0.8);
+	mHorizontal->SetPosition(mGroupNode->getContentSize().width / 2, 0);
+}
+
+void Level3Frame2::Update()
+{
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - 1);
+
+    mCircleLineModel->Update();
+    mHorizontalLine->Update();
+	mHorizontal->Update();
+
+	if (mGroupNode->getPositionY() < -cocos2d::Director::getInstance()->getVisibleSize().height)
+	{
+		mHasFinishMoving = true;
+	}
+}
+
+bool Level3Frame2::HasFinishedMoving()
+{
+    return mHasFinishMoving;
+}

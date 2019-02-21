@@ -1,14 +1,13 @@
-//
-// Created by Nguyễn Tùng on 2019-02-20.
-//
+#pragma once
 
-#ifndef TEMPLATECPP_CIRCLEPATHEXTEND_H
-#define TEMPLATECPP_CIRCLEPATHEXTEND_H
+#include "CirclePath.h"
+#include "utils/physics/CustomPhysicsBody.h"
 
+class CirclePathExtend : public CirclePath
+{
+public:
+    CirclePathExtend(cocos2d::Scene* scene);
+    ~CirclePathExtend();
 
-class CirclePathExtend {
-
+    void Update();
 };
-
-
-#endif //TEMPLATECPP_CIRCLEPATHEXTEND_H

@@ -40,7 +40,11 @@ void CircleLineModel::Init()
 
 void CircleLineModel::Update()
 {
+<<<<<<< HEAD
     mCoreSprite->setRotation(mCoreSprite->getRotation() + 1);
+=======
+    mCoreSprite->setRotation(mCoreSprite->getRotation() + 0.5);
+>>>>>>> + Create level3
     mNodeCoin->setPosition(GetPosition());
 }
 
@@ -85,4 +89,8 @@ void CircleLineModel::InitPositionCoinModels()
                                        (radius + compensationRadius) + sin(corner * M_PI / 180.0F) * radius);
         corner += 360 / COIN_MODELS_SIZE;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> + Create level3
