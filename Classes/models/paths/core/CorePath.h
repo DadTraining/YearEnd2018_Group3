@@ -39,6 +39,11 @@ public:
     CorePath(const float& pathPositionY, const float& balloonMovingSpeed);
     virtual ~CorePath();
 
+	/**
+	* set balloon speed when frame change speed
+	*/
+	void setBalloonMovingSpeed(int balloonSpeed);
+
     /**
 	 *  Update every single frame
 	 */

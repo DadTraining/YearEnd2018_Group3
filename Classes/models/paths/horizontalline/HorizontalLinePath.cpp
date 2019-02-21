@@ -6,10 +6,19 @@ HorizontalLinePath::HorizontalLinePath(cocos2d::Scene* scene,
 {
 	mPathSprite = cocos2d::Sprite::create(pathNamePath);
 	mPathSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, mPathPositionY));
-	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
+	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath); 
+	mBalloonSprite->setTag(BALLOON_TAG);
+
+	mBalloonSpritePhysicsBody = cocos2d::PhysicsBody::createCircle(mBalloonSprite->getContentSize().width / 2,
+		cocos2d::PhysicsMaterial(1, 1, 0), cocos2d::Vec2::ZERO);
+	mBalloonSpritePhysicsBody->setDynamic(false);
+	mBalloonSpritePhysicsBody->setCategoryBitmask(0x01);
+	mBalloonSpritePhysicsBody->setContactTestBitmask(true);
+	mBalloonSprite->setPhysicsBody(mBalloonSpritePhysicsBody);
+
 	mBalloonSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, mPathSprite->getPositionY()));
-	scene->addChild(mPathSprite);
-	scene->addChild(mBalloonSprite);
+	scene->addChild(mPathSprite,998);
+	scene->addChild(mBalloonSprite, 999);
 
 	auto listenner = cocos2d::EventListenerTouchOneByOne::create();
 	listenner->setSwallowTouches(true);
@@ -27,7 +36,6 @@ void HorizontalLinePath::Update()
 {
 	if (mIsTouching)
 	{
-		cocos2d::log("sprite %f", mBalloonSprite->getPositionX());
 		if (mIsTouchingRight)
 		{
 			mBalloonSprite->setPositionX(mBalloonSprite->getPositionX() + mBalloonMovingSpeed);
@@ -54,7 +62,7 @@ void HorizontalLinePath::Update()
 bool HorizontalLinePath::OnTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
 	mIsTouching = true;
-	if (touch->getLocation().x > SREEEN_RESOLUTION_WIDTH / 2)
+	if (touch->getLocation().x > mBalloonSprite->getPositionX())
 	{
 		mIsTouchingRight = true;
 	}

@@ -18,3 +18,7 @@
 // Physics coin
 #define COIN_TAG 2
 #define COIN_COLLISION_BITMASK 2
+#define OBSTACLES_TAG 1
+
+#define SCENE_TRANSITION_TIME  1.5
+#define FADE_DURATION_TIME 1.5

@@ -7,6 +7,7 @@ class CoreModel
 protected:
     cocos2d::Sprite* mCoreSprite;
     cocos2d::PhysicsBody* mCorePhysicsBody;
+
     bool mIsActive;
     std::string mModelName;
     int mFrameCount;

@@ -13,3 +13,8 @@ CorePath::~CorePath()
 {
 	// Destructor
 }
+
+void CorePath::setBalloonMovingSpeed(int balloonSpeed)
+{
+	mBalloonMovingSpeed = balloonSpeed;
+}

@@ -3,6 +3,8 @@
 CoreLevel::CoreLevel() 
 {
 	mFrameCount = 0;
+	mIsGameOver = false;
+	mIsCompletedLevel = false;
 }
 
 CoreLevel::~CoreLevel() 
@@ -13,6 +15,16 @@ CoreLevel::~CoreLevel()
 void CoreLevel::Init() 
 {
     // Initialization
+}
+
+bool CoreLevel::IsGameOver() const
+{
+	return mIsGameOver;
+}
+
+bool CoreLevel::IsCompletedLevel() const
+{
+	return mIsCompletedLevel;
 }
 
 void CoreLevel::Update() 
