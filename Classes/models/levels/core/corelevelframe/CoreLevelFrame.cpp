@@ -2,15 +2,14 @@
 
 CoreLevelFrame::CoreLevelFrame()
 {
-	mFrameCount = 0;
-	mIsBelowCenter = false;
-
+	mFrameCount = 0; 
+	mIsBelowCenter = false; 
 }
 
 CoreLevelFrame::~CoreLevelFrame()
 {
 	// Destructor
-}
+} 
 
 void CoreLevelFrame::Update()
 {
@@ -23,4 +22,4 @@ void CoreLevelFrame::Update()
 bool CoreLevelFrame::IsBelowCenter()
 {
 	return mIsBelowCenter;
-}
+} 
