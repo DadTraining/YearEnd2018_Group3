@@ -19,8 +19,8 @@ private:
 
 public:
 	CirclePath(cocos2d::Scene* scene, const float& circlePathRadius,
-		const std::string& balloonNamePath, const std::string& pathNamePath,
-		const float& pathPositionY, const float& ballooonMovingSpeed);
+	const std::string& balloonNamePath, const std::string& pathNamePath,
+	const float& pathPositionY, const float& ballooonMovingSpeed);
 	 
 	/**
 	 *  Update every single frame

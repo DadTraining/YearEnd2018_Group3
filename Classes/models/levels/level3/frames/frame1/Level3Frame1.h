@@ -1,12 +1,21 @@
 #pragma once
 
+#include <vector>
+
 #include "models/levels/core/corelevelframe/CoreLevelFrame.h"
-#include "models/objects/obstacles/level3/circleline/CircleLineModel.h"
+#include "models/objects/obstacles/level3/horizontalline/HorizontalLine.h"
+
+#include "cocos2d.h"
 
 class Level3Frame1 : public CoreLevelFrame
 {
 private:
-    CircleLineModel* mCircleLine;
+    std::vector<HorizontalLine*> mHorizontalLines;
+
+    /**
+     * Init vector HorizontalLines
+     */
+    void InitHorizontalLines();
 
 public:
     Level3Frame1(cocos2d::Scene* scene);

@@ -3,24 +3,26 @@
 #include <vector>
 
 #include "models/core/CoreModel.h"
-#include "models/objects/obstacles/level3/rectagle/RectangleObstacleModel.h"
+#include "models/objects/obstacles/level3/triangular/TriangularObstacleModel.h"
+#include "models/objects/obstacles/level3/coin/CoinModel.h"
 
 #include "cocos2d.h"
 
-class RectangleLine : CoreModel
+class RectangleLine : public CoreModel
 {
 private:
-    std::vector<RectangleObstacleModel*> mRectangleObstacleModels;
+    std::vector<TriangularObstacleModel*> mTriangularObstacleModels;
+    CoinModel* mCoin;
 
     /**
      * Init vector RectangleObstacleModels
      */
-    void InitRectangleObstacleModels();
+    void InitTriangleObstacleModels();
 
     /**
      * Init the position of item of mRectangleObstacleModels
      */
-    void InitPossitionRectangleModels();
+    void InitPositionTriangleModels();
 
 public:
     RectangleLine(cocos2d::Scene* scene);

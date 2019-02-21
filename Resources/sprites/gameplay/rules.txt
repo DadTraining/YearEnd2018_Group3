@@ -1,3 +1,0 @@
-left_frame(0)
-left_frame(1)
-left_frame(2)

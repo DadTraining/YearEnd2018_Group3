@@ -59,7 +59,7 @@ bool CoreModel::IsActive() const
 void CoreModel::SetActive(const bool& active)
 {
     mIsActive = active;
-    mCoreSprite->setVisible(active); 
+    mCoreSprite->setVisible(active);
 	mCorePhysicsBody->setEnabled(active);
 }
 

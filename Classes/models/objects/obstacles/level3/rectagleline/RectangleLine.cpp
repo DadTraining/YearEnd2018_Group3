@@ -20,27 +20,39 @@ RectangleLine::~RectangleLine()
 
 void RectangleLine::Init()
 {
+    // Init Sprite
     mCoreSprite = cocos2d::Sprite::create(mModelName);
 
+    // Init Coin
+    mCoin = new CoinModel(mCoreSprite);
+    mCoin->SetPosition(GetContentSize().width / 2, GetContentSize().height / 2);
+
     // Init vector rectangle
-    InitRectangleObstacleModels();
-    InitPossitionRectangleModels();
+    InitTriangleObstacleModels();
+    InitPositionTriangleModels();
 }
 
 void RectangleLine::Update()
 {
-
+	// Update
 }
 
-void RectangleLine::InitRectangleObstacleModels()
+void RectangleLine::InitTriangleObstacleModels()
 {
     for (int i = 0; i < RECTANGLE_OBSTACLE_MODELS_SIZE; i++)
     {
-        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mCoreSprite));
+        mTriangularObstacleModels.push_back(new TriangularObstacleModel(mCoreSprite, TriangularObstacleModel::MOVE_VERTICAL));
     }
 }
 
-void RectangleLine::InitPossitionRectangleModels()
+void RectangleLine::InitPositionTriangleModels()
 {
+    mTriangularObstacleModels.at(0)->SetPosition(GetContentSize().width / 4, GetContentSize().height);
+    mTriangularObstacleModels.at(0)->SetRotation(180);
 
+    mTriangularObstacleModels.at(1)->SetPosition(GetContentSize().width / 4 * 3, GetContentSize().height);
+    mTriangularObstacleModels.at(1)->SetRotation(180);
+
+    mTriangularObstacleModels.at(2)->SetPosition(GetContentSize().width, 0);
+    mTriangularObstacleModels.at(3)->SetPosition(GetContentSize().width / 2, 0);
 }

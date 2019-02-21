@@ -1,5 +1,6 @@
  #pragma once
 
+#include "common/definitionlevels/level5/DefinitionLevel5.h"
 #include "../core/CorePath.h"
 #include "common/Definition.h"
 
@@ -7,6 +8,8 @@
 
 class HorizontalLinePath : public CorePath
 {
+private:
+	cocos2d::PhysicsBody* mBalloonSpritePhysicsBody;
 public: 
 	HorizontalLinePath(cocos2d::Scene* scene, const std::string& pathNamePath, 
 		const std::string& balloonNamePath, const float& pathPositionY, const float& ballooonMovingSpeed);
