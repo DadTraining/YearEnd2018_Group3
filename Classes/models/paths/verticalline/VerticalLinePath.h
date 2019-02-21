@@ -23,11 +23,8 @@ class VerticalLinePath : public CorePath
 {
 private:
 	bool mIsMovingDown; 
-	float mCenterPositionX; 
 	int mFrameCount;
-	Stage mCurrentStage; 
-	bool mIsMovingDown;
-	float mCenterPositionX;
+	Stage mCurrentStage;
 
 	/* Change variables here to fit your needs */
 	float mDistanceBetweenBaloonAndThePath; // Corresponding to your picture's width and height
@@ -63,7 +60,5 @@ public:
 	/**
 	* Stop all operations when the balloon is exploded
 	*/
-	void Disappear(); 
-
-	void Update() override;
+	void Disappear();
 };

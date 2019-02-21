@@ -3,6 +3,7 @@
 LineFrame::LineFrame(cocos2d::Scene* scene, std::string name, std::string lineNamePath) : CoreModel(name)
 {
 	mCoreSprite = cocos2d::Sprite::create(lineNamePath);
+	SetPhysicsBody(0);
 	SetActive(false);
 	scene->addChild(mCoreSprite, -1);
 
@@ -35,15 +36,15 @@ void LineFrame::SetPhysicsBody(int indexPath)
 
 	CustomPhysicsBody::getInstance()->clearCache();
 	CustomPhysicsBody::getInstance()->parseJsonFile(jsonPath);
-	mLineFramePhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, name, cocos2d::PhysicsMaterial(1, 1, 0));
+	mCorePhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, name, cocos2d::PhysicsMaterial(1, 1, 0));
 
-	if (mLineFramePhysicsBody != nullptr)
+	if (mCorePhysicsBody != nullptr)
 	{
-		mCoreSprite->removeComponent(mLineFramePhysicsBody);
-		mLineFramePhysicsBody->setDynamic(false);
-		mLineFramePhysicsBody->setCollisionBitmask(0x01);
-		mLineFramePhysicsBody->setContactTestBitmask(true);
-		mCoreSprite->addComponent(mLineFramePhysicsBody);
+		mCoreSprite->removeComponent(mCorePhysicsBody);
+		mCorePhysicsBody->setDynamic(false);
+		mCorePhysicsBody->setCollisionBitmask(0x01);
+		mCorePhysicsBody->setContactTestBitmask(true);
+		mCoreSprite->addComponent(mCorePhysicsBody);
 	}
 }
 

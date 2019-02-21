@@ -2,7 +2,7 @@
 
 Level1::Level1(cocos2d::Scene *scene) 
 {
-    mQueueOfFrames.push(new Level1Frame1(scene));
+    // mQueueOfFrames.push(new Level1Frame1(scene));
 }
 
 Level1::~Level1() 

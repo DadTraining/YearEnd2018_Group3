@@ -5,6 +5,11 @@ Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 {
     mIndex = 0;
 
+	// background
+	auto background = cocos2d::Sprite::create("sprites/gameplay/level3/background/color_white.jpg");
+	background->setAnchorPoint(cocos2d::Vec2(0, 0));
+	scene->addChild(background, -1);
+
     float visibleSizeHight = cocos2d::Director::getInstance()->getVisibleSize().height;
 
     mCoreLevelFrame.push_back(new Level3Frame1(scene));
@@ -72,12 +77,16 @@ bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)
 				shapeA->getPhysicsBody()->setEnabled(false);
 				shapeA->setOpacity(0);
 				shapeA->addChild(balloonExplosion);
+
+				mIsGameOver = true;
 			}
 			else if (shapeB->getTag() == BALLOON_TAG)
 			{
 				shapeB->getPhysicsBody()->setEnabled(false);
 				shapeB->setOpacity(0);
 				shapeB->addChild(balloonExplosion);
+
+				mIsGameOver = true;
 			}
 		}
 		else if ((shapeA->getTag() == BALLOON_TAG && shapeB->getTag() == COIN_TAG) ||

@@ -4,10 +4,10 @@
 #include "ui/CocosGUI.h"
 
 #include "models/levels/core/corelevel/CoreLevel.h"
-#include "models/objects/obstacles/level5/line/LineFrame.h"
+#include "models/objects/obstacles/level5/LineFrame.h"
 #include "common/Definition.h"
 #include "models/paths/horizontalline/HorizontalLinePath.h"
-#include "common/definitionlevels/level5/DefinitionLevel5.h"
+#include "common/definitionlevels/DefinitionLevel5.h"
 
 #include "cocos2d.h"
 

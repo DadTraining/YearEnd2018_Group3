@@ -1,7 +1,7 @@
 #pragma once
 
 #include "common/Definition.h"
-#include "common/definitionlevels/level5/DefinitionLevel5.h"
+#include "common/definitionlevels/DefinitionLevel5.h"
 #include "models/core/CoreModel.h"
 #include "utils/physics/CustomPhysicsBody.h"
 
@@ -11,7 +11,7 @@ class LineFrame : public CoreModel{
 private:
 	bool mIsAlive;
 	int mSpeed;
-	cocos2d::PhysicsBody *mLineFramePhysicsBody;
+
 public:
 	LineFrame(cocos2d::Scene* scene, std::string name, std::string lineNamePath);
 	~LineFrame();

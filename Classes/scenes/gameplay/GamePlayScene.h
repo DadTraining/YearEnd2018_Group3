@@ -12,13 +12,23 @@ private:
 	static int mCurrentLevelIndex;
 	std::vector<CoreLevel*> mListOfLevels;
 
+	/**
+	* Update every second
+	*/
 	void update(float dt);
 
+	/**
+	* Show a panel when the balloon hit something (die)
+	*/
 	void ShowGameOverPanel();
-	void ShowLevelCompletion();
+	 
+	/**
+	* Show a panel when the player completed a level
+	*/
+	void ShowLevelCompletionPanel();
 
 public:
-	static cocos2d::Scene* createScene();
+	static cocos2d::Scene* createScene(const int& levelIndex);
 	virtual bool init();
 	CREATE_FUNC(GamePlayScene);
 };
