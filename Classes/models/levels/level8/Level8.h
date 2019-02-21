@@ -14,8 +14,6 @@ private:
 	VerticalLinePath* mVerticalLinePath;
 	ObstaclesCreation* mObstaclesCreation;
 
-	bool mIsGameOver;
-
 	bool OnContactBegin(const cocos2d::PhysicsContact& contact);
 
 public:

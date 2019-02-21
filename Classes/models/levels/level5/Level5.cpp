@@ -19,22 +19,22 @@ Level5::Level5(cocos2d::Scene *scene)
 
 	mHorizontalLinePath = new HorizontalLinePath(scene, "sprites/gameplay/paths/horizontal_line_path.png",
 		"sprites/gameplay/balloon/balloon.png", 100, BALLOON_MOVING_SPEED);
-	
+
 	mFirstLine = new LineFrame(scene, "first_line_frame", "sprites/gameplay/level5/line/line_frame_0.png");
 	mFirstLine->Init();
 	mFirstLine->SetPhysicsBody(0);
 	mFirstLine->SetPosition(cocos2d::Vec2(mFirstLine->GetContentSize().width / 2, SREEEN_RESOLUTION_HEIGHT / 2));
-	
+
 	mSecondLine = new LineFrame(scene, "second_line_frame", GetLineFramePath());
 	mSecondLine->Init();
 	mSecondLine->SetPhysicsBody(mIndexPath);
-	mSecondLine->SetPosition(cocos2d::Vec2(mFirstLine->GetPositionX(), 
+	mSecondLine->SetPosition(cocos2d::Vec2(mFirstLine->GetPositionX(),
 		mFirstLine->GetPositionY() + SREEEN_RESOLUTION_HEIGHT));
 
 	mThirdLine = new LineFrame(scene, "third_line_frame", GetLineFramePath());
 	mThirdLine->Init();
 	mThirdLine->SetPhysicsBody(mIndexPath);
-	mThirdLine->SetPosition(cocos2d::Vec2(mSecondLine->GetPositionX(), 
+	mThirdLine->SetPosition(cocos2d::Vec2(mSecondLine->GetPositionX(),
 		mSecondLine->GetPositionY() + SREEEN_RESOLUTION_HEIGHT));
 
 	auto contactListener = cocos2d::EventListenerPhysicsContact::create();
@@ -52,7 +52,7 @@ void Level5::MoveLine()
 	mFrameCount++;
 
 	if (mFrameCount % FPS == 0)
-	{	
+	{
 		if (!mFirstLine->IsActive())
 		{
 			mFirstLine->setTexture(GetLineFramePath());
@@ -61,7 +61,7 @@ void Level5::MoveLine()
 			mFirstLine->SetPosition(mThirdLine->GetPosition() + cocos2d::Vec2(0, SREEEN_RESOLUTION_HEIGHT));
 		}
 		if (!mSecondLine->IsActive())
-		{			
+		{
 			mSecondLine->setTexture(GetLineFramePath());
 			mSecondLine->Init();
 			mSecondLine->SetPhysicsBody(mIndexPath);
@@ -100,7 +100,7 @@ bool Level5::OnContactBegin(cocos2d::PhysicsContact & contact)
 			BalloonExplosion->setPosition(0, 0);
 
 			shapeA->setOpacity(0);
-			shapeA->removeComponent(shapeA->getPhysicsBody()); 
+			shapeA->removeComponent(shapeA->getPhysicsBody());
 
 			mIsGameOver = true;
 		}
@@ -117,7 +117,7 @@ bool Level5::OnContactBegin(cocos2d::PhysicsContact & contact)
 	}
 
 	return true;
-} 
+}
 
 void Level5::Init()
 {
@@ -188,41 +188,41 @@ void Level5::Update()
 
 void Level5::LerpColor()
 {
-//	//cocos2d::Action* lerpColorAction = cocos2d::TintTo::create(2, mListOfColors.at(mCurrentColorIndex));
-//	//mLineBackground->runAction(lerpColorAction);
-//	//mFrameCount++;
-//
-//	//if (mFrameCount % (FPS * 5) == 0)
-//	//{
-//	//	mCurrentColorIndex++;
-//
-//	//	if (mCurrentColorIndex >= mListOfColors.size())
-//	//		mCurrentColorIndex = 0;
-//
-//	//	//LerpColor();
-//	//}
-//
-//
-//	//// Edit here //  
-//
-//	//mCurrentColorIndex = 0;
-//
-//	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::RED));
-//	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::GREEN));
-//	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::BLUE));
-//	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::WHITE));
-//
-//	//mLineBackground = cocos2d::Sprite::create("sprites/gameplay/level5/line/line_frame_0.png");
-//	//mLineBackground->setAnchorPoint(cocos2d::Vec2(0, 0));
-//	////this->addChild(mLineBackground);
-//	//mLineBackground->setColor(mListOfColors[mCurrentColorIndex]);
-//
-//int mFrameCount;
-//
-//// Edit here //
-//std::vector<cocos2d::Color3B> mListOfColors;
-//cocos2d::Sprite* mLineBackground;
-//int mCurrentColorIndex;
-//	//////////////////////////////////////////////////////////////////// 
-//
+	//cocos2d::Action* lerpColorAction = cocos2d::TintTo::create(2, mListOfColors.at(mCurrentColorIndex));
+	//mLineBackground->runAction(lerpColorAction);
+	//mFrameCount++;
+
+	//if (mFrameCount % (FPS * 5) == 0)
+	//{
+	//	mCurrentColorIndex++;
+
+	//	if (mCurrentColorIndex >= mListOfColors.size())
+	//		mCurrentColorIndex = 0;
+
+	//	//LerpColor();
+	//}
+
+
+	//// Edit here //  
+
+	//mCurrentColorIndex = 0;
+
+	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::RED));
+	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::GREEN));
+	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::BLUE));
+	//mListOfColors.push_back(cocos2d::Color3B(cocos2d::Color3B::WHITE));
+
+	//mLineBackground = cocos2d::Sprite::create("sprites/gameplay/level5/line/line_frame_0.png");
+	//mLineBackground->setAnchorPoint(cocos2d::Vec2(0, 0));
+	////this->addChild(mLineBackground);
+	//mLineBackground->setColor(mListOfColors[mCurrentColorIndex]);
+
+	int mFrameCount;
+
+	// Edit here //
+	std::vector<cocos2d::Color3B> mListOfColors;
+	cocos2d::Sprite* mLineBackground;
+	int mCurrentColorIndex;
+	//////////////////////////////////////////////////////////////////// 
+
 }

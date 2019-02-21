@@ -1,7 +1,7 @@
 #include "VerticalLinePath.h"
 #include "common/Definition.h" 
 #include "common/definitionlevels/DefinitionLevel8.h"
-#include "common/definitionpaths/verticalline/DefinitionVerticalLine.h"; 
+#include "common/definitionpaths/verticalline/DefinitionVerticalLine.h"
 #include "common/Definition.h"
 
 VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceBetweenBaloonAndThePath,
@@ -14,11 +14,9 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 
 	// Set local data // 
 	mIsMovingDown = true; 
-	mCenterPositionX = origin.x + visibleSize.width / 2; 
 	mFrameCount = 0;
 	mCurrentStage = STAGE_1_MOVE_DOWN; 
 	mIsMovingDown = true;
-	mCenterPositionX = origin.x + visibleSize.width / 2;
 
 	/* Change variables here to fit your needs */
 	mDistanceBetweenBaloonAndThePath = distanceBetweenBaloonAndThePath;

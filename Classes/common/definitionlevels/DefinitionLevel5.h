@@ -12,5 +12,5 @@
 
 #define EASY_MODE 8
 #define NORMAL_MODE 45
-#define HARD_MODE 85
-#define COMPLETE_LEVEL 5
+#define HARD_MODE 60
+#define COMPLETE_LEVEL 80
