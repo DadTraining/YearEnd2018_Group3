@@ -26,8 +26,8 @@ SquarePath::SquarePath(cocos2d::Scene* scene, const int& squareWidthSize,
 
 	scene->addChild(mPathSprite);
 	scene->addChild(mBalloonSprite);
-	
-	/*rectangle point*/
+	 
+	/*rectangle point*/ 
 	mPoint1 = cocos2d::Vec2(mPathSprite->getPositionX() - mSquareWidthSize / 2, 
 		(mSquareHeightSize / 2 + mPathSprite->getPositionY()));
 	mLength = (mSquareWidthSize / 2 + mPathSprite ->getPositionX())  - mPoint1.x;

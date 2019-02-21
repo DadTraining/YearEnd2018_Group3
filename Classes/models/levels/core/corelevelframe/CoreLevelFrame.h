@@ -12,13 +12,13 @@ protected:
     std::map<std::string, CoreModel*> mObjectsDictionary;
     cocos2d::Node* mGroupNode;
     bool mHasFinishMoving;
-	int mFrameCount;
-	bool mIsBelowCenter;
+	int mFrameCount; 
+	bool mIsBelowCenter; 
 
 public:
 	CoreLevelFrame();
     ~CoreLevelFrame();
-
+	 
     /**
      * Check frame below center of screen
      *
@@ -26,7 +26,7 @@ public:
      * @return false : not below center screen
      */
     bool IsBelowCenter();
-
+	 
 	virtual void Init() = 0;
 	virtual void Update() = 0;
     virtual bool HasFinishedMoving() = 0;

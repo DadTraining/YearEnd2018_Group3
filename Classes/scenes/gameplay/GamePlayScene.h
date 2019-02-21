@@ -1,10 +1,10 @@
 #pragma once
-
+ 
 #include "cocos2d.h"
 
 class GamePlayScene : public cocos2d::Scene
-{
-private:
+{ 
+private:  
 	void update(float dt);
 	
 public:
