@@ -1,14 +1,23 @@
-//
-// Created by Nguyễn Tùng on 2019-02-20.
-//
+#pragma once
 
-#ifndef TEMPLATECPP_LEVEL3FRAME4_H
-#define TEMPLATECPP_LEVEL3FRAME4_H
+#include "models/levels/core/corelevelframe/CoreLevelFrame.h"
+#include "models/objects/obstacles/level3/rectagleline/RectangleLine.h"
+#include "models/objects/obstacles/level3/horizontalline/HorizontalLine.h"
 
+#include "cocos2d.h"
 
-class Level3Frame4 {
+class Level3Frame4 : public CoreLevelFrame
+{
+private:
+    RectangleLine* mRectangleLine;
+    HorizontalLine* mHorizontalLine;
+	HorizontalLine* mHorizontal;
 
+public:
+    Level3Frame4(cocos2d::Scene* scene);
+    ~Level3Frame4();
+
+    void Init() override;
+    void Update() override;
+    bool HasFinishedMoving() override;
 };
-
-
-#endif //TEMPLATECPP_LEVEL3FRAME4_H

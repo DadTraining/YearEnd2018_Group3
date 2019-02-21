@@ -2,12 +2,17 @@
 
 #include "models/core/CoreModel.h"
 
-class RectagleObstacleModel : public CoreModel
+#include "cocos2d.h"
+
+class RectangleObstacleModel : public CoreModel
 {
+private:
+    bool mIsRotateToRight;
+
 public:
-    RectagleObstacleModel(cocos2d::Scene* scene);
-    RectagleObstacleModel(cocos2d::Node* node);
-    ~RectagleObstacleModel();
+    RectangleObstacleModel(cocos2d::Scene* scene);
+    RectangleObstacleModel(cocos2d::Node* node);
+    ~RectangleObstacleModel();
 
     void Init() override;
     void Update() override;

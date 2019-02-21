@@ -21,13 +21,12 @@ bool GamePlayScene::init()
 
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
-	 
+
 	this->scheduleUpdate();
-	 
 	return true;
 }
 
 void GamePlayScene::update(float dt)
-{ 
+{
 
 }

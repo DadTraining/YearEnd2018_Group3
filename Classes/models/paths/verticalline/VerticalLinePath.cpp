@@ -2,6 +2,7 @@
 #include "common/Definition.h" 
 #include "common/definitionlevels/DefinitionLevel8.h"
 #include "common/definitionpaths/verticalline/DefinitionVerticalLine.h"; 
+#include "common/Definition.h"
 
 VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceBetweenBaloonAndThePath,
 	const float& pathMovingSpeed, const float& thresholdMovingDistance,
@@ -16,6 +17,8 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	mCenterPositionX = origin.x + visibleSize.width / 2; 
 	mFrameCount = 0;
 	mCurrentStage = STAGE_1_MOVE_DOWN; 
+	mIsMovingDown = true;
+	mCenterPositionX = origin.x + visibleSize.width / 2;
 
 	/* Change variables here to fit your needs */
 	mDistanceBetweenBaloonAndThePath = distanceBetweenBaloonAndThePath;
@@ -31,7 +34,7 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	// The balloon sprite //
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
 	mBalloonSprite->setPosition(mPathSprite->getContentSize().width / 2 + mDistanceBetweenBaloonAndThePath,
-		mPathSprite->getContentSize().height / 2);  
+	mPathSprite->getContentSize().height / 2);  
 	mBalloonSprite->setTag(BALLOON_TAG);
 
 	// The balloon physics body //
@@ -41,7 +44,6 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	mBalloonPhysicsBody->setContactTestBitmask(true);
 	mBalloonPhysicsBody->setRotationEnable(false);
 	mBalloonSprite->setPhysicsBody(mBalloonPhysicsBody);
-	 
 	mPathSprite->addChild(mBalloonSprite, 2);
 
 	// Called automatically when users manipulate the screen for the balloon's movement //
@@ -94,7 +96,7 @@ void VerticalLinePath::OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event
 }
 
 void VerticalLinePath::Update()
-{ 
+{
 	// The screen touching controller
 	if (mIsTouching)
 	{
