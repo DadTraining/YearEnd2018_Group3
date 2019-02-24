@@ -130,12 +130,6 @@ set(all_code_files
         Classes/models/levels/core/corelevelframe/CoreLevelFrame.cpp
         Classes/models/levels/level1/Level1.h
         Classes/models/levels/level1/Level1.cpp
-        Classes/models/levels/level1/frames/Level1Frame1.h
-        Classes/models/levels/level1/frames/Level1Frame1.cpp
-        Classes/models/objects/obstacles/RectagleBarrier.h
-        Classes/models/objects/obstacles/RectagleBarrier.cpp 
-        Classes/models/objects/other/Enemy.h
-        Classes/models/objects/other/Enemy.cpp 
         Classes/models/paths/core/CorePath.h
         Classes/models/paths/core/CorePath.cpp
         Classes/models/paths/circle/CirclePath.h
@@ -162,14 +156,18 @@ set(all_code_files
         Classes/scenes/ui/splash/SplashScreenScene.cpp
         Classes/utils/helper/Helper.h
         Classes/utils/helper/Helper.cpp
-        Classes/utils/levels/level1/Level1Helper.h
-        Classes/utils/levels/level1/Level1Helper.cpp 
         Classes/utils/physics/CustomPhysicsBody.cpp
         Classes/utils/physics/CustomPhysicsBody.h
         Classes/models/levels/level3/Level3.cpp
         Classes/models/levels/level3/Level3.h
         Classes/models/levels/level3/frames/frame1/Level3Frame1.cpp
         Classes/models/levels/level3/frames/frame1/Level3Frame1.h
+        Classes/models/levels/level3/frames/frame2/Level3Frame2.h
+        Classes/models/levels/level3/frames/frame2/Level3Frame2.cpp
+        Classes/models/levels/level3/frames/frame3/Level3Frame3.h
+        Classes/models/levels/level3/frames/frame3/Level3Frame3.cpp
+        Classes/models/levels/level3/frames/frame4/Level3Frame4.h
+        Classes/models/levels/level3/frames/frame4/Level3Frame4.cpp
         Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.cpp
         Classes/models/objects/obstacles/level3/circle/CircleObstacleModel.h
         Classes/models/objects/obstacles/level3/circleline/CircleLineModel.cpp
@@ -179,8 +177,50 @@ set(all_code_files
         Classes/models/objects/obstacles/level3/coin/CoinModel.h
         Classes/utils/levels/level3/animation/GetAnimation.cpp
         Classes/utils/levels/level3/animation/GetAnimation.h
-        Classes/models/objects/obstacles/level3/rectagle/RectagleModel.cpp
-        Classes/models/objects/obstacles/level3/rectagle/RectagleModel.h)  
+        Classes/models/objects/obstacles/level3/rectagle/RectangleObstacleModel.cpp
+        Classes/models/objects/obstacles/level3/rectagle/RectangleObstacleModel.h
+        Classes/models/objects/obstacles/level3/rectagleline/RectangleLine.h
+        Classes/models/objects/obstacles/level3/rectagleline/RectangleLine.cpp
+        Classes/models/objects/obstacles/level3/horizontalline/HorizontalLine.h
+        Classes/models/objects/obstacles/level3/horizontalline/HorizontalLine.cpp
+        Classes/models/objects/obstacles/level3/triangular/TriangularObstacleModel.h
+        Classes/models/objects/obstacles/level3/triangular/TriangularObstacleModel.cpp
+        Classes/models/objects/obstacles/level3/triangularline/TriangularLine.h
+        Classes/models/objects/obstacles/level3/triangularline/TriangularLine.cpp
+        Classes/common/definitionlevels/DefinitionLevel5.h
+        Classes/common/definitionlevels/DefinitionLevel8.h
+        Classes/common/definitionpaths/verticalline/DefinitionVerticalLine.h
+        Classes/models/levels/level5/Level5.h
+        Classes/models/levels/level5/Level5.cpp
+        Classes/models/levels/level8/Level8.h
+        Classes/models/levels/level8/Level8.cpp
+        Classes/models/objects/obstacles/level5/LineFrame.h
+        Classes/models/objects/obstacles/level5/LineFrame.cpp
+        Classes/models/objects/obstacles/level8/core/CoreObstacle.h
+        Classes/models/objects/obstacles/level8/core/CoreObstacle.cpp
+        Classes/models/objects/obstacles/level8/Bar.h
+        Classes/models/objects/obstacles/level8/Bar.cpp
+        Classes/models/objects/obstacles/level8/Boom.h
+        Classes/models/objects/obstacles/level8/Boom.cpp
+        Classes/models/objects/obstacles/level8/Rock.h
+        Classes/models/objects/obstacles/level8/Rock.cpp
+        Classes/models/objects/obstacles/level8/Spike.h
+        Classes/models/objects/obstacles/level8/Spike.cpp
+        Classes/models/objects/other/level8/ObstaclesCreation.h
+        Classes/models/objects/other/level8/ObstaclesCreation.cpp
+        Classes/utils/levels/level8/Level8Helper.h
+        Classes/utils/levels/level8/Level8Helper.cpp
+        Classes/utils/physics/CustomPhysicsBody.h
+        Classes/utils/physics/CustomPhysicsBody.cpp
+        Classes/utils/physics/MyBodyParser.h
+        Classes/utils/physics/MyBodyParser.cpp
+        Classes/models/paths/circle/CirclePathExtend.h
+        Classes/models/paths/circle/CirclePathExtend.cpp
+        Classes/scenes/ui/gameover/GameOver.h
+        Classes/scenes/ui/gameover/GameOver.cpp
+        Classes/scenes/ui/menu/MapLevel.h
+        Classes/scenes/ui/menu/MapLevel.cpp
+        )
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()

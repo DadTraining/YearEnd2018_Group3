@@ -2,7 +2,7 @@
 #include "scenes/gameplay/GamePlayScene.h"
 #include "common/Definition.h"
 
-#include"ui\CocosGUI.h"
+#include"ui/CocosGUI.h"
 
 cocos2d::Scene* MapLevel::createScene()
 
