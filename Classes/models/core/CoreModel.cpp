@@ -60,7 +60,11 @@ void CoreModel::SetActive(const bool& active)
 {
     mIsActive = active;
     mCoreSprite->setVisible(active);
-	mCorePhysicsBody->setEnabled(active);
+
+    if (mCorePhysicsBody != nullptr)
+    {
+        mCorePhysicsBody->setEnabled(active);
+    }
 }
 
 std::string CoreModel::GetModelName() const

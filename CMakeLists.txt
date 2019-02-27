@@ -220,7 +220,7 @@ set(all_code_files
         Classes/scenes/ui/gameover/GameOver.cpp
         Classes/scenes/ui/menu/MapLevel.h
         Classes/scenes/ui/menu/MapLevel.cpp
-        )
+        Classes/models/levels/level4/Level4.cpp Classes/models/levels/level4/Level4.h Classes/models/levels/level4/frames/frame1/Level4Frame1.cpp Classes/models/levels/level4/frames/frame1/Level4Frame1.h Classes/common/definitionlevels/DefinitionLevel4.h Classes/models/levels/level4/frames/frame2/Level4Frame2.cpp Classes/models/levels/level4/frames/frame2/Level4Frame2.h Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.cpp Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.h Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.cpp Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.h)
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()
