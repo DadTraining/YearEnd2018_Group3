@@ -85,7 +85,6 @@ void MapLevel::setListButton()
 			{
 			case cocos2d::ui::Widget::TouchEventType::ENDED:
 
-				CCLOG(" sad %i", i);
 				auto scene = GamePlayScene::createScene(i);
 				cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionFade::create(SCENE_TRANSITION_TIME, scene));
 

@@ -1,12 +1,34 @@
 #include "CircleLineModel.h"
 #include "common/definitionlevels/DefinitionLevel3.h"
+#include "common/definitionlevels/DefinitionLevel7.h"
+#include "common/Definition.h"
 
-CircleLineModel::CircleLineModel(cocos2d::Node* node) : CoreModel("sprites/gameplay/level3/circle/circle_line.png")
-{
-    Init();
+const int CircleLineModel::OBSTACLE = 0;
+const int CircleLineModel::PATH = 1;
 
-    node->addChild(mCoreSprite);
-    node->addChild(mNodeCoin);
+CircleLineModel::CircleLineModel(cocos2d::Node* node, std::string name, int type) : CoreModel(name)
+ {
+	mType = type;
+	mIsTouching = false;
+	mIsTouchingRight = false;
+	
+		Init();
+	
+		if (mType == OBSTACLE)
+		 {
+		
+			node->addChild(mNodeCoin);
+		}
+	else if (mType == PATH)
+		 {
+		auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
+		touchListener->setSwallowTouches(true);
+		touchListener->onTouchBegan = CC_CALLBACK_2(CircleLineModel::OnTouchBegan, this);
+		touchListener->onTouchEnded = CC_CALLBACK_2(CircleLineModel::OnTouchEnded, this);
+		node->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, node);
+		}
+	
+		node->addChild(mCoreSprite);
 }
 
 CircleLineModel::~CircleLineModel()
@@ -17,7 +39,7 @@ CircleLineModel::~CircleLineModel()
 void CircleLineModel::Init()
 {
     // Create circle line //
-    mCoreSprite = cocos2d::Sprite::create(mModelName);
+	mCoreSprite = cocos2d::Sprite::create(mModelName);
 
     // Init vector Circle obstacle model
     InitCircleObstacleModels(mCoreSprite);
@@ -25,44 +47,73 @@ void CircleLineModel::Init()
     // Init position item of vector Circle obstacle model
     InitPositionCircleObstacleModels();
 
-    // Create coin //
-    mNodeCoin = cocos2d::Node::create();
-    mNodeCoin->setContentSize(GetContentSize());
-    mNodeCoin->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
-
-    // Init vector coin models
-    InitCoinModels();
-
-    // Init position coin models
-    InitPositionCoinModels();
+	if (mType == OBSTACLE)
+	{
+		mNodeCoin = cocos2d::Node::create();
+		mNodeCoin->setContentSize(GetContentSize());
+		mNodeCoin->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
+	
+		// Init vector coin models
+		InitCoinModels();
+		
+		// Init position coin models
+		InitPositionCoinModels();
+	}
 
 }
 
 void CircleLineModel::Update()
 {
-    mCoreSprite->setRotation(mCoreSprite->getRotation() + 0.5);
-    mNodeCoin->setPosition(GetPosition());
+	if (mType == OBSTACLE)
+	{
+		mCoreSprite->setRotation(mCoreSprite->getRotation() + 0.5);
+		mNodeCoin->setPosition(GetPosition());
+	}
+	else if (mType == PATH)
+	{
+		if (mIsTouching)
+		{
+			if (mIsTouchingRight)
+			{
+				mCoreSprite->setRotation(mCoreSprite->getRotation() + CIRCLE_SPEED);
+			}
+			else
+			{
+				mCoreSprite->setRotation(mCoreSprite->getRotation() - CIRCLE_SPEED);
+			}
+		}
+	}
 }
 
 void CircleLineModel::InitCircleObstacleModels(cocos2d::Sprite* sprite)
 {
-    for (int i = 0; i < CIRCLE_OBSTACLE_MODELS_SIZE; i ++)
-    {
-        mCircleObstacleModels.push_back(new CircleObstacleModel(CIRCLE_OBSTACLE_NAME_PATH, sprite));
-    }
+	if (mType == OBSTACLE)
+	 {
+		for (int i = 0; i < COIN_MODELS_SIZE; i++)
+		{
+			mCircleObstacleModels.push_back(new CircleObstacleModel(CIRCLE_OBSTACLE_NAME_PATH, sprite));
+		}
+	}
+	else if (mType == PATH)
+	{
+		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_BLUE_PATH, sprite));
+		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_RED_PATH, sprite));
+		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_GREEN_PATH, sprite));
+		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_YELLOW_PATH, sprite));
+	}
 }
 
 void CircleLineModel::InitPositionCircleObstacleModels()
 {
-    float radius = GetContentSize().width / 2;
-    float corner = 0;
+	float radius = GetContentSize().width / 2;
+	float corner = 0;
 
-    for (int i = 0; i < CIRCLE_OBSTACLE_MODELS_SIZE; i++)
-    {
-        mCircleObstacleModels.at(i)->SetPosition(radius + cos(corner * M_PI / 180.0F) * radius,
-                radius + sin(corner * M_PI / 180.0F) * radius);
-        corner += 360 / CIRCLE_OBSTACLE_MODELS_SIZE;
-    }
+	for (int i = 0; i < mCircleObstacleModels.size(); i++)
+	{
+		mCircleObstacleModels.at(i)->SetPosition(radius + cos(corner * M_PI / 180.0F) * radius,
+			radius + sin(corner * M_PI / 180.0F) * radius);
+		corner += 360 / mCircleObstacleModels.size();
+	}
 }
 
 void CircleLineModel::InitCoinModels()
@@ -85,4 +136,25 @@ void CircleLineModel::InitPositionCoinModels()
                                        (radius + compensationRadius) + sin(corner * M_PI / 180.0F) * radius);
         corner += 360 / COIN_MODELS_SIZE;
     }
+}
+
+bool CircleLineModel::OnTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
+ {
+	mIsTouching = true;
+	
+	if (touch->getLocation().x >= SREEEN_RESOLUTION_WIDTH / 2)
+	{
+		mIsTouchingRight = true;
+	}
+	else
+	{
+		mIsTouchingRight = false;
+	}
+	
+	return true;
+}
+
+void CircleLineModel::OnTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
+{
+	mIsTouching = false;
 }
