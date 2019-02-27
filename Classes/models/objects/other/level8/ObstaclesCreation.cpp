@@ -7,68 +7,50 @@
 #include "common/definitionlevels/DefinitionLevel8.h"
 #include "common/definitionpaths/verticalline/DefinitionVerticalLine.h";
 
-ObstaclesCreation::ObstaclesCreation(cocos2d::Scene* scene)
+ObstaclesCreation::ObstaclesCreation(cocos2d::Scene* scene) : Creator()
 {
 	// Set local data //
-	mFrameCount = 0;
 	mHasReleasedAnObstacleOnTheRightSide = true;
 	mHasChangeFrameCount = false;
 
 	// Create initial obstacles and store it in the map // 
 	for (int i = 0; i < NUMBER_OF_INTIAL_OBSTACLES_PER_TYPE; i++)
 	{
-		mMapOfObstacles[NUMBER_OF_OBSTACLE_TYPES - 4].push_back(new Bar(scene, 2));
-		mMapOfObstacles[NUMBER_OF_OBSTACLE_TYPES - 3].push_back(new Spike(scene, 2));
-		mMapOfObstacles[NUMBER_OF_OBSTACLE_TYPES - 2].push_back(new Boom(scene, 2));
-		mMapOfObstacles[NUMBER_OF_OBSTACLE_TYPES - 1].push_back(new Rock(scene, 2));
+		mMapOfObjects[0].push_back(new Bar(scene, 2));
+		mMapOfObjects[1].push_back(new Spike(scene, 2));
+		mMapOfObjects[2].push_back(new Boom(scene, 2));
+		mMapOfObjects[3].push_back(new Rock(scene, 2));
 	}
 }
 
-CoreObstacle* ObstaclesCreation::GetAnInactiveObstacle(const int& mapIndex)
+CoreObstacle* ObstaclesCreation::GetAnInactiveObject(const int& mapIndex)
 {
-	for (int i = 0; i < mMapOfObstacles[mapIndex].size(); i++)
+	for (int i = 0; i < mMapOfObjects[mapIndex].size(); i++)
 	{
-		if (!mMapOfObstacles[mapIndex].at(i)->IsActive())
-			return mMapOfObstacles[mapIndex].at(i);
+		if (!mMapOfObjects[mapIndex].at(i)->IsActive())
+			return mMapOfObjects[mapIndex].at(i);
 	}
 
 	return nullptr;
 }
 
-std::vector<CoreObstacle*> ObstaclesCreation::GetAVectorOfActiveObstacles()
+void ObstaclesCreation::DisappearActiveObjects()
 {
-	std::vector<CoreObstacle*> vectorOfActiveObstacles;
+	std::vector<CoreObstacle*> vectorOfActiveObjects;
 
-	for (int i = 0; i < NUMBER_OF_OBSTACLE_TYPES; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		for (int j = 0; j < mMapOfObstacles[i].size(); j++)
+		for (int j = 0; j < mMapOfObjects[i].size(); j++)
 		{
-			if (mMapOfObstacles[i].at(j)->IsActive())
-				vectorOfActiveObstacles.push_back(mMapOfObstacles[i].at(j));
+			if (mMapOfObjects[i].at(j)->IsActive())
+				vectorOfActiveObjects.push_back(mMapOfObjects[i].at(j));
 		}
 	}
 
-	return vectorOfActiveObstacles;
-}
-
-void ObstaclesCreation::DisappearActiveObstacles()
-{
-	// Get a vector of active obstacles on the scene //
-	std::vector<CoreObstacle*> vectorOfActiveObstacles = GetAVectorOfActiveObstacles();
-
-	for (int i = 0; i < NUMBER_OF_OBSTACLE_TYPES; i++)
+	// Make the objects disappear// 
+	for (int i = 0; i < vectorOfActiveObjects.size(); i++)
 	{
-		for (int j = 0; j < mMapOfObstacles[i].size(); j++)
-		{
-			if (mMapOfObstacles[i].at(j)->IsActive())
-				vectorOfActiveObstacles.push_back(mMapOfObstacles[i].at(j));
-		}
-	}
-
-	// Make the obstacles disappear// 
-	for (int i = 0; i < vectorOfActiveObstacles.size(); i++)
-	{
-		vectorOfActiveObstacles[i]->Disappear();
+		vectorOfActiveObjects[i]->Disappear();
 	}
 }
 
@@ -81,7 +63,7 @@ void ObstaclesCreation::Update(const Stage& mStage)
 	{
 		if (mFrameCount % OBSTACLES_SPAWNING_STAGE_2_FRAME_COUNT == 0)
 		{
-			CoreObstacle* obstacle = GetAnInactiveObstacle(0);
+			CoreObstacle* obstacle = GetAnInactiveObject(0);
 
 			if (obstacle != nullptr)
 			{
@@ -105,7 +87,7 @@ void ObstaclesCreation::Update(const Stage& mStage)
 
 		if (mFrameCount % OBSTACLES_SPAWNING_STAGE_4_FRAME_COUNT == 0)
 		{
-			CoreObstacle* obstacle = GetAnInactiveObstacle(1);
+			CoreObstacle* obstacle = GetAnInactiveObject(1);
 
 			if (obstacle != nullptr)
 			{
@@ -129,7 +111,7 @@ void ObstaclesCreation::Update(const Stage& mStage)
 
 		if (mFrameCount % OBSTACLES_SPAWNING_STAGE_5_FRAME_COUNT == 0)
 		{
-			CoreObstacle* obstacle = GetAnInactiveObstacle(2);
+			CoreObstacle* obstacle = GetAnInactiveObject(2);
 
 			if (obstacle != nullptr)
 			{
@@ -153,7 +135,7 @@ void ObstaclesCreation::Update(const Stage& mStage)
 
 		if (mFrameCount % OBSTACLES_SPAWNING_STAGE_6_FRAME_COUNT == 0)
 		{
-			CoreObstacle* obstacle = GetAnInactiveObstacle(3);
+			CoreObstacle* obstacle = GetAnInactiveObject(3);
 
 			if (obstacle != nullptr)
 			{

@@ -26,4 +26,10 @@ public:
 	 *  Update every single frame
 	 */ 
 	void Update() override;
+
+	/**
+	 * Get the balloon's current position
+	 * @return cocos2d::Vec2 
+	 */
+	cocos2d::Vec2 GetTheBalloonPosition();
 };

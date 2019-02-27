@@ -2,77 +2,77 @@
 
 CoreModel::CoreModel(const std::string& name)
 {
-    mModelName = name;
-    mFrameCount = 0;
+	mModelName = name;
+	mFrameCount = 0;
 }
 
 CoreModel::~CoreModel()
 {
-    // Destructor
+	// Destructor
 }
 
 cocos2d::Vec2 CoreModel::GetPosition() const
 {
-    return mCoreSprite->getPosition();
+	return mCoreSprite->getPosition();
 }
 
 float CoreModel::GetPositionX() const
 {
-    return mCoreSprite->getPositionX();
+	return mCoreSprite->getPositionX();
 }
 
 float CoreModel::GetPositionY() const
 {
-    return mCoreSprite->getPositionY();
+	return mCoreSprite->getPositionY();
 }
 
 void CoreModel::SetPosition(const cocos2d::Vec2& position)
 {
-    mCoreSprite->setPosition(position);
+	mCoreSprite->setPosition(position);
 }
 
 void CoreModel::SetPosition(const float& x, const float& y)
 {
-    mCoreSprite->setPosition(cocos2d::Vec2(x, y));
+	mCoreSprite->setPosition(cocos2d::Vec2(x, y));
 }
 
 cocos2d::Size CoreModel::GetContentSize() const
 {
-    return mCoreSprite->getContentSize();
+	return mCoreSprite->getContentSize();
 }
 
 float CoreModel::GetWidth() const
 {
-    return mCoreSprite->getContentSize().width;
+	return mCoreSprite->getContentSize().width;
 }
 
 float CoreModel::GetHeight() const
 {
-    return mCoreSprite->getContentSize().height;
+	return mCoreSprite->getContentSize().height;
 }
 
 bool CoreModel::IsActive() const
 {
-    return mIsActive;
+	return mIsActive;
 }
 
 void CoreModel::SetActive(const bool& active)
 {
-    mIsActive = active;
-    mCoreSprite->setVisible(active);
+	mIsActive = active;
+	mCoreSprite->setVisible(active);
 
-    if (mCorePhysicsBody != nullptr)
-    {
-        mCorePhysicsBody->setEnabled(active);
-    }
+	if (mCorePhysicsBody != nullptr)
+	{
+		mCorePhysicsBody->setEnabled(active);
+	}
 }
 
 std::string CoreModel::GetModelName() const
 {
-    return mModelName;
+	return mModelName;
 }
 
 void CoreModel::SetRotation(const float& degree)
 {
-    mCoreSprite->setRotation(degree);
+	mCoreSprite->setRotation(degree);
 }
