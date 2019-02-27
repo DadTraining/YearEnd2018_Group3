@@ -7,13 +7,14 @@
 #include "frames/frame2/Level3Frame2.h"
 #include "frames/frame3/Level3Frame3.h"
 #include "frames/frame4/Level3Frame4.h"
-#include "models/paths/circle/CirclePathExtend.h"
+#include "models/paths/circle/CirclePath.h"
 
 class Level3 : public CoreLevel
 {
 private:
     std::vector<CoreLevelFrame*> mCoreLevelFrame;
-    CirclePathExtend* mCirclePathExtend;
+    CirclePath* mCirclePath;
+
     cocos2d::EventListenerPhysicsContact* mPhysicsContact;
     int mIndex;
 

@@ -42,7 +42,12 @@ public:
 	/**
 	* set balloon speed when frame change speed
 	*/
-	void setBalloonMovingSpeed(int balloonSpeed);
+	void setBalloonMovingSpeed(int balloonSpeed); 
+	
+	/**
+	* Stop all operations when the balloon is exploded
+	*/
+	virtual void Disappear();
 
     /**
 	 *  Update every single frame

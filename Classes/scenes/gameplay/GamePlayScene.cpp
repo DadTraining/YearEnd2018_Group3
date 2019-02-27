@@ -3,6 +3,7 @@
 #include "models/levels/level3/Level3.h"
 #include "models/levels/level5/Level5.h"
 #include "models/levels/level8/Level8.h"
+#include "models/levels/level9/Level9.h"
 #include "common/Definition.h"
 
 int GamePlayScene::mCurrentLevelIndex = 0;
@@ -32,7 +33,7 @@ bool GamePlayScene::init()
 	// Add all of the levels into the list //
 	if (mCurrentLevelIndex == 0)
 	{
-		mListOfLevels.push_back(new Level3(this));
+		mListOfLevels.push_back(new Level9(this));
 	}
 	else if (mCurrentLevelIndex == 1)
 	{
@@ -54,7 +55,7 @@ void GamePlayScene::ShowGameOverPanel()
 
 	auto gameOverPanel = cocos2d::Sprite::create("sprites/gameplay/game_dialog.png");
 	gameOverPanel->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
-	this->addChild(gameOverPanel);
+	this->addChild(gameOverPanel,1000);
 
 	auto replayButton = cocos2d::ui::Button::create("sprites/gameplay/button_replay.png",
 		"sprites/gameplay/button_replay.png",
@@ -138,7 +139,8 @@ void GamePlayScene::update(float dt)
 	{
 		ShowLevelCompletionPanel();
 
-		mCurrentLevelIndex++;
+		mCurrentLevelIndex++; 
+
 		if (mCurrentLevelIndex >= mListOfLevels.size())
 		{
 			mCurrentLevelIndex = 0;

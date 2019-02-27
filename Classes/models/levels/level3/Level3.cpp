@@ -3,31 +3,31 @@
 
 Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 {
-    mIndex = 0;
+	mIndex = 0;
 
 	// background
 	auto background = cocos2d::Sprite::create("sprites/gameplay/level3/background/color_white.jpg");
 	background->setAnchorPoint(cocos2d::Vec2(0, 0));
 	scene->addChild(background, -1);
 
-    float visibleSizeHight = cocos2d::Director::getInstance()->getVisibleSize().height;
+	float visibleSizeHight = cocos2d::Director::getInstance()->getVisibleSize().height;
 
-    mCoreLevelFrame.push_back(new Level3Frame1(scene));
-    mCoreLevelFrame.push_back(new Level3Frame3(scene));
-    mCoreLevelFrame.push_back(new Level3Frame4(scene));
+	mCoreLevelFrame.push_back(new Level3Frame1(scene));
+	mCoreLevelFrame.push_back(new Level3Frame3(scene));
+	mCoreLevelFrame.push_back(new Level3Frame4(scene));
 	mCoreLevelFrame.push_back(new Level3Frame2(scene));
 
-    for (int i = 0; i < mCoreLevelFrame.size(); i++)
-    {
-        mCoreLevelFrame.at(i)->SetPositionY(i * visibleSizeHight + visibleSizeHight);
-    }
+	for (int i = 0; i < mCoreLevelFrame.size(); i++)
+	{
+		mCoreLevelFrame.at(i)->SetPositionY(i * visibleSizeHight + visibleSizeHight);
+	}
 
-    mCirclePathExtend = new CirclePathExtend(scene);
+	mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
 
-    // Create physics contact
-    mPhysicsContact = cocos2d::EventListenerPhysicsContact::create();
-    mPhysicsContact->onContactBegin = CC_CALLBACK_1(Level3::OnContactBegin, this);
-    scene->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mPhysicsContact, scene);
+	// Create physics contact
+	mPhysicsContact = cocos2d::EventListenerPhysicsContact::create();
+	mPhysicsContact->onContactBegin = CC_CALLBACK_1(Level3::OnContactBegin, this);
+	scene->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mPhysicsContact, scene);
 }
 
 Level3::~Level3()
@@ -45,25 +45,25 @@ void Level3::Update()
 	mFrameCount++;
 	if (mFrameCount >= FPS * 62)
 	{
-		CCLOG("next");
+		mIsCompletedLevel = true;
 	}
 
-    for (int i = 0; i < mCoreLevelFrame.size(); i++)
-    {
-        mCoreLevelFrame.at(i)->Update();
+	for (int i = 0; i < mCoreLevelFrame.size(); i++)
+	{
+		mCoreLevelFrame.at(i)->Update();
 		if (mCoreLevelFrame.at(i)->HasFinishedMoving())
 		{
 			mCoreLevelFrame.at(i)->SetPositionY((i - mCoreLevelFrame.size()) * cocos2d::Director::getInstance()->getVisibleSize().height);
 		}
-    }
+	}
 
-    mCirclePathExtend->Update();
+	mCirclePath->Update();
 }
 
 bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)
 {
-    auto shapeA = contact.getShapeA()->getBody()->getNode();
-    auto shapeB = contact.getShapeB()->getBody()->getNode();
+	auto shapeA = contact.getShapeA()->getBody()->getNode();
+	auto shapeB = contact.getShapeB()->getBody()->getNode();
 
 	if (shapeA != nullptr && shapeB != nullptr)
 	{
@@ -106,5 +106,5 @@ bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)
 		}
 	}
 
-    return true;
+	return true;
 }

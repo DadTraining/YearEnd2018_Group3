@@ -1,8 +1,7 @@
 #include "VerticalLinePath.h"
-#include "common/Definition.h" 
-#include "common/definitionlevels/DefinitionLevel8.h"
-#include "common/definitionpaths/verticalline/DefinitionVerticalLine.h"
 #include "common/Definition.h"
+#include "common/definitionlevels/DefinitionLevel8.h"
+#include "common/definitionpaths/verticalline/DefinitionVerticalLine.h";
 
 VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceBetweenBaloonAndThePath,
 	const float& pathMovingSpeed, const float& thresholdMovingDistance,
@@ -13,10 +12,9 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
 	// Set local data // 
-	mIsMovingDown = true; 
-	mFrameCount = 0;
-	mCurrentStage = STAGE_1_MOVE_DOWN; 
 	mIsMovingDown = true;
+	mFrameCount = 0;
+	mCurrentStage = STAGE_1_MOVE_DOWN;
 
 	/* Change variables here to fit your needs */
 	mDistanceBetweenBaloonAndThePath = distanceBetweenBaloonAndThePath;
@@ -25,23 +23,24 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	/*******************************************/
 
 	// The line path sprite //
-	mPathSprite = cocos2d::Sprite::create(pathNamePath);  
-	mPathSprite->setPosition(origin.x + visibleSize.width / 2, mPathPositionY); 
+	mPathSprite = cocos2d::Sprite::create(pathNamePath);
+	mPathSprite->setPosition(origin.x + visibleSize.width / 2, mPathPositionY);
 	scene->addChild(mPathSprite, 1);
 
 	// The balloon sprite //
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
 	mBalloonSprite->setPosition(mPathSprite->getContentSize().width / 2 + mDistanceBetweenBaloonAndThePath,
-	mPathSprite->getContentSize().height / 2);  
+		mPathSprite->getContentSize().height / 2);
 	mBalloonSprite->setTag(BALLOON_TAG);
 
 	// The balloon physics body //
 	auto mBalloonPhysicsBody = cocos2d::PhysicsBody::createCircle(mBalloonSprite->getContentSize().width / 2 - COLLISION_OFFSET_RADIUS);
 	mBalloonPhysicsBody->setGravityEnable(false);
-	mBalloonPhysicsBody->setCategoryBitmask(0x01);
+	mBalloonPhysicsBody->setCategoryBitmask(BALLOON_COLLISION_BITMASK);
 	mBalloonPhysicsBody->setContactTestBitmask(true);
 	mBalloonPhysicsBody->setRotationEnable(false);
 	mBalloonSprite->setPhysicsBody(mBalloonPhysicsBody);
+
 	mPathSprite->addChild(mBalloonSprite, 2);
 
 	// Called automatically when users manipulate the screen for the balloon's movement //
@@ -51,7 +50,7 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	touchListener->onTouchEnded = CC_CALLBACK_2(VerticalLinePath::OnTouchEnded, this);
 	scene->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, scene);
 }
- 
+
 void VerticalLinePath::MoveThePath()
 {
 	if (mIsMovingDown)
@@ -75,7 +74,7 @@ void VerticalLinePath::MoveThePath()
 		}
 	}
 }
- 
+
 bool VerticalLinePath::OnTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
 {
 	mIsTouching = true;
@@ -95,33 +94,6 @@ void VerticalLinePath::OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event
 
 void VerticalLinePath::Update()
 {
-	// The screen touching controller
-	if (mIsTouching)
-	{
-		if (mIsTouchingRight)
-		{
-			mBalloonSprite->setPosition(mPathSprite->getContentSize().width / 2 + mDistanceBetweenBaloonAndThePath,
-				mPathSprite->getContentSize().height / 2);
-		}
-		else
-		{
-			mBalloonSprite->setPosition(mPathSprite->getContentSize().width / 2 - mDistanceBetweenBaloonAndThePath,
-				mPathSprite->getContentSize().height / 2);
-		}
-	}
-
-	// The line path's movement //
-	if (mIsMovingDown)
-	{
-		mPathSprite->setPosition(mPathSprite->getPosition().x,
-			mPathSprite->getPosition().y - mPathMovingSpeed);
-
-		if (mPathSprite->getPosition().y <= mPathPositionY - mThresholdMovingDistance)
-		{
-			mIsMovingDown = false;
-		}
-	}
-	else 
 	// Stage 1: Move the path down and stop at a particular position //
 	if (mCurrentStage == STAGE_1_MOVE_DOWN)
 	{
@@ -158,14 +130,13 @@ void VerticalLinePath::Update()
 		}
 	}
 	// Stage 3: Move the path up to a new position and stay there //
-	else if (mCurrentStage == STAGE_3_MOVE_UP) 
+	else if (mCurrentStage == STAGE_3_MOVE_UP)
 	{
 		mPathSprite->setPosition(mPathSprite->getPosition().x,
 			mPathSprite->getPosition().y + mPathMovingSpeed);
 
 		if (mPathSprite->getPosition().y >= mPathPositionY + mThresholdMovingDistance)
-		{ 
-			mIsMovingDown = true; 
+		{
 			mCurrentStage = STAGE_4_IDLE;
 		}
 	}
@@ -275,8 +246,7 @@ Stage VerticalLinePath::GetTheCurrentStage()
 
 void VerticalLinePath::Disappear()
 {
-	mBalloonSprite->setOpacity(0);
-	mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
+	CorePath::Disappear();
 
 	mCurrentStage = DONE;
 }

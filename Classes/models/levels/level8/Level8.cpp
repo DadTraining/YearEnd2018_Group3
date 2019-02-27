@@ -64,7 +64,7 @@ bool Level8::OnContactBegin(const cocos2d::PhysicsContact& contact)
 				mVerticalLinePath->Disappear(); 
 
 				// Make the active obstacles disappear from the scene as well //
-				mObstaclesCreation->DisappearActiveObstacles();
+				mObstaclesCreation->DisappearActiveObjects();
 
 				// Set the game state //
 				mIsGameOver = true;

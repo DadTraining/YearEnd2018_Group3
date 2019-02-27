@@ -1,5 +1,6 @@
 #include "CirclePath.h"
 #include "common/Definition.h"
+#include "common/definitionlevels/DefinitionLevel9.h"
 
 #include "cocos2d.h"
 
@@ -27,6 +28,15 @@ CirclePath::CirclePath(cocos2d::Scene* scene, const float& circlePathRadius,
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath);
 	mBalloonSprite->setPosition(mCenterPositionX, mPathPositionY + mCirclePathRadius);
 	scene->addChild(mBalloonSprite, 2);
+
+	mBalloonSprite->setTag(BALLOON_TAG);
+
+	auto balloonPhysics = cocos2d::PhysicsBody::createCircle(mBalloonSprite->getContentSize().width / 2
+		- BALLOON_COLLISION_OFFSET_RADIUS);
+	balloonPhysics->setDynamic(false);
+	balloonPhysics->setCollisionBitmask(BALLOON_COLLISION_BITMASK);
+	balloonPhysics->setContactTestBitmask(true);
+	mBalloonSprite->addComponent(balloonPhysics);
 
 	// Called automatically when users manipulate the screen for the balloon's movement //
 	auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
@@ -65,4 +75,9 @@ void CirclePath::Update()
 		mBalloonSprite->setPosition(mCenterPositionX + cos(mCurrentAngle * M_PI / 180.0F) * mCirclePathRadius,
 			mPathPositionY + sin(mCurrentAngle * M_PI / 180.0F) * mCirclePathRadius);
 	}
+}
+
+cocos2d::Vec2 CirclePath::GetTheBalloonPosition()
+{
+	return mBalloonSprite->getPosition();
 }

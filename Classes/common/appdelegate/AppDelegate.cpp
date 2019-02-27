@@ -67,6 +67,7 @@ void AppDelegate::createAndRunScene()
 	register_all_packages();
 
 	auto scene = MapLevel::createScene();
+
 	cocos2d::Director::getInstance()->runWithScene(scene);
 }
 
