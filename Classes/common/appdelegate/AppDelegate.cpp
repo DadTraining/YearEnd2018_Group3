@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "common/Definition.h"
 #include "scenes/gameplay/GamePlayScene.h"
-#include "scenes/ui/menu/MapLevel.h"
+#include "scenes/ui/menu/MenuScene.h"
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(SREEEN_RESOLUTION_WIDTH, SREEEN_RESOLUTION_HEIGHT);
 
@@ -66,7 +66,7 @@ void AppDelegate::createAndRunScene()
 {
 	register_all_packages();
 
-	auto scene = MapLevel::createScene();
+	auto scene = MenuScene::createScene();
 
 	cocos2d::Director::getInstance()->runWithScene(scene);
 }

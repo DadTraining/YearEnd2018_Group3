@@ -1,6 +1,7 @@
 #include "GamePlayScene.h"
-#include "scenes/ui/menu/MapLevel.h"
+#include "scenes/ui/menu/MenuScene.h"
 #include "models/levels/level3/Level3.h"
+#include "models/levels/level4/Level4.h"
 #include "models/levels/level5/Level5.h"
 #include "models/levels/level7/Level7.h"
 #include "models/levels/level8/Level8.h"
@@ -34,14 +35,27 @@ bool GamePlayScene::init()
 	// Add all of the levels into the list //
 	if (mCurrentLevelIndex == 0)
 	{
-		mListOfLevels.push_back(new Level9(this));
+		mListOfLevels.push_back(new Level3(this));
 	}
 	else if (mCurrentLevelIndex == 1)
 	{
+		mListOfLevels.push_back(new Level4(this));
+	}
+	else if (mCurrentLevelIndex == 2)
+	{
+		mListOfLevels.push_back(new Level5(this));
+	}
+	else if (mCurrentLevelIndex == 3)
+	{
 		mListOfLevels.push_back(new Level7(this));
 	}
-	else{
+	else if (mCurrentLevelIndex == 4)
+	{
 		mListOfLevels.push_back(new Level8(this));
+	}
+	else if (mCurrentLevelIndex == 5)
+	{
+		mListOfLevels.push_back(new Level9(this));
 	}
 
 	this->scheduleUpdate();
@@ -85,7 +99,7 @@ void GamePlayScene::ShowGameOverPanel()
 	backButton->addTouchEventListener([=](Ref* pSender, cocos2d::ui::Widget::TouchEventType type) {
 		if (type == cocos2d::ui::Widget::TouchEventType::ENDED)
 		{
-			auto scene = MapLevel::createScene();
+			auto scene = MenuScene::createScene();
 			cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionFade::create(SCENE_TRANSITION_TIME, scene));
 		}
 	});

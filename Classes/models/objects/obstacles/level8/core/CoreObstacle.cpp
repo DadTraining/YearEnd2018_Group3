@@ -27,7 +27,7 @@ void CoreObstacle::SetPhysicsBody(const std::string& physicsBodyName)
 	// Set the physics body for the core sprite //
 	mCorePhysicsBody = MyBodyParser::getInstance()->bodyFormJson(mCoreSprite, physicsBodyName, cocos2d::PhysicsMaterial(1, 0, 0));
 	mCorePhysicsBody->setDynamic(false);
-	mCorePhysicsBody->setCollisionBitmask(OBSTACLES_COLLISION_BITMASK);
+	mCorePhysicsBody->setCollisionBitmask(0x02);
 	mCorePhysicsBody->setContactTestBitmask(true);
 	mCoreSprite->setPhysicsBody(mCorePhysicsBody);
 }
