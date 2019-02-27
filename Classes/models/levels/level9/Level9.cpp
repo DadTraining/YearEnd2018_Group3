@@ -55,7 +55,7 @@ bool Level9::OnContactBegin(const cocos2d::PhysicsContact& contact)
 				destroyingWeaponNode->getNode()->removeFromParent();
 
 				// Make the balloon disappear from the scene //
-				mCirclePath->Disappear();	
+				mCirclePath->Disappear();
 
 				// Set the game state //
 				mIsGameOver = true;

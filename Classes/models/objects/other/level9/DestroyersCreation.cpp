@@ -73,6 +73,11 @@ void DestroyersCreation::DisappearActiveObjects()
 
 void DestroyersCreation::Update(const cocos2d::Vec2& balloonPosition)
 {
+	if (mCreationStage == CREATION_STAGE_DONE)
+	{
+		return;
+	}
+
 	mFrameCount++;
 
 	// On stage 1: Make some destroyers move downwards (Shooter Destroyers) //
@@ -128,14 +133,17 @@ void DestroyersCreation::Update(const cocos2d::Vec2& balloonPosition)
 			{
 				mFrameCount = 0;
 
-				mCreationStage = CREATION_STAGE_DONE;
+				mCreationStage = CREATION_STAGE_IDLE;
 			}
 		}
 	}
 	// On stage done: Make all destroyers in the scene disappear //
-	else if (mCreationStage == CREATION_STAGE_DONE)
+	else if (mCreationStage == CREATION_STAGE_IDLE)
 	{
-		this->DisappearActiveObjects();
+		if(mFrameCount >= FPS * TIME_RUNNING_STAGE_IDLE)
+		{
+			mCreationStage = CREATION_STAGE_DONE;
+		}
 	}
 
 	// Update those active destroyers in the scene //
@@ -151,8 +159,5 @@ void DestroyersCreation::Update(const cocos2d::Vec2& balloonPosition)
 	}
 
 	// Update the destroyers moving path //
-	if (mCreationStage != CREATION_STAGE_DONE)
-	{
-		mDestroyersMovingPath->Update();
-	}
+	mDestroyersMovingPath->Update();
 }
