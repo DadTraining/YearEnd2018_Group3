@@ -220,7 +220,44 @@ set(all_code_files
         Classes/scenes/ui/gameover/GameOver.cpp
         Classes/scenes/ui/menu/MapLevel.h
         Classes/scenes/ui/menu/MapLevel.cpp
-        Classes/models/levels/level4/Level4.cpp Classes/models/levels/level4/Level4.h Classes/models/levels/level4/frames/frame1/Level4Frame1.cpp Classes/models/levels/level4/frames/frame1/Level4Frame1.h Classes/common/definitionlevels/DefinitionLevel4.h Classes/models/levels/level4/frames/frame2/Level4Frame2.cpp Classes/models/levels/level4/frames/frame2/Level4Frame2.h Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.cpp Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.h Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.cpp Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.h)
+        Classes/models/levels/level4/Level4.cpp
+        Classes/models/levels/level4/Level4.h
+        Classes/models/levels/level4/frames/frame1/Level4Frame1.cpp
+        Classes/models/levels/level4/frames/frame1/Level4Frame1.h
+        Classes/common/definitionlevels/DefinitionLevel4.h
+        Classes/models/levels/level4/frames/frame2/Level4Frame2.cpp
+        Classes/models/levels/level4/frames/frame2/Level4Frame2.h
+        Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.cpp
+        Classes/models/objects/obstacles/level4/lineobstacle/LineObstacleModel.h
+        Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.cpp
+        Classes/models/objects/obstacles/level4/circleobstacle/CircleLineObstacle.h
+        Classes/models/levels/level9/Level9.h
+        Classes/models/levels/level9/Level9.cpp
+        Classes/common/definitionlevels/DefinitionLevel9.h
+        Classes/models/objects/obstacles/level9/core/CoreDestroyer.h
+        Classes/models/objects/obstacles/level9/core/CoreDestroyer.cpp
+        Classes/models/objects/obstacles/level9/Archer.h
+        Classes/models/objects/obstacles/level9/Archer.cpp
+        Classes/models/objects/obstacles/level9/Cannon.h
+        Classes/models/objects/obstacles/level9/Cannon.cpp
+        Classes/models/objects/obstacles/level9/Shooter.h
+        Classes/models/objects/obstacles/level9/Shooter.cpp
+        Classes/models/objects/other/level8and9/Creator.h
+        Classes/models/objects/other/level9/destroyer_moving_path/DestroyersMovingPath.h
+        Classes/models/objects/other/level9/destroyer_moving_path/DestroyersMovingPath.cpp
+        Classes/models/objects/other/level9/DestroyersCreation.h
+        Classes/models/objects/other/level9/DestroyersCreation.cpp
+        Classes/models/objects/other/level9/destroying_weapons/core/DestroyingWeapon.h
+        Classes/models/objects/other/level9/destroying_weapons/core/DestroyingWeapon.cpp
+        Classes/models/objects/other/level9/destroying_weapons/Arrow.h
+        Classes/models/objects/other/level9/destroying_weapons/Arrow.cpp
+        Classes/models/objects/other/level9/destroying_weapons/Bullet.cpp
+        Classes/models/objects/other/level9/destroying_weapons/Bullet.h
+        Classes/models/objects/other/level9/destroying_weapons/Missle.h
+        Classes/models/objects/other/level9/destroying_weapons/Missle.cpp
+        Classes/utils/levels/level9/Level9Helper.h
+        Classes/utils/levels/level9/Level9Helper.cpp
+        )
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})
 else()
