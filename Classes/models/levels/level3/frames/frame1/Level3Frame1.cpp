@@ -23,17 +23,20 @@ void Level3Frame1::Init()
 
 void Level3Frame1::Update()
 {
-	mGroupNode->setPositionY(mGroupNode->getPositionY() - 1);
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
 
     for (int i = 0; i < HORIZONTAL_LINE_SIZE; i++)
     {
         mHorizontalLines.at(i)->Update();
     }
 
-	if (mGroupNode->getPositionY() < -cocos2d::Director::getInstance()->getVisibleSize().height)
-	{
-		mHasFinishMoving = true;
-	}
+    if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
+    {
+        mHasFinishMoving = true;
+    }else
+    {
+        mHasFinishMoving = false;
+    }
 }
 
 bool Level3Frame1::HasFinishedMoving()

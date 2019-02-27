@@ -4,6 +4,7 @@
 Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 {
 	mIndex = 0;
+	mPosY = cocos2d::Director::getInstance()->getVisibleSize().height;
 
 	// background
 	auto background = cocos2d::Sprite::create("sprites/gameplay/level3/background/color_white.jpg");
@@ -19,10 +20,13 @@ Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 
 	for (int i = 0; i < mCoreLevelFrame.size(); i++)
 	{
-		mCoreLevelFrame.at(i)->SetPositionY(i * visibleSizeHight + visibleSizeHight);
+		mCoreLevelFrame.at(i)->SetPositionY(mPosY);
+		mPosY += cocos2d::Director::getInstance()->getVisibleSize().height + 80;
 	}
 
-	mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
+	mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 80);
+
+	//mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
 
 	// Create physics contact
 	mPhysicsContact = cocos2d::EventListenerPhysicsContact::create();
@@ -51,13 +55,14 @@ void Level3::Update()
 	for (int i = 0; i < mCoreLevelFrame.size(); i++)
 	{
 		mCoreLevelFrame.at(i)->Update();
+
 		if (mCoreLevelFrame.at(i)->HasFinishedMoving())
 		{
-			mCoreLevelFrame.at(i)->SetPositionY((i - mCoreLevelFrame.size()) * cocos2d::Director::getInstance()->getVisibleSize().height);
+			mCoreLevelFrame.at(i)->SetPositionY(mPosY);
 		}
 	}
 
-	mCirclePath->Update();
+	//mCirclePath->Update();
 }
 
 bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)

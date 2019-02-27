@@ -1,4 +1,5 @@
 #include "Level3Frame3.h"
+#include "common/definitionlevels/DefinitionLevel3.h"
 
 Level3Frame3::Level3Frame3(cocos2d::Scene *scene)
 {
@@ -38,11 +39,19 @@ void Level3Frame3::Init()
 
 void Level3Frame3::Update()
 {
-	mGroupNode->setPositionY(mGroupNode->getPositionY() - 1);
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
 
     mTriangularLine->Update();
     mHorizontalLine->Update();
 	mHorizontal->Update();
+
+	if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
+	{
+		mHasFinishMoving = true;
+	}else
+	{
+		mHasFinishMoving = false;
+	}
 }
 
 bool Level3Frame3::HasFinishedMoving()
