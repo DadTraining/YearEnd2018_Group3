@@ -34,7 +34,10 @@ void RectangleLine::Init()
 
 void RectangleLine::Update()
 {
-	// Update
+	for (int i = 0; i < mTriangularObstacleModels.size(); i++)
+    {
+	    mTriangularObstacleModels.at(i)->Update();
+    }
 }
 
 void RectangleLine::InitTriangleObstacleModels()

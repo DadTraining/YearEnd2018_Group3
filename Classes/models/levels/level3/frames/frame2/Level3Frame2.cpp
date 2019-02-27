@@ -18,7 +18,7 @@ void Level3Frame2::Init()
     mGroupNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     mGroupNode->setPositionY(cocos2d::Director::getInstance()->getVisibleSize().height);
 
-    mCircleLineModel = new CircleLineModel(mGroupNode, CIRCLE_OBSTACLE_NAME_PATH, CircleLineModel::OBSTACLE);
+    mCircleLineModel = new CircleLineModel(mGroupNode, CIRCLE_LINE_NAME_PATH, CircleLineModel::OBSTACLE);
     mCircleLineModel->SetPosition(mGroupNode->getContentSize().width / 2, mGroupNode->getContentSize().height * 0.4);
 
 	// Init horizontal line //
@@ -39,15 +39,18 @@ void Level3Frame2::Init()
 
 void Level3Frame2::Update()
 {
-	mGroupNode->setPositionY(mGroupNode->getPositionY() - 1);
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
 
     mCircleLineModel->Update();
     mHorizontalLine->Update();
 	mHorizontal->Update();
 
-	if (mGroupNode->getPositionY() < -cocos2d::Director::getInstance()->getVisibleSize().height)
+	if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
 	{
 		mHasFinishMoving = true;
+	}else
+	{
+		mHasFinishMoving = false;
 	}
 }
 

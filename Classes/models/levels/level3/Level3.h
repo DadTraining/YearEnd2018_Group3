@@ -12,6 +12,7 @@
 class Level3 : public CoreLevel
 {
 private:
+    int mPosY;
     std::vector<CoreLevelFrame*> mCoreLevelFrame;
     CirclePath* mCirclePath;
 
