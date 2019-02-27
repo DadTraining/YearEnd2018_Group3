@@ -1,4 +1,5 @@
 #include "Level3Frame2.h"
+#include "common/definitionlevels/DefinitionLevel3.h"
 
 Level3Frame2::Level3Frame2(cocos2d::Scene *scene)
 {
@@ -17,7 +18,7 @@ void Level3Frame2::Init()
     mGroupNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     mGroupNode->setPositionY(cocos2d::Director::getInstance()->getVisibleSize().height);
 
-    mCircleLineModel = new CircleLineModel(mGroupNode);
+    mCircleLineModel = new CircleLineModel(mGroupNode, CIRCLE_OBSTACLE_NAME_PATH, CircleLineModel::OBSTACLE);
     mCircleLineModel->SetPosition(mGroupNode->getContentSize().width / 2, mGroupNode->getContentSize().height * 0.4);
 
 	// Init horizontal line //

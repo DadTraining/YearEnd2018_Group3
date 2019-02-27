@@ -10,9 +10,17 @@
 
 class CircleLineModel : public CoreModel
 {
+public:
+	static const int OBSTACLE;
+	static const int PATH;
+
 private:
     std::vector<CircleObstacleModel*> mCircleObstacleModels;
     std::vector<CoinModel*> mCoinModels;
+
+	int mType;
+	bool mIsTouching;
+	bool mIsTouchingRight;
 
     cocos2d::Node* mNodeCoin;
 
@@ -36,8 +44,11 @@ private:
      */
     void InitPositionCoinModels();
 
+	bool OnTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
+	void OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);
+
 public:
-    CircleLineModel(cocos2d::Node* node);
+    CircleLineModel(cocos2d::Node* node, std::string name, int type);
     ~CircleLineModel();
 
     void Init() override;

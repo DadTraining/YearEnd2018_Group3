@@ -1,6 +1,7 @@
 #include "CircleObstacleModel.h"
 #include "utils/physics/CustomPhysicsBody.h"
 #include "common/definitionlevels/DefinitionLevel3.h"
+#include "common/definitionlevels/DefinitionLevel7.h"
 #include "common/Definition.h"
 
 const int CircleObstacleModel::MODE_NONE = 0;
@@ -9,41 +10,57 @@ const int CircleObstacleModel::MODE_MOVE_HORIONTAL = 1;
 CircleObstacleModel::CircleObstacleModel(const std::string& name, cocos2d::Sprite* sprite, int mode) : CoreModel(name)
 {
 	mMode = mode;
-    Init();
+	Init();
 
-    sprite->addChild(mCoreSprite);
+	sprite->addChild(mCoreSprite);
 }
 
 CircleObstacleModel::CircleObstacleModel(const std::string& name, cocos2d::Node* node, int mode) : CoreModel(name)
 {
 	mMode = mode;
-    Init();
+	Init();
 
-    node->addChild(mCoreSprite);
+	node->addChild(mCoreSprite);
 }
 
 CircleObstacleModel::~CircleObstacleModel()
 {
-    // Destructor
+	// Destructor
 }
 
 void CircleObstacleModel::Init()
 {
-    mCoreSprite = cocos2d::Sprite::create(mModelName);
-    mCoreSprite->setTag(OBSTACLES_TAG);
+	mCoreSprite = cocos2d::Sprite::create(mModelName);
 
-    CustomPhysicsBody::getInstance()->parseJsonFile(CIRCLE_OBSTACLE_PHYSICS_JSON);
-    mCorePhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, CIRCLE_OBSTACLE_PHYSICS_NAME,
-                                                                     cocos2d::PhysicsMaterial( 1, 1, 0 ));
+	mCorePhysicsBody = cocos2d::PhysicsBody::createCircle(this->GetContentSize().width / 2 - 10);
 
-    if (mCorePhysicsBody != nullptr)
-    {
-        mCorePhysicsBody->setDynamic(false);
-        mCorePhysicsBody->setCategoryBitmask(OBSTACLES_COLLISION_BITMASK);
-        mCorePhysicsBody->setContactTestBitmask(true);
+	mCorePhysicsBody->setDynamic(false);
 
-        mCoreSprite->setPhysicsBody(mCorePhysicsBody);
-    }
+	if (mModelName == BALLOON_BLUE_PATH)
+	{
+		mCoreSprite->setTag(BLUE_BALLOON_TAG);
+	}
+	else if (mModelName == BALLOON_RED_PATH)
+	{
+		mCoreSprite->setTag(RED_BALLOON_TAG);
+	}
+	else if (mModelName == BALLOON_GREEN_PATH)
+	{
+		mCoreSprite->setTag(GREEN_BALLOON_TAG);
+	}
+	else if (mModelName == BALLOON_YELLOW_PATH)
+	{
+		mCoreSprite->setTag(YELLOW_BALLOON_TAG);
+	}
+	else
+	{
+		mCoreSprite->setTag(OBSTACLES_TAG);
+	}
+
+	mCorePhysicsBody->setCategoryBitmask(0x01);
+	mCorePhysicsBody->setCollisionBitmask(0x01);
+	mCorePhysicsBody->setContactTestBitmask(true);
+	mCoreSprite->setPhysicsBody(mCorePhysicsBody);
 }
 
 void CircleObstacleModel::Update()
@@ -51,10 +68,10 @@ void CircleObstacleModel::Update()
 	if (mMode == MODE_MOVE_HORIONTAL && IsActive())
 	{
 		SetPosition(cocos2d::Vec2(GetPositionX() - 1, GetPositionY()));
-		if (GetPositionX() <= - GetContentSize().width / 2)
+		if (GetPositionX() <= -GetContentSize().width / 2)
 		{
 			SetActive(false);
-			SetPosition(cocos2d::Director::getInstance()->getVisibleSize().width 
+			SetPosition(cocos2d::Director::getInstance()->getVisibleSize().width
 				+ mCoreSprite->getContentSize().width, GetPositionY());
 		}
 	}

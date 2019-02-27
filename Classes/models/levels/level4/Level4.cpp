@@ -135,4 +135,8 @@ bool Level4::OnContactBegin(cocos2d::PhysicsContact &physicsContact)
             }
         }
     }
+<<<<<<< HEAD
+=======
+	return true;
+>>>>>>> + Create level 7
 }

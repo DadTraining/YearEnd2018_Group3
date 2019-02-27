@@ -2,6 +2,7 @@
 #include "scenes/ui/menu/MapLevel.h"
 #include "models/levels/level3/Level3.h"
 #include "models/levels/level5/Level5.h"
+#include "models/levels/level7/Level7.h"
 #include "models/levels/level8/Level8.h"
 #include "models/levels/level9/Level9.h"
 #include "common/Definition.h"
@@ -37,7 +38,7 @@ bool GamePlayScene::init()
 	}
 	else if (mCurrentLevelIndex == 1)
 	{
-		mListOfLevels.push_back(new Level5(this));
+		mListOfLevels.push_back(new Level7(this));
 	}
 	else{
 		mListOfLevels.push_back(new Level8(this));
