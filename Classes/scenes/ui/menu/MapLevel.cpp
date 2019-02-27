@@ -2,6 +2,8 @@
 #include "scenes/gameplay/GamePlayScene.h"
 #include "common/Definition.h"
 
+#include "models/objects/obstacles/level4/lineobstacle/LineObstacleModel.h"
+
 #include"ui/CocosGUI.h"
 
 cocos2d::Scene* MapLevel::createScene()
