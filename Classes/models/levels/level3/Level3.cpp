@@ -26,7 +26,7 @@ Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 
 	mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 80);
 
-	//mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
+	mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
 
 	// Create physics contact
 	mPhysicsContact = cocos2d::EventListenerPhysicsContact::create();
@@ -62,7 +62,7 @@ void Level3::Update()
 		}
 	}
 
-	//mCirclePath->Update();
+	mCirclePath->Update();
 }
 
 bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)

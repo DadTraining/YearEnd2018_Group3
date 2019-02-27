@@ -1,6 +1,6 @@
 #pragma once
 
-#define LEVEL3_SPEED 1.5
+#define LEVEL3_SPEED 1.7
 
 // Obstacle circle
 #define CIRCLE_OBSTACLE_MODELS_SIZE 8 // Size of circle obstacle on circle line
