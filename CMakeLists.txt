@@ -119,6 +119,7 @@ set(all_code_files
     ${GAME_HEADER}
     ${GAME_SOURCE}
         Classes/common/Definition.h
+        Classes/common/DefinitionUI.h
         Classes/common/appdelegate/AppDelegate.h
         Classes/common/appdelegate/AppDelegate.cpp
         Classes/common/definitionlevels/DefinitionLevel1.h
@@ -214,12 +215,8 @@ set(all_code_files
         Classes/utils/physics/CustomPhysicsBody.cpp
         Classes/utils/physics/MyBodyParser.h
         Classes/utils/physics/MyBodyParser.cpp
-        Classes/models/paths/circle/CirclePathExtend.h
-        Classes/models/paths/circle/CirclePathExtend.cpp
         Classes/scenes/ui/gameover/GameOver.h
         Classes/scenes/ui/gameover/GameOver.cpp
-        Classes/scenes/ui/menu/MapLevel.h
-        Classes/scenes/ui/menu/MapLevel.cpp
         Classes/models/levels/level4/Level4.cpp
         Classes/models/levels/level4/Level4.h
         Classes/models/levels/level4/frames/frame1/Level4Frame1.cpp
@@ -257,6 +254,13 @@ set(all_code_files
         Classes/models/objects/other/level9/destroying_weapons/Missle.cpp
         Classes/utils/levels/level9/Level9Helper.h
         Classes/utils/levels/level9/Level9Helper.cpp
+        Classes/common/definitionlevels/DefinitionLevel7.h
+        Classes/models/objects/obstacles/level7/Barrier.h
+        Classes/models/objects/obstacles/level7/Barrier.cpp
+        Classes/models/objects/other/level7/BarriersCreation.h
+        Classes/models/objects/other/level7/BarriersCreation.cpp
+        Classes/models/levels/level7/Level7.h
+        Classes/models/levels/level7/Level7.cpp
         )
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})

@@ -36,7 +36,7 @@ VerticalLinePath::VerticalLinePath(cocos2d::Scene* scene, const float& distanceB
 	// The balloon physics body //
 	auto mBalloonPhysicsBody = cocos2d::PhysicsBody::createCircle(mBalloonSprite->getContentSize().width / 2 - COLLISION_OFFSET_RADIUS);
 	mBalloonPhysicsBody->setGravityEnable(false);
-	mBalloonPhysicsBody->setCategoryBitmask(BALLOON_COLLISION_BITMASK);
+	mBalloonPhysicsBody->setCategoryBitmask(0x01);
 	mBalloonPhysicsBody->setContactTestBitmask(true);
 	mBalloonPhysicsBody->setRotationEnable(false);
 	mBalloonSprite->setPhysicsBody(mBalloonPhysicsBody);

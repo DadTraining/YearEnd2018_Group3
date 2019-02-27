@@ -17,7 +17,7 @@ Level4::Level4(cocos2d::Scene *scene) : CoreLevel()
     InitFrame(scene);
     InitPositionFrame();
 
-    mCirclePath = new CirclePathExtend(scene);
+    mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
 
     mEventPhysics = cocos2d::EventListenerPhysicsContact::create();
     mEventPhysics->onContactBegin = CC_CALLBACK_1(Level4::OnContactBegin, this);
@@ -41,14 +41,6 @@ void Level4::Update()
     for (int i = 0; i < mLevelFrames.size(); i++)
     {
         mLevelFrames.at(i)->Update();
-    }
-
-    for (int i = 0; i < mLevelFrames.size(); i++)
-    {
-        if (mLevelFrames.at(i)->HasFinishedMoving())
-        {
-
-        }
     }
 
     for (int i = 0; i < mLevelFrames.size(); i++)
@@ -90,9 +82,7 @@ void Level4::InitPositionFrame()
         mPosY += cocos2d::Director::getInstance()->getVisibleSize().height + 80;
     }
 
-    CCLOG("set %d", mPosY);
     mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 80);
-    CCLOG("tru %d", mPosY);
 }
 
 bool Level4::OnContactBegin(cocos2d::PhysicsContact &physicsContact)
@@ -135,8 +125,6 @@ bool Level4::OnContactBegin(cocos2d::PhysicsContact &physicsContact)
             }
         }
     }
-<<<<<<< HEAD
-=======
+
 	return true;
->>>>>>> + Create level 7
 }

@@ -7,7 +7,7 @@
 #include "models/levels/level4/frames/frame1/Level4Frame1.h"
 #include "models/levels/level4/frames/frame2/Level4Frame2.h"
 #include "models/objects/obstacles/level4/lineobstacle/LineObstacleModel.h"
-#include "models/paths/circle/CirclePathExtend.h"
+#include "models/paths/circle/CirclePath.h"
 
 #include "cocos2d.h"
 
@@ -18,7 +18,7 @@ private:
     int mPosY;
     std::vector<CoreLevelFrame*> mLevelFrames;
     LineObstacleModel* mLineObstacle;
-    CirclePathExtend* mCirclePath;
+    CirclePath* mCirclePath;
     cocos2d::EventListenerPhysicsContact* mEventPhysics;
 
     /**
