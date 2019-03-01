@@ -28,14 +28,12 @@ void LineFrame::setTexture(std::string linenamepath)
 }
 
 void LineFrame::SetPhysicsBody(int indexPath)
-{ 
-	char jsonPath[50];
+{
 	char name[15];
-	sprintf(jsonPath, "sprites/gameplay/level5/line/line_frame_%d.json", indexPath);
 	sprintf(name, "line_frame_%d", indexPath);
 
 	CustomPhysicsBody::getInstance()->clearCache();
-	CustomPhysicsBody::getInstance()->parseJsonFile(jsonPath);
+	CustomPhysicsBody::getInstance()->parseJsonFile(LINE_FRAME_JSON_PATH);
 	mCorePhysicsBody = CustomPhysicsBody::getInstance()->bodyFormJson(mCoreSprite, name, cocos2d::PhysicsMaterial(1, 1, 0));
 
 	if (mCorePhysicsBody != nullptr)
