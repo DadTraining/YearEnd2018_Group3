@@ -3,6 +3,9 @@
 
 Level3Frame1::Level3Frame1(cocos2d::Scene* scene) : CoreLevelFrame()
 {
+    // Initialize local variable
+    mSpeed = LEVEL3_SPEED;
+
     Init();
     scene->addChild(mGroupNode);
 }
@@ -23,6 +26,13 @@ void Level3Frame1::Init()
 
 void Level3Frame1::Update()
 {
+    mFrameCount++;
+    if (mFrameCount % 20 == 0)
+    {
+        mSpeed += 0.2;
+        mFrameCount = 0;
+    }
+
 	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
 
     for (int i = 0; i < HORIZONTAL_LINE_SIZE; i++)

@@ -46,7 +46,7 @@ void HorizontalLine::InitCircleObstacleModels()
 {
 	for (int i = 0; i < HORIZONTAL_LINE_SIZE_CIRCLE_OBSTACLE; i++)
 	{
-		auto circleModel = new CircleObstacleModel("sprites/gameplay/level3/circle/circle.png", mCoreSprite, CircleObstacleModel::MODE_MOVE_HORIONTAL);
+		auto circleModel = new CircleObstacleModel("sprites/gameplay/level3/circle/circle.png", mCoreSprite, CircleObstacleModel::MODE_MOVE_HORIZONTAL);
 		circleModel->SetPosition(mCoreSprite->getContentSize().width + circleModel->GetContentSize().width,
 									mCoreSprite->getContentSize().height / 2);
 		circleModel->SetActive(false);

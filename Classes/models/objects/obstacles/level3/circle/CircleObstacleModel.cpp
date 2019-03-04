@@ -5,7 +5,7 @@
 #include "common/Definition.h"
 
 const int CircleObstacleModel::MODE_NONE = 0;
-const int CircleObstacleModel::MODE_MOVE_HORIONTAL = 1;
+const int CircleObstacleModel::MODE_MOVE_HORIZONTAL = 1;
 
 CircleObstacleModel::CircleObstacleModel(const std::string& name, cocos2d::Sprite* sprite, int mode) : CoreModel(name)
 {
@@ -65,7 +65,7 @@ void CircleObstacleModel::Init()
 
 void CircleObstacleModel::Update()
 {
-	if (mMode == MODE_MOVE_HORIONTAL && IsActive())
+	if (mMode == MODE_MOVE_HORIZONTAL && IsActive())
 	{
 		SetPosition(cocos2d::Vec2(GetPositionX() - 1, GetPositionY()));
 		if (GetPositionX() <= -GetContentSize().width / 2)

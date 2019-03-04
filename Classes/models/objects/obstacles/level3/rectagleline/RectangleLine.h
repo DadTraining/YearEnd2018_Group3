@@ -12,7 +12,6 @@ class RectangleLine : public CoreModel
 {
 private:
     std::vector<TriangularObstacleModel*> mTriangularObstacleModels;
-    CoinModel* mCoin;
 
     /**
      * Init vector RectangleObstacleModels

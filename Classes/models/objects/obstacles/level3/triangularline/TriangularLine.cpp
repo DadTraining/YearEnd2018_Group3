@@ -22,9 +22,6 @@ void TriangularLine::Init()
 {
     mCoreSprite = cocos2d::Sprite::create(mModelName);
 
-    mCoin = new CoinModel(mCoreSprite);
-    mCoin->SetPosition(GetContentSize().width / 2, GetContentSize().height / 2);
-
     // Init vector rectangle
     InitRectangleObstacleModels();
     InitPositionRectangleModels();
