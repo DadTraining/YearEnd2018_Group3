@@ -5,7 +5,7 @@
 class CircleObstacleModel : public CoreModel
 {
 public:
-	static const int MODE_MOVE_HORIONTAL;
+	static const int MODE_MOVE_HORIZONTAL;
 	static const int MODE_NONE;
 
 private:

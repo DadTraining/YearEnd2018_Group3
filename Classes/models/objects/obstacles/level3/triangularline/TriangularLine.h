@@ -11,7 +11,6 @@
 class TriangularLine : public CoreModel
 {
 private:
-    CoinModel* mCoin;
     std::vector<RectangleObstacleModel*> mRectangleObstacleModels;
 
     /**

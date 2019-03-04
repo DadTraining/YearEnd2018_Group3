@@ -9,6 +9,7 @@
 class CoreLevelFrame 
 {
 protected:
+	float mSpeed;
     std::map<std::string, CoreModel*> mObjectsDictionary;
     cocos2d::Node* mGroupNode;
     bool mHasFinishMoving;

@@ -4,7 +4,6 @@
 
 #include "models/core/CoreModel.h"
 #include "models/objects/obstacles/level3/circle/CircleObstacleModel.h"
-#include "models/objects/obstacles/level3/coin/CoinModel.h"
 
 #include "cocos2d.h"
 
@@ -16,7 +15,6 @@ public:
 
 private:
     std::vector<CircleObstacleModel*> mCircleObstacleModels;
-    std::vector<CoinModel*> mCoinModels;
 
 	int mType;
 	bool mIsTouching;
@@ -33,16 +31,6 @@ private:
      * Init the position of item in mCircleObstacleModels
      */
     void InitPositionCircleObstacleModels();
-
-    /**
-     * Init vector CoinModel
-     */
-    void InitCoinModels();
-
-    /**
-     * Init the position of item in mCoinModels
-     */
-    void InitPositionCoinModels();
 
 	bool OnTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
 	void OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);

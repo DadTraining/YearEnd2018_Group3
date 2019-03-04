@@ -23,10 +23,6 @@ void RectangleLine::Init()
     // Init Sprite
     mCoreSprite = cocos2d::Sprite::create(mModelName);
 
-    // Init Coin
-    mCoin = new CoinModel(mCoreSprite);
-    mCoin->SetPosition(GetContentSize().width / 2, GetContentSize().height / 2);
-
     // Init vector rectangle
     InitTriangleObstacleModels();
     InitPositionTriangleModels();

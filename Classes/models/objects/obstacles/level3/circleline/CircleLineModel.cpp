@@ -52,12 +52,6 @@ void CircleLineModel::Init()
 		mNodeCoin = cocos2d::Node::create();
 		mNodeCoin->setContentSize(GetContentSize());
 		mNodeCoin->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
-	
-		// Init vector coin models
-		InitCoinModels();
-		
-		// Init position coin models
-		InitPositionCoinModels();
 	}
 
 }
@@ -114,28 +108,6 @@ void CircleLineModel::InitPositionCircleObstacleModels()
 			radius + sin(corner * M_PI / 180.0F) * radius);
 		corner += 360 / mCircleObstacleModels.size();
 	}
-}
-
-void CircleLineModel::InitCoinModels()
-{
-    for (int i = 0; i < COIN_MODELS_SIZE; i++)
-    {
-        mCoinModels.push_back(new CoinModel(mNodeCoin));
-    }
-}
-
-void CircleLineModel::InitPositionCoinModels()
-{
-    float radius = GetContentSize().width / 3;
-    float compensationRadius = GetContentSize().width / 2 - radius;
-    float corner = 0;
-
-    for (int i = 0; i < COIN_MODELS_SIZE; i++)
-    {
-        mCoinModels.at(i)->SetPosition((radius + compensationRadius) + cos(corner * M_PI / 180.0F) * radius,
-                                       (radius + compensationRadius) + sin(corner * M_PI / 180.0F) * radius);
-        corner += 360 / COIN_MODELS_SIZE;
-    }
 }
 
 bool CircleLineModel::OnTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
