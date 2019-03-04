@@ -3,6 +3,8 @@
 
 Level4Frame1::Level4Frame1(cocos2d::Scene *scene) : CoreLevelFrame()
 {
+    // Initialize local variable
+    mSpeed = LEVEL_SPEED;
     Init();
 
     scene->addChild(mGroupNode);
@@ -35,7 +37,13 @@ void Level4Frame1::Init()
 
 void Level4Frame1::Update()
 {
-    mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL_SPEED);
+    mFrameCount++;
+    if (mFrameCount % 30 == 0)
+    {
+        mSpeed += 0.2;
+    }
+
+    mGroupNode->setPositionY(mGroupNode->getPositionY() - mSpeed);
 
     if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
     {
@@ -57,7 +65,7 @@ void Level4Frame1::RandomRectangle()
     auto obstacleSize = mRectangleObstacleModels.at(0)->GetContentSize();
     mIndexRectangleObstacle++;
     auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-    mPosY = mPosY + 80 + obstacleSize.height;
+    mPosY = mPosY + 85 + obstacleSize.height;
 
     if (randCountRec == 1)
     {

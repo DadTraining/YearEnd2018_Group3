@@ -49,5 +49,5 @@ void CircleLineObstacle::Init()
 
 void CircleLineObstacle::Update()
 {
-    mCoreSprite->setRotation(mCoreSprite->getRotation() - 1);
+    mCoreSprite->setRotation(mCoreSprite->getRotation() - 0.6);
 }
