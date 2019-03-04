@@ -1,5 +1,5 @@
 #include "Bullet.h" 
-#include "common/definition.h"
+#include "common/Definition.h"
 #include "common/definitionlevels/DefinitionLevel9.h"
 
 Bullet::Bullet(cocos2d::Scene* scene, const std::string& name) : DestroyingWeapon(name)
