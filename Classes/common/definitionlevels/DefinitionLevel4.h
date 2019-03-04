@@ -2,7 +2,7 @@
 
 // Level 4
 #define LEVEL4_SIZE_FRAME 10
-#define LEVEL_SPEED 1.7
+#define LEVEL_SPEED 1.5
 
 // Level 4 frame 1
 #define LEVEL4_FRAME1_RECTANGLE_OBSTACLE_SIZE 20

@@ -3,6 +3,8 @@
 
 Level4Frame2::Level4Frame2(cocos2d::Scene *scene) : CoreLevelFrame()
 {
+    // Initialize local variable
+    mSpeed = LEVEL_SPEED;
     mPositionY = cocos2d::Director::getInstance()->getVisibleSize().height / 3;
 
     Init();
@@ -35,9 +37,15 @@ void Level4Frame2::Init()
 
 void Level4Frame2::Update()
 {
+    mFrameCount++;
+    if (mFrameCount % 30 == 0)
+    {
+        mSpeed += 0.2;
+    }
+
     mCircleLineObstacle->Update();
 
-    mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL_SPEED);
+    mGroupNode->setPositionY(mGroupNode->getPositionY() - mSpeed);
 
     if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
     {
