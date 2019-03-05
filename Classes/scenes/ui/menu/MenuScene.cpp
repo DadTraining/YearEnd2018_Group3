@@ -4,6 +4,9 @@
 #include "common/DefinitionUI.h"
 #include"ui/CocosGUI.h"
 
+#include "models/objects/obstacles/level5/LineFrame.h"
+LineFrame* line;
+
 cocos2d::Scene* MenuScene::createScene()
 {
 	return MenuScene::create();
@@ -26,6 +29,8 @@ bool MenuScene::init()
 	mCurrentPassedLevelIndex = 63;
 
 	setListButton();
+
+	this->scheduleUpdate();
 
 	return true;
 }
@@ -81,5 +86,4 @@ void MenuScene::setListButton()
 }
 void MenuScene::update(float dt)
 {
-	
 }

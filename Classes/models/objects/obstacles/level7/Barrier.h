@@ -1,6 +1,5 @@
 #pragma once
 
-#include "common/Definition.h"
 #include "models/core/CoreModel.h"
 
 #include "cocos2d.h"
@@ -30,7 +29,7 @@ private:
 public:
 	Barrier(cocos2d::Scene* scene, std::string name, int mode, int color);
 	~Barrier();
-	
+
 	/**
 	* Set physics body for sprite
 	*/

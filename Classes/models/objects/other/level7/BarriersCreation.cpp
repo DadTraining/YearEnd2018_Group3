@@ -1,5 +1,6 @@
 #include "BarriersCreation.h"
 #include "common/definitionlevels/DefinitionLevel7.h"
+#include "common/Definition.h"
 
 BarriersCreation::BarriersCreation(cocos2d::Scene* scene)
 {
@@ -42,18 +43,43 @@ int BarriersCreation::GetMode()
 	return this->mMode;
 }
 
+void BarriersCreation::InactiveBarrier()
+{
+	for (int i = 0; i < BARRER_OBSTACLE_SIZE; i++)
+	{
+		mBarriers.at(i)->SetActive(false);
+		mCounterBarriers.at(i)->SetActive(false);
+	}
+}
+
 void BarriersCreation::ActiveBarrier()
 {
-	if (!mBarriers.at(mIndexListBarrier)->IsActive() &&
-		!mCounterBarriers.at(mIndexListBarrier)->IsActive())
+	if (mMode == EASY_MODE)
 	{
-		mBarriers.at(mIndexListBarrier)->Init();
-		mCounterBarriers.at(mIndexListBarrier)->Init();
+		if (!mBarriers.at(mIndexListBarrier)->IsActive())
+		{
+			mBarriers.at(mIndexListBarrier)->Init();
+			cocos2d::log("%d", mIndexListBarrier);
+		}
 	}
 	
+	if (mMode == NORMAL_MODE || mMode == HARD_MODE)
+	{
+		if (!mBarriers.at(mIndexListBarrier)->IsActive())
+		{
+			mBarriers.at(mIndexListBarrier)->Init();
+			cocos2d::log("barrier at: %d", mIndexListBarrier);
+		}
+		if (!mCounterBarriers.at(mIndexListBarrier)->IsActive())
+		{
+			mCounterBarriers.at(mIndexListBarrier)->Init();
+			cocos2d::log("counter barrier: %d", mIndexListBarrier);
+		}
+	}
+
 	mIndexListBarrier++;
 
-	if (mIndexListBarrier >= mBarriers.size())
+	if (mIndexListBarrier >= BARRER_OBSTACLE_SIZE)
 	{
 		mIndexListBarrier = 0;
 	}
@@ -94,6 +120,7 @@ void BarriersCreation::Update()
 	if (mFrameCount >= (FPS * COMPLETE_LEVEL))
 	{
 		mMode = COMPLETE_LEVEL;
+		InactiveBarrier();
 	}
 }
 

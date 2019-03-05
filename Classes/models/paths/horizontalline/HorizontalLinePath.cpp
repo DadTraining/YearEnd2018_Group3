@@ -9,7 +9,8 @@ HorizontalLinePath::HorizontalLinePath(cocos2d::Scene* scene,
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath); 
 	mBalloonSprite->setTag(BALLOON_TAG);
 
-	mBalloonSpritePhysicsBody = cocos2d::PhysicsBody::createCircle(mBalloonSprite->getContentSize().width / 2,
+	mBalloonSpritePhysicsBody = cocos2d::PhysicsBody::createCircle(
+		mBalloonSprite->getContentSize().width / 2 - 5,
 		cocos2d::PhysicsMaterial(1, 1, 0), cocos2d::Vec2::ZERO);
 	mBalloonSpritePhysicsBody->setDynamic(false);
 	mBalloonSpritePhysicsBody->setCategoryBitmask(0x01);

@@ -32,7 +32,7 @@ void CircleObstacleModel::Init()
 {
 	mCoreSprite = cocos2d::Sprite::create(mModelName);
 
-	mCorePhysicsBody = cocos2d::PhysicsBody::createCircle(this->GetContentSize().width / 2 - 10);
+	mCorePhysicsBody = cocos2d::PhysicsBody::createCircle(this->GetContentSize().width / 2 - 5);
 
 	mCorePhysicsBody->setDynamic(false);
 

@@ -1,6 +1,6 @@
 #include "Level7.h"
-#include "common/Definition.h"
 #include "common/definitionlevels/DefinitionLevel7.h"
+#include "common/Definition.h"
 
 Level7::Level7(cocos2d::Scene *scene)
 {
@@ -17,7 +17,6 @@ Level7::Level7(cocos2d::Scene *scene)
 	auto contactListener = cocos2d::EventListenerPhysicsContact::create();
 	contactListener->onContactBegin = CC_CALLBACK_1(Level7::OnContactBegin, this);
 	scene->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, scene);
-	
 }
 
 Level7::~Level7()
@@ -63,13 +62,36 @@ bool Level7::OnContactBegin(cocos2d::PhysicsContact & contact)
 
 void Level7::DisappearNode(cocos2d::Node * node)
 {
-	node->setVisible(false);
+	std::string barrierExplosionPath;
+	//node->setVisible(false);
+	if (node->getTag() == BLUE_BARRIER_OBSTACLES_TAG)
+	{
+		barrierExplosionPath = BLUE_BARRIER_OBSTACLE_EXPLOSION_PATH;
+	}
+	else if (node->getTag() == RED_BARRIER_OBSTACLES_TAG)
+	{
+		barrierExplosionPath = RED_BARRIER_OBSTACLE_EXPLOSION_PATH;
+	}
+	else if (node->getTag() == GREEN_BARRIER_OBSTACLES_TAG)
+	{
+		barrierExplosionPath = GREEN_BARRIER_OBSTACLE_EXPLOSION_PATH;
+	}
+	else
+	{
+		barrierExplosionPath = YELLOW_BARRIER_OBSTACLE_EXPLOSION_PATH;
+	}
+	
+	auto barrierExplosionSystem = cocos2d::ParticleSystemQuad::create(barrierExplosionPath);
+	barrierExplosionSystem->setPosition(cocos2d::Vec2(node->getContentSize().width / 2, 0));
+	node->addChild(barrierExplosionSystem, 1000);
+
+	node->setOpacity(0);
 	node->getPhysicsBody()->setEnabled(false);
 }
 
 void Level7::Init()
 {
-	
+	// Initialize
 }
 
 void Level7::Update()
@@ -83,5 +105,6 @@ void Level7::Update()
 	if (mBarriersCreation->GetMode() == COMPLETE_LEVEL)
 	{
 		mIsCompletedLevel = true;
+		mBarriersCreation->InactiveBarrier();
 	}
 }

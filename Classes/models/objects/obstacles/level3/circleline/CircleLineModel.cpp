@@ -12,22 +12,20 @@ CircleLineModel::CircleLineModel(cocos2d::Node* node, std::string name, int type
 	mIsTouching = false;
 	mIsTouchingRight = false;
 	
-		Init();
+	Init();
 	
-		if (mType == OBSTACLE)
-		 {
-		
-			node->addChild(mNodeCoin);
-		}
+	if (mType == OBSTACLE)
+	{
+		node->addChild(mNodeCoin);
+	}
 	else if (mType == PATH)
-		 {
+	{
 		auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
 		touchListener->setSwallowTouches(true);
 		touchListener->onTouchBegan = CC_CALLBACK_2(CircleLineModel::OnTouchBegan, this);
 		touchListener->onTouchEnded = CC_CALLBACK_2(CircleLineModel::OnTouchEnded, this);
 		node->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, node);
-		}
-	
+	}
 		node->addChild(mCoreSprite);
 }
 
