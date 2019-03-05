@@ -23,11 +23,8 @@ void Level4Frame1::Init()
 
     mGroupNode = cocos2d::Node::create();
 
-    for (int i = 0; i < LEVEL4_FRAME1_RECTANGLE_OBSTACLE_SIZE; i++)
-    {
-        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
-        mRectangleObstacleModels.at(i)->SetActive(false);
-    }
+    mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+    mRectangleObstacleModels.at(0)->SetActive(false);
 
     while (mPosY < cocos2d::Director::getInstance()->getVisibleSize().height)
     {
@@ -38,7 +35,7 @@ void Level4Frame1::Init()
 void Level4Frame1::Update()
 {
     mFrameCount++;
-    if (mFrameCount % 30 * 60 == 0)
+    if (mFrameCount >= 200)
     {
         mSpeed += 0.1;
         mFrameCount = 0;
@@ -52,6 +49,14 @@ void Level4Frame1::Update()
     }else
     {
         mHasFinishMoving = false;
+    }
+
+    if (mGroupNode->getPositionY()  > cocos2d::Director::getInstance()->getVisibleSize().height) {
+        AliveObstacle(false);
+    }
+    else
+    {
+        AliveObstacle(true);
     }
 }
 
@@ -70,10 +75,15 @@ void Level4Frame1::RandomRectangle()
 
     if (randCountRec == 1)
     {
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetPosition(visibleSize.width / 2, mPosY);
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetActive(true);
     }else if (randCountRec == 2)
     {
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetPosition(visibleSize.width / 2 - obstacleSize.width / 2 - obstacleSize.width / 2, mPosY);
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetActive(true);
         mIndexRectangleObstacle++;
@@ -81,6 +91,10 @@ void Level4Frame1::RandomRectangle()
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetActive(true);
     }else
     {
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mGroupNode));
+
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetPosition(visibleSize.width / 2 - 90 - obstacleSize.width / 2, mPosY);
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetActive(true);
         mIndexRectangleObstacle++;
@@ -89,5 +103,13 @@ void Level4Frame1::RandomRectangle()
         mIndexRectangleObstacle++;
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetPosition(visibleSize.width / 2 + 90 + obstacleSize.width / 2, mPosY);
         mRectangleObstacleModels.at(mIndexRectangleObstacle)->SetActive(true);
+    }
+}
+
+void Level4Frame1::AliveObstacle(bool alive)
+{
+    for (int i = 1; i < mRectangleObstacleModels.size(); i++)
+    {
+        mRectangleObstacleModels.at(i)->SetActive(alive);
     }
 }
