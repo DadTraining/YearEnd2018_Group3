@@ -41,13 +41,9 @@ void CircleLineObstacle::Init()
 
         mCoreSprite->addComponent(mCorePhysicsBody);
     }
-
-    // Initialize coin
-    mCoin = new CoinModel(mCoreSprite);
-    mCoin->SetPosition(mCoreSprite->getContentSize().width / 2, mCoreSprite->getContentSize().height / 2);
 }
 
 void CircleLineObstacle::Update()
 {
-    mCoreSprite->setRotation(mCoreSprite->getRotation() - 0.6);
+    mCoreSprite->setRotation(mCoreSprite->getRotation() - 0.4);
 }

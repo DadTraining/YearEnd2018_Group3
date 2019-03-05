@@ -20,6 +20,8 @@ public:
     Level4Frame1(cocos2d::Scene* scene);
     ~Level4Frame1();
 
+    void AliveObstacle(bool alive);
+
     void Init() override;
     void Update() override;
     bool HasFinishedMoving() override;

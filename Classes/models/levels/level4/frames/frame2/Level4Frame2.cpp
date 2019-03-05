@@ -38,9 +38,10 @@ void Level4Frame2::Init()
 void Level4Frame2::Update()
 {
     mFrameCount++;
-    if (mFrameCount % 30 == 0)
+    if (mFrameCount >= 200)
     {
-        mSpeed += 0.2;
+        mSpeed += 0.1;
+        mFrameCount = 0;
     }
 
     mCircleLineObstacle->Update();
@@ -54,9 +55,31 @@ void Level4Frame2::Update()
     {
         mHasFinishMoving = false;
     }
+
+    if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 120)
+    {
+        mHasFinishMoving = true;
+    }else
+    {
+        mHasFinishMoving = false;
+    }
+
+    if (mGroupNode->getPositionY()  > cocos2d::Director::getInstance()->getVisibleSize().height) {
+        AliveObstacle(false);
+    }
+    else
+    {
+        AliveObstacle(true);
+    }
 }
 
 bool Level4Frame2::HasFinishedMoving()
 {
     return mHasFinishMoving;
+}
+
+void Level4Frame2::AliveObstacle(bool alive)
+{
+    mLineObstacleModel->SetActive(alive);
+    mCircleLineObstacle->SetActive(alive);
 }
