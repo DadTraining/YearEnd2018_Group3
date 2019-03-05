@@ -71,7 +71,7 @@ void Level4Frame1::RandomRectangle()
     auto obstacleSize = mRectangleObstacleModels.at(0)->GetContentSize();
     mIndexRectangleObstacle++;
     auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-    mPosY = mPosY + 85 + obstacleSize.height;
+    mPosY = mPosY + 100 + obstacleSize.height;
 
     if (randCountRec == 1)
     {

@@ -79,10 +79,10 @@ void Level4::InitPositionFrame()
     for (int i = 0; i < mLevelFrames.size(); i++)
     {
         mLevelFrames.at(i)->SetPositionY(mPosY);
-        mPosY += cocos2d::Director::getInstance()->getVisibleSize().height + 120;
+        mPosY += cocos2d::Director::getInstance()->getVisibleSize().height + 130;
     }
 
-    mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 100);
+    mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 130);
 }
 
 bool Level4::OnContactBegin(cocos2d::PhysicsContact &physicsContact)
