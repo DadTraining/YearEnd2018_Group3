@@ -1,5 +1,6 @@
 #include "Barrier.h"
 #include "common/definitionlevels/DefinitionLevel7.h"
+#include "common/Definition.h"
 
 const int Barrier::MODE_MOVE_TOP_TO_BOTTOM = 0;
 const int Barrier::MODE_MOVE_BOTTOM_TO_TOP = 1;
@@ -15,15 +16,16 @@ const int Barrier::COLOR_YELLOW = 3;
 
 Barrier::Barrier(cocos2d::Scene* scene, std::string name, int mode, int color) : CoreModel(name)
 {
-	
+	/* Set local data */
 	mMode = mode;
 	mColor = color;
-	mBarrierMovingSpeed = BARRIER_OBSTACLES_MOVING_SPEED;
+	mBarrierMovingSpeed = BARRIER_OBSTACLES_MOVING_SPEED_EASY;
 
 	mStartPosition = cocos2d::Vec2().ZERO;
 	mEndPosition = cocos2d::Vec2(cocos2d::Director::getInstance()->getVisibleSize().width / 2,
 		cocos2d::Director::getInstance()->getVisibleSize().height / 2);
 
+	/* Create sprite */
 	mCoreSprite = cocos2d::Sprite::create(name);
 
 	mCorePhysicsBody = nullptr;
@@ -67,19 +69,20 @@ void Barrier::SetPhysicsBody()
 void Barrier::Init()
 {
 	SetActive(true);
+
 	mCurrentDistance = 0;
 
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-	
 
 	switch (mMode)
 	{
 	case MODE_MOVE_TOP_TO_BOTTOM:
-		mStartPosition = cocos2d::Vec2(GetContentSize().width / 2, visibleSize.height + BARRIER_OFFSET);
+		mStartPosition = cocos2d::Vec2(GetContentSize().width / 2, 
+			visibleSize.height + visibleSize.height / 2);
 		break;
 
 	case MODE_MOVE_BOTTOM_TO_TOP:
-		mStartPosition = cocos2d::Vec2(GetContentSize().width / 2, -BARRIER_OFFSET);
+		mStartPosition = cocos2d::Vec2(GetContentSize().width / 2, -visibleSize.height / 2);
 		break;
 
 	case MODE_MOVE_TOP_LEFT_TO_BOTTOM_RIGHT:
@@ -114,38 +117,26 @@ void Barrier::Init()
 
 void Barrier::Update()
 {
+	mFrameCount++;
+
+	if (mFrameCount >= (FPS  * EASY_MODE))
+	{
+		mBarrierMovingSpeed = BARRIER_OBSTACLES_MOVING_SPEED_NORMAL;
+	}
+	if (mFrameCount >= (FPS * NORMAL_MODE))
+	{
+		mBarrierMovingSpeed = BARRIER_OBSTACLES_MOVING_SPEED_HARD;
+	}
+
 	if (IsActive())
 	{
-		switch (mMode)
+		mCurrentDistance += mBarrierMovingSpeed;
+			
+		if (mCurrentDistance >= mEndPosition.getDistance(mStartPosition))
 		{
-		case MODE_MOVE_TOP_TO_BOTTOM:
-			SetPosition(GetPosition() - cocos2d::Vec2(0, mBarrierMovingSpeed));
-			
-			if (GetPosition().y <= mEndPosition.y)
-			{
-				SetActive(false);
-			}
-			break;
-
-		case MODE_MOVE_BOTTOM_TO_TOP:
-			SetPosition(GetPosition() + cocos2d::Vec2(0, mBarrierMovingSpeed));
-			
-			if (GetPosition().y <= mEndPosition.y)
-			{
-				SetActive(false);
-			}
-			break;
-
-		default:
-			mCurrentDistance += mBarrierMovingSpeed;
-			
-			if (mCurrentDistance >= mEndPosition.getDistance(mStartPosition))
-			{
-				SetActive(false);
-			}
-
-			SetPosition(mStartPosition + (mEndPosition - mStartPosition).getNormalized() * mCurrentDistance);
-			break;
+			SetActive(false);
 		}
+
+		SetPosition(mStartPosition + (mEndPosition - mStartPosition).getNormalized() * mCurrentDistance);
 	}
 }

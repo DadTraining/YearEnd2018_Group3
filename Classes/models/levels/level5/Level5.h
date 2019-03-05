@@ -23,9 +23,10 @@ private:
 	int mMode;
 	cocos2d::EventListenerPhysicsContact *mContact;
 
-public:
-	Level5(cocos2d::Scene* scene);
-    ~Level5();
+	/**
+	* Get Line Frame name Path
+	*/
+	std::string GetLineFramePath();
 
 	/**
 	* Moving line frame
@@ -33,19 +34,18 @@ public:
 	void MoveLine();
 
 	/**
-	* Get Line Frame Path
+	* Disapear balloon when it collision with line frame
 	*/
-	std::string GetLineFramePath();
+	void DisappearBalloon(cocos2d::Node* node);
 
 	/**
 	* Collision detection
 	*/
 	bool OnContactBegin(cocos2d::PhysicsContact &contact);
-	 
-	/**
-	* Lerp color
-	*/
-	void LerpColor();
+
+public:
+	Level5(cocos2d::Scene* scene);
+    ~Level5();
 
     void Init() override;
     void Update() override;

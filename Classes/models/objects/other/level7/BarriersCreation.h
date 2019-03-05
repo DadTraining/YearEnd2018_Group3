@@ -30,6 +30,11 @@ public:
 	int GetMode();
 
 	/**
+	* Inactive barrier when it's game over or completed level
+	*/
+	void InactiveBarrier();
+
+	/**
 	 * Update every single frame
 	 */
 	void Update();
