@@ -40,7 +40,8 @@ void Level4Frame2::Update()
     mFrameCount++;
     if (mFrameCount % 30 == 0)
     {
-        mSpeed += 0.2;
+        mSpeed += 0.1;
+        mFrameCount = 0;
     }
 
     mCircleLineObstacle->Update();

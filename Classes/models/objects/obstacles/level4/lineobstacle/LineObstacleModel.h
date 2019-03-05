@@ -9,7 +9,6 @@ class LineObstacleModel : public CoreModel
 {
 private:
     bool mIsRun;
-    CoinModel* mCoin;
     cocos2d::EventListenerPhysicsContact* mPhysicsContact;
 
 public:

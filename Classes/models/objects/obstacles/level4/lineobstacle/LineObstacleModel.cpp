@@ -43,15 +43,11 @@ void LineObstacleModel::Init()
 
         mCoreSprite->addComponent(mCorePhysicsBody);
     }
-
-    // Initialize coin
-    mCoin = new CoinModel(mCoreSprite);
-    mCoin->SetPosition(mCoreSprite->getContentSize().width / 2, 0);
 }
 
 void LineObstacleModel::Update()
 {
-    mCoin->Update();
+    // Update function
 }
 
 void LineObstacleModel::Rotate()

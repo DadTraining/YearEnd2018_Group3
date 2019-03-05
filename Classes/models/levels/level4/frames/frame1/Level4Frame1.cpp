@@ -38,14 +38,15 @@ void Level4Frame1::Init()
 void Level4Frame1::Update()
 {
     mFrameCount++;
-    if (mFrameCount % 30 == 0)
+    if (mFrameCount % 30 * 60 == 0)
     {
-        mSpeed += 0.2;
+        mSpeed += 0.1;
+        mFrameCount = 0;
     }
 
     mGroupNode->setPositionY(mGroupNode->getPositionY() - mSpeed);
 
-    if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 100)
+    if (mGroupNode->getPositionY()  <= - cocos2d::Director::getInstance()->getVisibleSize().height - 120)
     {
         mHasFinishMoving = true;
     }else

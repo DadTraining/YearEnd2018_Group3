@@ -5,9 +5,6 @@
 
 class CircleLineObstacle : public CoreModel
 {
-private:
-    CoinModel* mCoin;
-
 public:
     CircleLineObstacle(cocos2d::Scene* scene);
     CircleLineObstacle(cocos2d::Node* node);
