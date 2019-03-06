@@ -1,16 +1,9 @@
 #include "Level5.h"
 
-enum Mode
-{
-	EASY,
-	NORMAL,
-	HARD
-};
-
 Level5::Level5(cocos2d::Scene *scene)
 {
 	/* Set local data */
-	mMode = EASY;
+	mMode = EASY_MODE;
 	mFrameCount = 0;
 	mIndexPath = cocos2d::random(1, 4);
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
@@ -21,7 +14,7 @@ Level5::Level5(cocos2d::Scene *scene)
 	scene->addChild(backgroundSprite, -1);
 
 	/* Generate Horizontal line path */
-	mHorizontalLinePath = new HorizontalLinePath(scene, HORIZONTAL_LINE_PATH, BALLOON_NAME_PATH,												HORIZONTAL_LINE_START_POSITION_Y, BALLOON_MOVING_SPEED);
+	mHorizontalLinePath = new HorizontalLinePath(scene, HORIZONTAL_LINE_PATH, BALLOON_NAME_PATH, HORIZONTAL_LINE_START_POSITION_Y, BALLOON_MOVING_SPEED);
 
 	/*init line frame */
 	mFirstLine = new LineFrame(scene, "sprites/gameplay/level5/line/line_frame_0.png");
@@ -56,21 +49,21 @@ void Level5::MoveLine()
 	{
 		mFirstLine->setTexture(GetLineFramePath());
 		mFirstLine->SetPhysicsBody(mIndexPath);
-		mFirstLine->SetPosition(mThirdLine->GetPosition() + 
-			cocos2d::Vec2(0,mThirdLine->GetContentSize().height));
+		mFirstLine->SetPosition(mThirdLine->GetPosition() +
+			cocos2d::Vec2(0, mThirdLine->GetContentSize().height));
 	}
 	if (!mSecondLine->IsActive())
 	{
 		mSecondLine->setTexture(GetLineFramePath());
 		mSecondLine->SetPhysicsBody(mIndexPath);
-		mSecondLine->SetPosition(mFirstLine->GetPosition() + 
+		mSecondLine->SetPosition(mFirstLine->GetPosition() +
 			cocos2d::Vec2(0, mSecondLine->GetContentSize().height));
 	}
 	if (!mThirdLine->IsActive())
 	{
 		mThirdLine->setTexture(GetLineFramePath());
 		mThirdLine->SetPhysicsBody(mIndexPath);
-		mThirdLine->SetPosition(mSecondLine->GetPosition() + 
+		mThirdLine->SetPosition(mSecondLine->GetPosition() +
 			cocos2d::Vec2(0, mThirdLine->GetContentSize().height));
 	}
 }
@@ -95,13 +88,13 @@ bool Level5::OnContactBegin(cocos2d::PhysicsContact & contact)
 		{
 			DisappearBalloon(shapeA->getNode());
 
-			mIsGameOver = true;
+			//mIsGameOver = true;
 		}
 		else
 		{
 			DisappearBalloon(shapeB->getNode());
 
-			mIsGameOver = true;
+			//mIsGameOver = true;
 		}
 	}
 
@@ -119,9 +112,9 @@ void Level5::DisappearBalloon(cocos2d::Node* node)
 	node->removeComponent(node->getPhysicsBody());
 
 	/* In active line frame */
-	mFirstLine->SetActive(false);
+	/*mFirstLine->SetActive(false);
 	mSecondLine->SetActive(false);
-	mThirdLine->SetActive(false);
+	mThirdLine->SetActive(false);*/
 }
 
 void Level5::Init()
@@ -146,15 +139,15 @@ void Level5::Update()
 	mThirdLine->Update();
 
 	// change mode //
-	if (mFrameCount > (FPS * EASY_MODE))
+	if (mFrameCount >= (FPS * EASY_MODE))
 	{
-		mMode = NORMAL;
+		mMode = NORMAL_MODE;
 	}
-	if (mFrameCount > (FPS * NORMAL_MODE))
+	if (mFrameCount >= (FPS * NORMAL_MODE))
 	{
-		mMode = HARD;
+		mMode = HARD_MODE;
 	}
-	if (mFrameCount > (FPS * COMPLETED_LEVEL))
+	if (mFrameCount >= (FPS * COMPLETED_LEVEL))
 	{
 		mFirstLine->SetActive(false);
 		mSecondLine->SetActive(false);
@@ -164,21 +157,20 @@ void Level5::Update()
 	}
 
 	/* Change speed during speed change */
-	if (mMode = EASY)
+	if (mMode == EASY_MODE)
 	{
-		mIndexPath = cocos2d::random(1, 6);
-		cocos2d::log("%d", mIndexPath);
+		mIndexPath = cocos2d::random(15, 17);
 	}
-	
-	if (mMode == NORMAL)
+
+	if (mMode == NORMAL_MODE)
 	{
 		mIndexPath = cocos2d::random(7, 14);
 		cocos2d::log("%d", mIndexPath);
 
 		mHorizontalLinePath->setBalloonMovingSpeed(BALLOON_MOVING_SPEED_NORMAL);
 	}
-	
-	if (mMode == HARD)
+
+	if (mMode == HARD_MODE)
 	{
 		mIndexPath = cocos2d::random(15, LINE_FRAMES_SIZE);
 		cocos2d::log("%d", mIndexPath);
