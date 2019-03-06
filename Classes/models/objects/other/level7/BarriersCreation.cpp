@@ -47,8 +47,10 @@ void BarriersCreation::InactiveBarrier()
 {
 	for (int i = 0; i < BARRER_OBSTACLE_SIZE; i++)
 	{
-		mBarriers.at(i)->SetActive(false);
-		mCounterBarriers.at(i)->SetActive(false);
+		mBarriers.at(i)->FadeOutModel(FADE_OUT_STEP_OPACITY);
+		mCounterBarriers.at(i)->FadeOutModel(FADE_OUT_STEP_OPACITY);
+		mBarriers.at(i)->SetEnablePhysicsBody(false);
+		mCounterBarriers.at(i)->SetEnablePhysicsBody(false);
 	}
 }
 

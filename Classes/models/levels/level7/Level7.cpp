@@ -105,6 +105,10 @@ void Level7::Update()
 	if (mBarriersCreation->GetMode() == COMPLETE_LEVEL)
 	{
 		mIsCompletedLevel = true;
+	}
+
+	if (mIsCompletedLevel || mIsGameOver)
+	{
 		mBarriersCreation->InactiveBarrier();
 	}
 }
