@@ -110,11 +110,6 @@ void Level5::DisappearBalloon(cocos2d::Node* node)
 
 	node->setOpacity(0);
 	node->removeComponent(node->getPhysicsBody());
-
-	/* In active line frame */
-//	mFirstLine->SetActive(false);
-//	mSecondLine->SetActive(false);
-//	mThirdLine->SetActive(false);
 }
 
 void Level5::Init()
@@ -132,7 +127,6 @@ void Level5::Update()
 	}
 
 	mHorizontalLinePath->Update();
-	MoveLine();
 
 	mFirstLine->Update();
 	mSecondLine->Update();
@@ -149,30 +143,38 @@ void Level5::Update()
 	}
 	if (mFrameCount >= (FPS * COMPLETED_LEVEL))
 	{
-		mFirstLine->SetActive(false);
-		mSecondLine->SetActive(false);
-		mThirdLine->SetActive(false);
-
 		mIsCompletedLevel = true;
 	}
 
 	/* Change speed during speed change */
 	if (mMode == EASY_MODE)
 	{
-		mIndexPath = cocos2d::random(1, 6);
+		mIndexPath = cocos2d::random(LINE_FRAME_EASY_MODE_MIN_SIZE, LINE_FRAME_EASY_MODE_MAX_SIZE);
 	}
 
 	if (mMode == NORMAL_MODE)
 	{
-		mIndexPath = cocos2d::random(7, 14);
+		mIndexPath = cocos2d::random(LINE_FRAME_NORMAL_MODE_MIN_SIZE, LINE_FRAME_NORMAL_MODE_MAX_SIZE);
 
 		mHorizontalLinePath->setBalloonMovingSpeed(BALLOON_MOVING_SPEED_NORMAL);
 	}
 
 	if (mMode == HARD_MODE)
 	{
-		mIndexPath = cocos2d::random(15, LINE_FRAMES_SIZE);
+		mIndexPath = cocos2d::random(LINE_FRAME_HARD_MODE_MIN_SIZE, LINE_FRAMES_SIZE);
 
 		mHorizontalLinePath->setBalloonMovingSpeed(BALLOON_MOVING_SPEED_HARD);
 	}
+
+	// game over fade out transition
+	if (mIsGameOver || mIsCompletedLevel)
+	{
+		mFirstLine->FadeOutModel(FADE_OUT_STEP_OPACITY);
+		mFirstLine->SetEnablePhysicsBody(false);
+		mSecondLine->FadeOutModel(FADE_OUT_STEP_OPACITY);
+		mSecondLine->SetEnablePhysicsBody(false);
+		mThirdLine->FadeOutModel(FADE_OUT_STEP_OPACITY);
+		mThirdLine->SetEnablePhysicsBody(false);
+	}
+
 }

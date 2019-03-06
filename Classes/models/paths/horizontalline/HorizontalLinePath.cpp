@@ -19,8 +19,8 @@ HorizontalLinePath::HorizontalLinePath(cocos2d::Scene* scene,
 	mBalloonSprite->setPhysicsBody(mBalloonSpritePhysicsBody);
 
 	mBalloonSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, mPathSprite->getPositionY()));
-	scene->addChild(mPathSprite,998);
-	scene->addChild(mBalloonSprite, 999);
+	scene->addChild(mPathSprite);
+	scene->addChild(mBalloonSprite);
 
 	auto listenner = cocos2d::EventListenerTouchOneByOne::create();
 	listenner->setSwallowTouches(true);
