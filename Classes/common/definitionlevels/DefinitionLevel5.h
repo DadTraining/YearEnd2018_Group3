@@ -8,7 +8,7 @@
 #define LINE_FRAME_NAME_PATH_FORMAT "sprites/gameplay/level5/line/line_frame_%d.png"
 #define BALLOON_EXPLOSION_PATH "sprites/gameplay/balloon/balloon_explosion.plist"
 
-#define HORIZONTAL_LINE_START_POSITION_Y 100
+#define HORIZONTAL_LINE_START_POSITION_Y 150
 
 #define LINE_FRAMES_SIZE 22
 
