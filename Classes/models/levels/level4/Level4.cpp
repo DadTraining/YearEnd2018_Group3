@@ -8,16 +8,16 @@ Level4::Level4(cocos2d::Scene *scene) : CoreLevel()
     mIndexFrame = 0;
     mPosY = cocos2d::Director::getInstance()->getVisibleSize().height;
 
-    auto background = cocos2d::Sprite::create("sprites/gameplay/level3/background/color_white.jpg");
+    auto background = cocos2d::Sprite::create(BACKGROUND);
     background->setAnchorPoint(cocos2d::Vec2(0, 0));
-    scene->addChild(background);
+    scene->addChild(background, -1);
 
     Init();
 
     InitFrame(scene);
     InitPositionFrame();
 
-    mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 1.8);
+    mCirclePath = new CirclePath(scene, BALLOON_RADIUS, BALLOON_NAME_PATH, BALLOON_PATH_NAME_PATH, POSITION_Y_OF_PATH, BALLOON_SPEED);
 
     mEventPhysics = cocos2d::EventListenerPhysicsContact::create();
     mEventPhysics->onContactBegin = CC_CALLBACK_1(Level4::OnContactBegin, this);
@@ -52,9 +52,17 @@ void Level4::Update()
     }
 
     mFrameCount++;
-    if (mFrameCount >= FPS * 70)
+    if (mFrameCount >= FPS * LEVEL_TIME)
     {
         mIsCompletedLevel = true;
+    }
+
+    if (mIsGameOver || mIsCompletedLevel)
+    {
+        for (int i = 0; i < mLevelFrames.size(); i++)
+        {
+            mLevelFrames.at(i)->FadeOutFrame(FADE_OUT_STEP);
+        }
     }
 }
 
@@ -94,15 +102,16 @@ bool Level4::OnContactBegin(cocos2d::PhysicsContact &physicsContact)
     {
         if ((nodeA->getTag() == OBSTACLES_TAG && nodeB->getTag() == BALLOON_TAG) ||
             (nodeB->getTag() == OBSTACLES_TAG && nodeA->getTag() == BALLOON_TAG)) {
-            auto balloonExplosion = cocos2d::ParticleSystemQuad::create(
-                    "sprites/gameplay/balloon/balloon_explosion.plist");
+            auto balloonExplosion = cocos2d::ParticleSystemQuad::create(BALLOON_EXPLOSION_NAME_PATH);
             balloonExplosion->setPosition(cocos2d::Vec2(0, 0));
+
             if (nodeA->getTag() == BALLOON_TAG) {
                 nodeA->getPhysicsBody()->setEnabled(false);
                 nodeA->setOpacity(0);
                 nodeA->addChild(balloonExplosion);
 
                 mIsGameOver = true;
+
             } else if (nodeB->getTag() == BALLOON_TAG) {
                 nodeB->getPhysicsBody()->setEnabled(false);
                 nodeB->setOpacity(0);

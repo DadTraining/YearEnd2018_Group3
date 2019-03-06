@@ -128,3 +128,14 @@ void CircleLineModel::OnTouchEnded(cocos2d::Touch * touch, cocos2d::Event * even
 {
 	mIsTouching = false;
 }
+
+void CircleLineModel::FadeOutModel(const float& opacity)
+{
+	CoreModel::FadeOutModel(opacity);
+
+	for (int i = 0; i < mCircleObstacleModels.size(); i++)
+	{
+		mCircleObstacleModels.at(i)->FadeOutModel(opacity);
+		mCircleObstacleModels.at(i)->SetEnablePhysicsBody(false);
+	}
+}

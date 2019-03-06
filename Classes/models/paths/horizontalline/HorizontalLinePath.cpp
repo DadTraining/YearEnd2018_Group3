@@ -8,6 +8,7 @@ HorizontalLinePath::HorizontalLinePath(cocos2d::Scene* scene,
 	mPathSprite->setPosition(cocos2d::Vec2(SREEEN_RESOLUTION_WIDTH / 2, mPathPositionY));
 	mBalloonSprite = cocos2d::Sprite::create(balloonNamePath); 
 	mBalloonSprite->setTag(BALLOON_TAG);
+	mBalloonSprite->setColor(cocos2d::Color3B(255,68,70));
 
 	mBalloonSpritePhysicsBody = cocos2d::PhysicsBody::createCircle(
 		mBalloonSprite->getContentSize().width / 2 - 5,

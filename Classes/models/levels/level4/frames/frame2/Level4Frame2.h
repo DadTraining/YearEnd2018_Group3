@@ -24,4 +24,5 @@ public:
     void Init() override;
     void Update() override;
     bool HasFinishedMoving() override;
+    void FadeOutFrame(const float& opacity) override;
 };

@@ -16,15 +16,20 @@ LineFrame::LineFrame(cocos2d::Scene* scene, std::string name) : CoreModel(name)
 	mCoreSprite->setTag(OBSTACLES_TAG);
 
 	/* generate color */
-	mListOfColors.push_back(cocos2d::Color3B(213, 0, 0)); // Red
-	mListOfColors.push_back(cocos2d::Color3B(197, 17, 98)); // Pink
+	mListOfColors.push_back(cocos2d::Color3B(115,158,60)); // Red
+	mListOfColors.push_back(cocos2d::Color3B(245,148,83)); // Pink
 	mListOfColors.push_back(cocos2d::Color3B(170, 0, 255)); // Purple
-	mListOfColors.push_back(cocos2d::Color3B(41, 98, 255)); // blue
-	mListOfColors.push_back(cocos2d::Color3B(48, 79, 254)); // Indigo
+	mListOfColors.push_back(cocos2d::Color3B(40,54,84)); // blue
 	mListOfColors.push_back(cocos2d::Color3B(0, 184, 212)); // Cyan
 	mListOfColors.push_back(cocos2d::Color3B(0, 200, 83)); // Green
 	mListOfColors.push_back(cocos2d::Color3B(255, 109, 0)); // Orange
 	mListOfColors.push_back(cocos2d::Color3B(255, 214, 0)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(250,110,88)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(75,63,83)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(250,64,50)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(35,27,18)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(37,92,0)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(18,129,119)); // Yellow
 
 	mCoreSprite->setColor(mListOfColors[mCurrentColorIndex]);
 }
@@ -86,7 +91,7 @@ void LineFrame::Update()
 		SetActive(false);
 	}
 
-	if (mFrameCount % (FPS * 7) == 0)
+	if (mFrameCount % (FPS * 3) == 0)
 	{
 		LerpColor();
 		mCurrentColorIndex++;

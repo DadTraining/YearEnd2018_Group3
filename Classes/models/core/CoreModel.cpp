@@ -59,11 +59,15 @@ bool CoreModel::IsActive() const
 void CoreModel::SetActive(const bool& active)
 {
 	mIsActive = active;
-	mCoreSprite->setVisible(active);
+	mCoreSprite->setVisible(mIsActive);
+	SetEnablePhysicsBody(mIsActive);
+}
 
+void CoreModel::SetEnablePhysicsBody(const bool& enable)
+{
 	if (mCorePhysicsBody != nullptr)
 	{
-		mCorePhysicsBody->setEnabled(active);
+		mCorePhysicsBody->setEnabled(enable);
 	}
 }
 
@@ -75,4 +79,12 @@ std::string CoreModel::GetModelName() const
 void CoreModel::SetRotation(const float& degree)
 {
 	mCoreSprite->setRotation(degree);
+}
+
+void CoreModel::FadeOutModel(const float& opacity)
+{
+	if (mCoreSprite->getOpacity() > 0)
+	{
+		mCoreSprite->setOpacity(mCoreSprite->getOpacity() - opacity);
+	}
 }

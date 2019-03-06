@@ -88,6 +88,18 @@ public:
     void SetActive(const bool& active);
 
     /**
+     * Set enable or disable physics body of sprite
+     *
+     * @param enable : bool
+     */
+    void SetEnablePhysicsBody(const bool& enable);
+
+    /**
+     * Fade out sprite when finish game or game over
+     */
+    virtual void FadeOutModel(const float& opacity);
+
+    /**
      * Return the name of the model
      *
      * @return model name (std::string)

@@ -83,3 +83,14 @@ void Level4Frame2::AliveObstacle(bool alive)
     mLineObstacleModel->SetActive(alive);
     mCircleLineObstacle->SetActive(alive);
 }
+
+void Level4Frame2::FadeOutFrame(const float& opacity)
+{
+    CoreLevelFrame::FadeOutFrame(opacity);
+
+    mLineObstacleModel->FadeOutModel(opacity);
+    mLineObstacleModel->SetEnablePhysicsBody(false);
+
+    mCircleLineObstacle->FadeOutModel(opacity);
+    mCircleLineObstacle->SetEnablePhysicsBody(false);
+}

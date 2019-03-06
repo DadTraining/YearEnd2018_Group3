@@ -1,5 +1,6 @@
 #include "Level3.h"
 #include "common/Definition.h"
+#include "common/definitionlevels/DefinitionLevel3.h"
 
 Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 {
@@ -7,7 +8,7 @@ Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 	mPosY = cocos2d::Director::getInstance()->getVisibleSize().height;
 
 	// background
-	auto background = cocos2d::Sprite::create("sprites/gameplay/level3/background/color_white.jpg");
+	auto background = cocos2d::Sprite::create(BACKGROUND_NAME_PATH);
 	background->setAnchorPoint(cocos2d::Vec2(0, 0));
 	scene->addChild(background, -1);
 
@@ -26,7 +27,7 @@ Level3::Level3(cocos2d::Scene *scene) : CoreLevel()
 
 	mPosY -= 2 * (cocos2d::Director::getInstance()->getVisibleSize().height + 80);
 
-	mCirclePath = new CirclePath(scene, 100, "sprites/gameplay/balloon/balloon.png", "sprites/gameplay/level3/circle/circle_path.png", 150, 2);
+	mCirclePath = new CirclePath(scene, BALLOON_RADIUS, BALLOON_NAME_PATH, BALLOON_PATH_NAME_PATH, POSITION_Y_OF_PATH, BALLOON_SPEED);
 
 	// Create physics contact
 	mPhysicsContact = cocos2d::EventListenerPhysicsContact::create();
@@ -47,7 +48,7 @@ void Level3::Init()
 void Level3::Update()
 {
 	mFrameCount++;
-	if (mFrameCount >= FPS * 62)
+	if (mFrameCount >= FPS * LEVEL_TIME)
 	{
 		mIsCompletedLevel = true;
 	}
@@ -63,6 +64,13 @@ void Level3::Update()
 	}
 
 	mCirclePath->Update();
+
+	// Fadeout
+	if (mIsCompletedLevel || mIsGameOver) {
+		for (int i = 0; i < mCoreLevelFrame.size(); i++) {
+			mCoreLevelFrame.at(i)->FadeOutFrame(FADE_OUT_STEP);
+		}
+	}
 }
 
 bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)
@@ -75,8 +83,9 @@ bool Level3::OnContactBegin(cocos2d::PhysicsContact &contact)
 		if ((shapeA->getTag() == BALLOON_TAG && shapeB->getTag() == OBSTACLES_TAG) ||
 			shapeB->getTag() == BALLOON_TAG && shapeA->getTag() == OBSTACLES_TAG)
 		{
-			auto balloonExplosion = cocos2d::ParticleSystemQuad::create("sprites/gameplay/balloon/balloon_explosion.plist");
+			auto balloonExplosion = cocos2d::ParticleSystemQuad::create(BALLOON_EXPLOSION_NAME_PATH);
 			balloonExplosion->setPosition(cocos2d::Vec2(0, 0));
+
 			if (shapeA->getTag() == BALLOON_TAG)
 			{
 				shapeA->getPhysicsBody()->setEnabled(false);

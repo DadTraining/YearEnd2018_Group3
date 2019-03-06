@@ -88,13 +88,13 @@ bool Level5::OnContactBegin(cocos2d::PhysicsContact & contact)
 		{
 			DisappearBalloon(shapeA->getNode());
 
-			//mIsGameOver = true;
+			mIsGameOver = true;
 		}
 		else
 		{
 			DisappearBalloon(shapeB->getNode());
 
-			//mIsGameOver = true;
+			mIsGameOver = true;
 		}
 	}
 
@@ -112,9 +112,9 @@ void Level5::DisappearBalloon(cocos2d::Node* node)
 	node->removeComponent(node->getPhysicsBody());
 
 	/* In active line frame */
-	/*mFirstLine->SetActive(false);
-	mSecondLine->SetActive(false);
-	mThirdLine->SetActive(false);*/
+//	mFirstLine->SetActive(false);
+//	mSecondLine->SetActive(false);
+//	mThirdLine->SetActive(false);
 }
 
 void Level5::Init()
@@ -159,13 +159,12 @@ void Level5::Update()
 	/* Change speed during speed change */
 	if (mMode == EASY_MODE)
 	{
-		mIndexPath = cocos2d::random(15, 17);
+		mIndexPath = cocos2d::random(1, 6);
 	}
 
 	if (mMode == NORMAL_MODE)
 	{
 		mIndexPath = cocos2d::random(7, 14);
-		cocos2d::log("%d", mIndexPath);
 
 		mHorizontalLinePath->setBalloonMovingSpeed(BALLOON_MOVING_SPEED_NORMAL);
 	}
@@ -173,7 +172,6 @@ void Level5::Update()
 	if (mMode == HARD_MODE)
 	{
 		mIndexPath = cocos2d::random(15, LINE_FRAMES_SIZE);
-		cocos2d::log("%d", mIndexPath);
 
 		mHorizontalLinePath->setBalloonMovingSpeed(BALLOON_MOVING_SPEED_HARD);
 	}

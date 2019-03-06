@@ -2,13 +2,13 @@
 #include "common/definitionlevels/DefinitionLevel3.h"
 #include "common/Definition.h"
 
-RectangleObstacleModel::RectangleObstacleModel(cocos2d::Scene* scene) : CoreModel(RECTANGLE_NAME_PATH)
+RectangleObstacleModel::RectangleObstacleModel(cocos2d::Scene* scene, std::string name) : CoreModel(name)
 {
     Init();
     scene->addChild(mCoreSprite);
 }
 
-RectangleObstacleModel::RectangleObstacleModel(cocos2d::Node* node) : CoreModel(RECTANGLE_NAME_PATH)
+RectangleObstacleModel::RectangleObstacleModel(cocos2d::Node* node, std::string name) : CoreModel(name)
 {
     Init();
     node->addChild(mCoreSprite);

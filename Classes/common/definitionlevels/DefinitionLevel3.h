@@ -1,6 +1,19 @@
 #pragma once
 
-#define LEVEL3_SPEED 1.7
+#define LEVEL_SPEED 1.7
+#define LEVEL_TIME 70
+#define FADE_OUT_STEP 1.5
+
+// background
+#define BACKGROUND_NAME_PATH "sprites/gameplay/level3/background/background.png"
+
+// Circle path
+#define BALLOON_NAME_PATH "sprites/gameplay/balloon/balloon.png"
+#define BALLOON_PATH_NAME_PATH "sprites/gameplay/level3/circle/circle_path.png"
+#define BALLOON_SPEED 1.8
+#define BALLOON_RADIUS 100
+#define POSITION_Y_OF_PATH 150
+#define BALLOON_EXPLOSION_NAME_PATH "sprites/gameplay/balloon/balloon_explosion.plist"
 
 // Obstacle circle
 #define CIRCLE_OBSTACLE_NAME_PATH "sprites/gameplay/level3/circle/circle.png"
@@ -15,7 +28,7 @@
 
 // Rectangle
 #define RECTANGLE_OBSTACLE_MODELS_SIZE 5
-#define RECTANGLE_NAME_PATH "sprites/gameplay/level3/rectangle/rectangle.png"
+#define RECTANGLE_NAME_PATH "sprites/gameplay/level3/rectangle/square1.png"
 #define RECTANGLE_LINE_PATH_NAME_PATH "sprites/gameplay/level3/rectangle/rectangle_line_path.png"
 
 // Triangular

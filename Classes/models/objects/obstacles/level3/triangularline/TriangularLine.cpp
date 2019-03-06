@@ -39,7 +39,7 @@ void TriangularLine::InitRectangleObstacleModels()
 {
     for (int i = 0; i < TRIANGULAR_SIZE_RECTANGULAR_OBSTACLE_MODELS; i++)
     {
-        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mCoreSprite));
+        mRectangleObstacleModels.push_back(new RectangleObstacleModel(mCoreSprite, RECTANGLE_NAME_PATH));
     }
 }
 
@@ -48,4 +48,15 @@ void TriangularLine::InitPositionRectangleModels()
     mRectangleObstacleModels.at(0)->SetPosition(GetContentSize().width / 2, GetContentSize().height);
     mRectangleObstacleModels.at(1)->SetPosition(GetContentSize().width, 0);
     mRectangleObstacleModels.at(2)->SetPosition(GetContentSize().width / 2, 0);
+}
+
+void TriangularLine::FadeOutModel(const float &opacity)
+{
+    CoreModel::FadeOutModel(opacity);
+
+    for (int i = 0; i < mRectangleObstacleModels.size(); i++)
+    {
+        mRectangleObstacleModels.at(i)->FadeOutModel(opacity);
+        mRectangleObstacleModels.at(i)->SetEnablePhysicsBody(false);
+    }
 }

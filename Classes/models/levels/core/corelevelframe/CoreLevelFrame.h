@@ -33,4 +33,5 @@ public:
 	virtual void Init() = 0;
 	virtual void Update() = 0;
     virtual bool HasFinishedMoving() = 0;
+    virtual void FadeOutFrame(const float& opacity) = 0;
 };

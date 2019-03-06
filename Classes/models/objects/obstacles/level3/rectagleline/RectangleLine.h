@@ -30,4 +30,5 @@ public:
 
     void Init() override;
     void Update() override;
+    void FadeOutModel(const float& opacity);
 };

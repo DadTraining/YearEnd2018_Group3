@@ -83,3 +83,22 @@ void HorizontalLine::Update()
 		}
 	}
 }
+
+void HorizontalLine::FadeOutModel(const float &opacity)
+{
+	CoreModel::FadeOutModel(opacity);
+
+	if (mCircleObstacleModels.size() > 0)
+	{
+		for (int i = 0;i < mCircleObstacleModels.size(); i++)
+		{
+			mCircleObstacleModels.at(i)->FadeOutModel(opacity);
+			mCircleObstacleModels.at(i)->SetEnablePhysicsBody(false);
+		}
+	}
+	else
+	{
+		mTriangularObstacleModel->FadeOutModel(opacity);
+		mTriangularObstacleModel->SetEnablePhysicsBody(false);
+	}
+}

@@ -10,8 +10,8 @@ private:
     bool mIsRotateToRight;
 
 public:
-    RectangleObstacleModel(cocos2d::Scene* scene);
-    RectangleObstacleModel(cocos2d::Node* node);
+    RectangleObstacleModel(cocos2d::Scene* scene, std::string name);
+    RectangleObstacleModel(cocos2d::Node* node, std::string name);
     ~RectangleObstacleModel();
 
     void Init() override;

@@ -55,3 +55,14 @@ void RectangleLine::InitPositionTriangleModels()
     mTriangularObstacleModels.at(2)->SetPosition(GetContentSize().width, 0);
     mTriangularObstacleModels.at(3)->SetPosition(GetContentSize().width / 2, 0);
 }
+
+void RectangleLine::FadeOutModel(const float &opacity)
+{
+    CoreModel::FadeOutModel(opacity);
+
+    for (int i = 0; i < mTriangularObstacleModels.size(); i++)
+    {
+        mTriangularObstacleModels.at(i)->FadeOutModel(opacity);
+        mTriangularObstacleModels.at(i)->SetEnablePhysicsBody(false);
+    }
+}

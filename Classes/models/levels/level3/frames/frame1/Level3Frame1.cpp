@@ -4,7 +4,7 @@
 Level3Frame1::Level3Frame1(cocos2d::Scene* scene) : CoreLevelFrame()
 {
     // Initialize local variable
-    mSpeed = LEVEL3_SPEED;
+    mSpeed = LEVEL_SPEED;
 
     Init();
     scene->addChild(mGroupNode);
@@ -33,7 +33,7 @@ void Level3Frame1::Update()
         mFrameCount = 0;
     }
 
-	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL_SPEED);
 
     for (int i = 0; i < HORIZONTAL_LINE_SIZE; i++)
     {
@@ -76,5 +76,14 @@ void Level3Frame1::InitHorizontalLines()
     {
         mHorizontalLines.at(i)->SetPosition(mGroupNode->getContentSize().width / 2,  positionY);
         positionY += 192;
+    }
+}
+
+void Level3Frame1::FadeOutFrame(const float& opacity)
+{
+    CoreLevelFrame::FadeOutFrame(opacity);
+
+    for (int i = 0; i < mHorizontalLines.size(); i ++) {
+        mHorizontalLines.at(i)->FadeOutModel(opacity);
     }
 }

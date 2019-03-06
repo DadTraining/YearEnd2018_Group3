@@ -1,28 +1,3 @@
-#/****************************************************************************
-# Copyright (c) 2013-2014 cocos2d-x.org
-# Copyright (c) 2015-2017 Chukong Technologies Inc.
-#
-# http://www.cocos2d-x.org
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-# ****************************************************************************/
-
 cmake_minimum_required(VERSION 3.6)
 
 set(APP_NAME template)
@@ -116,15 +91,12 @@ set(all_code_files
         Classes/common/DefinitionUI.h
         Classes/common/appdelegate/AppDelegate.h
         Classes/common/appdelegate/AppDelegate.cpp
-        Classes/common/definitionlevels/DefinitionLevel1.h
         Classes/models/core/CoreModel.h
         Classes/models/core/CoreModel.cpp
         Classes/models/levels/core/corelevel/CoreLevel.h
         Classes/models/levels/core/corelevel/CoreLevel.cpp
         Classes/models/levels/core/corelevelframe/CoreLevelFrame.h
         Classes/models/levels/core/corelevelframe/CoreLevelFrame.cpp
-        Classes/models/levels/level1/Level1.h
-        Classes/models/levels/level1/Level1.cpp
         Classes/models/paths/core/CorePath.h
         Classes/models/paths/core/CorePath.cpp
         Classes/models/paths/circle/CirclePath.h
@@ -143,8 +115,6 @@ set(all_code_files
         Classes/scenes/intro/IntroStart.cpp
         Classes/scenes/intro/IntroEnd.h
         Classes/scenes/intro/IntroEnd.cpp
-        Classes/scenes/ui/gameover/GameOver.h
-        Classes/scenes/ui/gameover/GameOver.cpp
         Classes/scenes/ui/menu/MenuScene.h
         Classes/scenes/ui/menu/MenuScene.cpp
         Classes/scenes/ui/splash/SplashScreenScene.h
@@ -209,8 +179,6 @@ set(all_code_files
         Classes/utils/physics/CustomPhysicsBody.cpp
         Classes/utils/physics/MyBodyParser.h
         Classes/utils/physics/MyBodyParser.cpp
-        Classes/scenes/ui/gameover/GameOver.h
-        Classes/scenes/ui/gameover/GameOver.cpp
         Classes/models/levels/level4/Level4.cpp
         Classes/models/levels/level4/Level4.h
         Classes/models/levels/level4/frames/frame1/Level4Frame1.cpp
@@ -255,6 +223,14 @@ set(all_code_files
         Classes/models/objects/other/level7/BarriersCreation.cpp
         Classes/models/levels/level7/Level7.h
         Classes/models/levels/level7/Level7.cpp
+        Classes/scenes/ui/panels/gameover/GameOverPanel.h
+        Classes/scenes/ui/panels/gameover/GameOverPanel.cpp
+        Classes/scenes/ui/panels/level_completion/LevelCompletionPanel.h
+        Classes/scenes/ui/panels/level_completion/LevelCompletionPanel.cpp
+        Classes/scenes/ui/menu/MenuScene.cpp
+        Classes/scenes/ui/menu/MenuScene.cpp
+        Classes/scenes/ui/menu/LevelsSelectionScene.h
+        Classes/scenes/ui/menu/LevelsSelectionScene.cpp
         )
 if(NOT ANDROID)
     add_executable(${APP_NAME} ${all_code_files})

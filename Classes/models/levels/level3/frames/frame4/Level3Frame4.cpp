@@ -4,7 +4,7 @@
 Level3Frame4::Level3Frame4(cocos2d::Scene *scene)
 {
 	// Initialize local variable
-	mSpeed = LEVEL3_SPEED;
+	mSpeed = LEVEL_SPEED;
 
     Init();
     scene->addChild(mGroupNode);
@@ -56,7 +56,7 @@ void Level3Frame4::Update()
 		mFrameCount = 0;
 	}
 
-	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL3_SPEED);
+	mGroupNode->setPositionY(mGroupNode->getPositionY() - LEVEL_SPEED);
 
     mRectangleLine->Update();
     mHorizontalLine->Update();
@@ -74,4 +74,13 @@ void Level3Frame4::Update()
 bool Level3Frame4::HasFinishedMoving()
 {
     return mHasFinishMoving;
+}
+
+void Level3Frame4::FadeOutFrame(const float& opacity)
+{
+	CoreLevelFrame::FadeOutFrame(opacity);
+
+	mRectangleLine->FadeOutModel(opacity);
+	mHorizontalLine->FadeOutModel(opacity);
+	mHorizontal->FadeOutModel(opacity);
 }

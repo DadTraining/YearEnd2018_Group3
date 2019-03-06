@@ -39,3 +39,8 @@ void CoreLevelFrame::SetPositionY(float y)
 {
     mGroupNode->setPositionY(y);
 }
+
+void CoreLevelFrame::FadeOutFrame(const float& opacity)
+{
+	mGroupNode->setOpacity(mGroupNode->getOpacity() - opacity);
+}
