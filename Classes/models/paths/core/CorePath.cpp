@@ -17,8 +17,8 @@ CorePath::~CorePath()
 void CorePath::setBalloonMovingSpeed(int balloonSpeed)
 {
 	mBalloonMovingSpeed = balloonSpeed;
-} 
-
+}
+ 
 void CorePath::Disappear()
 {
 	mBalloonSprite->setOpacity(0);

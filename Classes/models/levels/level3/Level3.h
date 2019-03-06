@@ -15,7 +15,6 @@ private:
     int mPosY;
     std::vector<CoreLevelFrame*> mCoreLevelFrame;
     CirclePath* mCirclePath;
-
     cocos2d::EventListenerPhysicsContact* mPhysicsContact;
     int mIndex;
 

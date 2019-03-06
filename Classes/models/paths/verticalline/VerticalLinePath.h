@@ -59,6 +59,6 @@ public:
 
 	/**
 	* Stop all operations when the balloon is exploded
-	*/ 
+	*/
 	void Disappear() override;
 };
