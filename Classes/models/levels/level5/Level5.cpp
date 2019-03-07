@@ -8,6 +8,25 @@ Level5::Level5(cocos2d::Scene *scene)
 	mIndexPath = cocos2d::random(1, 4);
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 
+	mCurrentColorIndex = 0;
+	mRandomTimeLerpColor = cocos2d::random(LINE_FRAME_LERP_COLOR_TIME_MIN, LINE_FRAME_LERP_COLOR_TIME_MAX);
+
+	/* generate color */
+	mListOfColors.push_back(cocos2d::Color3B(115,158,60)); // Red
+	mListOfColors.push_back(cocos2d::Color3B(245,148,83)); // Pink
+	mListOfColors.push_back(cocos2d::Color3B(170, 0, 255)); // Purple
+	mListOfColors.push_back(cocos2d::Color3B(40,54,84)); // blue
+	mListOfColors.push_back(cocos2d::Color3B(0, 184, 212)); // Cyan
+	mListOfColors.push_back(cocos2d::Color3B(0, 200, 83)); // Green
+	mListOfColors.push_back(cocos2d::Color3B(255, 109, 0)); // Orange
+	mListOfColors.push_back(cocos2d::Color3B(255, 214, 0)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(250,110,88)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(75,63,83)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(250,64,50)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(35,27,18)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(37,92,0)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(18,129,119)); // Yellow
+
 	/* Background sprite */
 	auto backgroundSprite = cocos2d::Sprite::create(BACKGROUND_PATH);
 	backgroundSprite->setPosition(backgroundSprite->getContentSize().width / 2, visibleSize.height / 2);
@@ -30,6 +49,8 @@ Level5::Level5(cocos2d::Scene *scene)
 	mThirdLine->SetPhysicsBody(mIndexPath);
 	mThirdLine->SetPosition(cocos2d::Vec2(mSecondLine->GetPositionX(),
 		mSecondLine->GetPositionY() + mSecondLine->GetContentSize().height));
+
+	LerpColor();
 
 	/* Collision detection */
 	auto contactListener = cocos2d::EventListenerPhysicsContact::create();
@@ -74,6 +95,15 @@ std::string Level5::GetLineFramePath()
 	sprintf(linePath, LINE_FRAME_NAME_PATH_FORMAT, mIndexPath);
 
 	return linePath;
+}
+
+void Level5::LerpColor()
+{
+	mFirstLine->LerpColor(mListOfColors.at(mCurrentColorIndex));
+	mSecondLine->LerpColor(mListOfColors.at(mCurrentColorIndex));
+	mThirdLine->LerpColor(mListOfColors.at(mCurrentColorIndex));
+
+	mRandomTimeLerpColor = cocos2d::random(LINE_FRAME_LERP_COLOR_TIME_MIN, LINE_FRAME_LERP_COLOR_TIME_MAX);
 }
 
 bool Level5::OnContactBegin(cocos2d::PhysicsContact & contact)
@@ -124,6 +154,17 @@ void Level5::Update()
 	if (mFrameCount % FPS == 0)
 	{
 		MoveLine();
+	}
+
+	if (mFrameCount % (FPS * mRandomTimeLerpColor) == 0)
+	{
+		LerpColor();
+		mCurrentColorIndex++;
+
+		if (mCurrentColorIndex >= mListOfColors.size())
+		{
+			mCurrentColorIndex = 0;
+		}
 	}
 
 	mHorizontalLinePath->Update();

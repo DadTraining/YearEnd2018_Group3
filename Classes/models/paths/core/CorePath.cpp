@@ -21,6 +21,7 @@ void CorePath::setBalloonMovingSpeed(int balloonSpeed)
 
 void CorePath::Disappear()
 {
-	mBalloonSprite->setOpacity(0);
+	mBalloonSprite->runAction(cocos2d::FadeOut::create(1));
+	mPathSprite->runAction(cocos2d::FadeOut::create(1));
 	mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
 }

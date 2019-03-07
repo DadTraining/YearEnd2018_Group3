@@ -11,15 +11,21 @@ CircleLineModel::CircleLineModel(cocos2d::Node* node, std::string name, int type
 	mType = type;
 	mIsTouching = false;
 	mIsTouchingRight = false;
-	
+
+	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+
 	Init();
-	
+
 	if (mType == OBSTACLE)
 	{
 		node->addChild(mNodeCoin);
 	}
 	else if (mType == PATH)
 	{
+		auto balloonSprite = cocos2d::Sprite::create(BALLOON_CENTER_PATH);
+		balloonSprite->setPosition(cocos2d::Vec2(visibleSize.width / 2, visibleSize.height / 2));
+		node->addChild(balloonSprite);
+
 		auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
 		touchListener->setSwallowTouches(true);
 		touchListener->onTouchBegan = CC_CALLBACK_2(CircleLineModel::OnTouchBegan, this);
@@ -45,8 +51,7 @@ void CircleLineModel::Init()
     // Init position item of vector Circle obstacle model
     InitPositionCircleObstacleModels();
 
-	if (mType == OBSTACLE)
-	{
+	if (mType == OBSTACLE) {
 		mNodeCoin = cocos2d::Node::create();
 		mNodeCoin->setContentSize(GetContentSize());
 		mNodeCoin->setAnchorPoint(cocos2d::Vec2(0.5, 0.5));
