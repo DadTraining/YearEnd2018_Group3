@@ -2,7 +2,7 @@
 
 LineFrame::LineFrame(cocos2d::Scene* scene, std::string name) : CoreModel(name)
 {
-	mSpeed = LINE_FRAME_MOVING_SPEED_EASY;
+	mSpeed = LINE_FRAME_MOVING_SPEED;
 	mCoreSprite = cocos2d::Sprite::create(name);
 	
 	mCorePhysicsBody = nullptr;
@@ -71,12 +71,8 @@ void LineFrame::Update()
 		SetActive(false);
 	}
 
-	if (mFrameCount > (FPS * EASY_MODE))
+	if (mFrameCount % (FPS * LINE_FRAME_CHANGE_SPEED_TIME) == 0)
 	{
-		mSpeed = LINE_FRAME_MOVING_SPEED_NORMAL;
-	}
-	if (mFrameCount > (FPS * NORMAL_MODE))
-	{
-		mSpeed = LINE_FRAME_MOVING_SPEED_HARD;
+		mSpeed += LINE_FRAME_INCREASE_MOVING_SPEED;
 	}
 }

@@ -17,13 +17,6 @@ Level3Frame4::~Level3Frame4()
 
 void Level3Frame4::Init()
 {
-	mFrameCount++;
-	if (mFrameCount % 30 == 0)
-	{
-		mSpeed += 0.2;
-		mFrameCount = 0;
-	}
-
     mGroupNode = cocos2d::Node::create();
     mGroupNode->setContentSize(cocos2d::Director::getInstance()->getVisibleSize());
     mGroupNode->setPositionY(cocos2d::Director::getInstance()->getVisibleSize().height);
@@ -50,7 +43,7 @@ void Level3Frame4::Init()
 void Level3Frame4::Update()
 {
 	mFrameCount++;
-	if (mFrameCount % 20 == 0)
+	if (mFrameCount % 10 == 0)
 	{
 		mSpeed += 0.2;
 		mFrameCount = 0;

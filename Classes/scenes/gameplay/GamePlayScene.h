@@ -9,6 +9,7 @@ class GamePlayScene : public cocos2d::Scene
 private:
 	int mFrameCount;
 	CoreLevel* mCurrentLevel;
+	bool mHasVibrated;
 
 	/**
 	* Show a panel when the balloon hit something (die)

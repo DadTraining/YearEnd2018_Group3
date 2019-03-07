@@ -32,12 +32,12 @@ void Missle::StartOperating(const cocos2d::Vec2& originPosition, const cocos2d::
 
 	// Set the departing position //
 	this->SetPosition(originPosition + (destinationPosition - originPosition).getNormalized()
-		* BULLET_POSITION_OFFSET_NORMALIZE);
+		* MISSLE_POSITION_OFFSET_NORMALIZE);
 	 
 	// Traveling action //
 	auto travelingAction = cocos2d::MoveTo::create
-	(1.0F/originPosition.getDistance(destinationPosition) * BULLET_TRAVELING_TIME_DURATION_MULTIPLIER,
-		originPosition + (destinationPosition - originPosition).getNormalized() * BULLET_TRAVELING_PATH_NORMALIZE);
+	(1.0F/originPosition.getDistance(destinationPosition) * MISSLE_TRAVELING_TIME_DURATION_MULTIPLIER,
+		originPosition + (destinationPosition - originPosition).getNormalized() * MISSLE_TRAVELING_PATH_NORMALIZE);
 
 	// Callback for setting back to inactive //
 	auto callbackFinishedTraveling = cocos2d::CallFunc::create([=]() {

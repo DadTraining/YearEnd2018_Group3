@@ -26,6 +26,8 @@ private:
 public:
 	DestroyersCreation(cocos2d::Scene* scene);
 
+	CreationStage GetCreationStage() const;
+
 	void DisappearActiveObjects() override;
 
 	/**

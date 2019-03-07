@@ -25,3 +25,21 @@ void CorePath::Disappear()
 	mPathSprite->runAction(cocos2d::FadeOut::create(1));
 	mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
 }
+
+void CorePath::Disappear(const float& opacity)
+{
+	if (mBalloonSprite->getOpacity() > 0)
+	{
+		mBalloonSprite->setOpacity(mBalloonSprite->getOpacity() - opacity);
+	}
+
+	if (mPathSprite->getOpacity() > 0)
+	{
+		mPathSprite->setOpacity(mPathSprite->getOpacity() - opacity);
+	}
+
+	if (mBalloonSprite->getPhysicsBody() != nullptr)
+	{
+		mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
+	}
+}

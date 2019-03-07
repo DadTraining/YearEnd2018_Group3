@@ -220,7 +220,7 @@ void VerticalLinePath::Update()
 	}
 
 	// The ball movement //
-	if (mCurrentStage != DONE)
+    	if (mCurrentStage != DONE)
 	{
 		if (mIsTouching)
 		{
@@ -245,7 +245,10 @@ Stage VerticalLinePath::GetTheCurrentStage()
 
 void VerticalLinePath::Disappear()
 {
-	CorePath::Disappear();
+	mBalloonSprite->setOpacity(1);
+
+	mPathSprite->runAction(cocos2d::FadeOut::create(1));
+	mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
 
 	mCurrentStage = DONE;
 }

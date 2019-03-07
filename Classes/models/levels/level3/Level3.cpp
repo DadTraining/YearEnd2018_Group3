@@ -70,6 +70,8 @@ void Level3::Update()
 		for (int i = 0; i < mCoreLevelFrame.size(); i++) {
 			mCoreLevelFrame.at(i)->FadeOutFrame(FADE_OUT_STEP);
 		}
+
+		mCirclePath->Disappear(FADE_OUT_STEP);
 	}
 }
 

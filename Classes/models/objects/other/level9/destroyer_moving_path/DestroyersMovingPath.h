@@ -24,7 +24,7 @@ public:
 	/**
 	 * Make all of the sprites to be disappear from the scene
 	 */
-	void Disappear();
+	void StopMoving();
 
 	/**
 	 * Update every single frame

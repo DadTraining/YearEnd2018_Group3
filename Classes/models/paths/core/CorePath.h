@@ -49,6 +49,8 @@ public:
 	*/
 	virtual void Disappear();
 
+	virtual void Disappear(const float& opacity);
+
     /**
 	 *  Update every single frame
 	 */

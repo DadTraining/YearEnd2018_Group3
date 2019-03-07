@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "common/Definition.h"
-#include "scenes/gameplay/GamePlayScene.h"
+#include "scenes/ui/splash/SplashScreenScene.h"
 #include "scenes/ui/menu/MenuScene.h"
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(SREEEN_RESOLUTION_WIDTH, SREEEN_RESOLUTION_HEIGHT);

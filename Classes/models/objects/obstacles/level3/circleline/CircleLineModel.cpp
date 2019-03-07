@@ -22,10 +22,6 @@ CircleLineModel::CircleLineModel(cocos2d::Node* node, std::string name, int type
 	}
 	else if (mType == PATH)
 	{
-		auto balloonSprite = cocos2d::Sprite::create(BALLOON_CENTER_PATH);
-		balloonSprite->setPosition(cocos2d::Vec2(visibleSize.width / 2, visibleSize.height / 2));
-		node->addChild(balloonSprite);
-
 		auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
 		touchListener->setSwallowTouches(true);
 		touchListener->onTouchBegan = CC_CALLBACK_2(CircleLineModel::OnTouchBegan, this);
@@ -97,6 +93,7 @@ void CircleLineModel::InitCircleObstacleModels(cocos2d::Sprite* sprite)
 		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_RED_PATH, sprite));
 		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_GREEN_PATH, sprite));
 		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_YELLOW_PATH, sprite));
+		mCircleObstacleModels.push_back(new CircleObstacleModel(BALLOON_CENTER_PATH, sprite));
 	}
 }
 
@@ -109,7 +106,20 @@ void CircleLineModel::InitPositionCircleObstacleModels()
 	{
 		mCircleObstacleModels.at(i)->SetPosition(radius + cos(corner * M_PI / 180.0F) * radius,
 			radius + sin(corner * M_PI / 180.0F) * radius);
-		corner += 360 / mCircleObstacleModels.size();
+
+		if (mType == OBSTACLE)
+		{
+			corner += 360 / mCircleObstacleModels.size();
+		}
+		else if (mType == PATH)
+		{
+			corner += 360 / (mCircleObstacleModels.size() - 1);
+		}
+	}
+
+	if (mType == PATH)
+	{
+		mCircleObstacleModels.at(mCircleObstacleModels.size() - 1)->SetPosition(mCoreSprite->getContentSize().width / 2, mCoreSprite->getContentSize().height / 2);
 	}
 }
 

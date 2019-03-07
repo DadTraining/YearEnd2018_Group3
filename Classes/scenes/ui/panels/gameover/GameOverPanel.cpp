@@ -11,7 +11,9 @@ GameOverPanel::GameOverPanel(cocos2d::Scene* scene)
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
 	// The background sprite //
-	auto backgroundSprite = cocos2d::Sprite::create("sprites/ui/panels/gameover/background.png");
+	char str[100];
+	sprintf(str, "sprites/ui/panels/l%d.png", GamePlayScene::sCurrentLevelIndex + 1);
+	auto backgroundSprite = cocos2d::Sprite::create(str);
 	backgroundSprite->setPosition(cocos2d::Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	scene->addChild(backgroundSprite, 10);
 	backgroundSprite->setOpacity(0);

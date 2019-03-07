@@ -63,6 +63,11 @@ void CirclePath::OnTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
 	mIsTouching = false;
 }
 
+void CirclePath::TurnOffPhysics()
+{
+	mBalloonSprite->removeComponent(mBalloonSprite->getPhysicsBody());
+}
+
 void CirclePath::Update()
 {
 	if (mIsTouching)

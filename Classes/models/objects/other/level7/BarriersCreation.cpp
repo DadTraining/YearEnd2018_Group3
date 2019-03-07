@@ -47,10 +47,8 @@ void BarriersCreation::InactiveBarrier()
 {
 	for (int i = 0; i < BARRER_OBSTACLE_SIZE; i++)
 	{
-		mBarriers.at(i)->FadeOutModel(FADE_OUT_STEP_OPACITY);
-		mCounterBarriers.at(i)->FadeOutModel(FADE_OUT_STEP_OPACITY);
-		mBarriers.at(i)->SetEnablePhysicsBody(false);
-		mCounterBarriers.at(i)->SetEnablePhysicsBody(false);
+		mBarriers.at(i)->SetActive(false);
+		mCounterBarriers.at(i)->SetActive(false);
 	}
 }
 
@@ -61,21 +59,19 @@ void BarriersCreation::ActiveBarrier()
 		if (!mBarriers.at(mIndexListBarrier)->IsActive())
 		{
 			mBarriers.at(mIndexListBarrier)->Init();
-			cocos2d::log("%d", mIndexListBarrier);
 		}
 	}
-	
+
 	if (mMode == NORMAL_MODE || mMode == HARD_MODE)
 	{
 		if (!mBarriers.at(mIndexListBarrier)->IsActive())
 		{
 			mBarriers.at(mIndexListBarrier)->Init();
-			cocos2d::log("barrier at: %d", mIndexListBarrier);
 		}
+
 		if (!mCounterBarriers.at(mIndexListBarrier)->IsActive())
 		{
 			mCounterBarriers.at(mIndexListBarrier)->Init();
-			cocos2d::log("counter barrier: %d", mIndexListBarrier);
 		}
 	}
 
@@ -101,7 +97,7 @@ void BarriersCreation::Update()
 	{
 		mBarriers.at(i)->Update();
 	}
-	
+
 	for (int i = 0; i < mCounterBarriers.size(); i++)
 	{
 		mCounterBarriers.at(i)->Update();
@@ -112,7 +108,7 @@ void BarriersCreation::Update()
 		mMode = NORMAL_MODE;
 		mBarrierObstacleSpawnTime = BARRIER_OBSTACLES_SPAWN_TIME_NORMAL;
 	}
-	
+
 	if (mFrameCount >= (FPS * NORMAL_MODE))
 	{
 		mMode = HARD_MODE;
@@ -125,4 +121,3 @@ void BarriersCreation::Update()
 		InactiveBarrier();
 	}
 }
-

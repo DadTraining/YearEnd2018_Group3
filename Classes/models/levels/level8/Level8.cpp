@@ -82,12 +82,17 @@ void Level8::Init()
 
 void Level8::Update()
 {
-	if (!mIsGameOver)
+	if (!mIsGameOver && !mIsCompletedLevel)
 	{
 		// Update the path controller //
 		mVerticalLinePath->Update();
 
 		// Update the obstacles creation controller//
 		mObstaclesCreation->Update(mVerticalLinePath->GetTheCurrentStage());
+
+		if(mVerticalLinePath->GetTheCurrentStage() == DONE)
+		{
+			mIsCompletedLevel = true;
+		}
 	}
 }

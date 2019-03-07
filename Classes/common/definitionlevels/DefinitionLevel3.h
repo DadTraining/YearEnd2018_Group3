@@ -1,11 +1,12 @@
 #pragma once
 
 #define LEVEL_SPEED 1.7
-#define LEVEL_TIME 2
+#define LEVEL_TIME 60
 #define FADE_OUT_STEP 1.5
 
 // background
 #define BACKGROUND_NAME_PATH "sprites/gameplay/level3/background/background.png"
+
 
 // Circle path
 #define BALLOON_NAME_PATH "sprites/gameplay/balloon/balloon.png"
