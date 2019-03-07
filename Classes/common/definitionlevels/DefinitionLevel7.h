@@ -1,6 +1,8 @@
 #pragma once
 
+#define BACKGROUND_PATH "sprites/gameplay/level7/background.png"
 #define CIRCLE_LINE_PATH "sprites/gameplay/level7/circle_line_path.png"
+#define BALLOON_CENTER_PATH "sprites/gameplay/level7/balloon.png"
 #define	BALLOON_RED_PATH "sprites/gameplay/level7/red_balloon.png"
 #define	BALLOON_BLUE_PATH "sprites/gameplay/level7/blue_balloon.png"
 #define	BALLOON_YELLOW_PATH  "sprites/gameplay/level7/yellow_balloon.png"

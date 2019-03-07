@@ -2,9 +2,7 @@
 
 LineFrame::LineFrame(cocos2d::Scene* scene, std::string name) : CoreModel(name)
 {
-	mCurrentColorIndex = 0;
 	mSpeed = LINE_FRAME_MOVING_SPEED_EASY;
-
 	mCoreSprite = cocos2d::Sprite::create(name);
 	
 	mCorePhysicsBody = nullptr;
@@ -14,24 +12,6 @@ LineFrame::LineFrame(cocos2d::Scene* scene, std::string name) : CoreModel(name)
 	scene->addChild(mCoreSprite, -1);
 
 	mCoreSprite->setTag(OBSTACLES_TAG);
-
-	/* generate color */
-	mListOfColors.push_back(cocos2d::Color3B(115,158,60)); // Red
-	mListOfColors.push_back(cocos2d::Color3B(245,148,83)); // Pink
-	mListOfColors.push_back(cocos2d::Color3B(170, 0, 255)); // Purple
-	mListOfColors.push_back(cocos2d::Color3B(40,54,84)); // blue
-	mListOfColors.push_back(cocos2d::Color3B(0, 184, 212)); // Cyan
-	mListOfColors.push_back(cocos2d::Color3B(0, 200, 83)); // Green
-	mListOfColors.push_back(cocos2d::Color3B(255, 109, 0)); // Orange
-	mListOfColors.push_back(cocos2d::Color3B(255, 214, 0)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(250,110,88)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(75,63,83)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(250,64,50)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(35,27,18)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(37,92,0)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(18,129,119)); // Yellow
-
-	mCoreSprite->setColor(mListOfColors[mCurrentColorIndex]);
 }
 
 LineFrame::~LineFrame()
@@ -39,9 +19,9 @@ LineFrame::~LineFrame()
 	// Destructor
 }
 
-void LineFrame::LerpColor()
+void LineFrame::LerpColor(cocos2d::Color3B color)
 {
-	cocos2d::Action* lerpColorAction = cocos2d::TintTo::create(2, mListOfColors.at(mCurrentColorIndex));
+	cocos2d::Action* lerpColorAction = cocos2d::TintTo::create(2,color);
 	mCoreSprite->runAction(lerpColorAction);
 }
 
@@ -89,17 +69,6 @@ void LineFrame::Update()
 	if (GetPositionY() <= -GetContentSize().height)
 	{
 		SetActive(false);
-	}
-
-	if (mFrameCount % (FPS * 3) == 0)
-	{
-		LerpColor();
-		mCurrentColorIndex++;
-
-		if (mCurrentColorIndex >= mListOfColors.size())
-		{
-			mCurrentColorIndex = 0;
-		}
 	}
 
 	if (mFrameCount > (FPS * EASY_MODE))

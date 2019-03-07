@@ -13,13 +13,6 @@ class LineFrame : public CoreModel{
 private:
 	bool mIsAlive;
 	int mSpeed;
-	std::vector<cocos2d::Color3B> mListOfColors;
-	int mCurrentColorIndex;
-
-	/**
-	* Lerp color
-	*/
-	void LerpColor();
 
 public:
 	LineFrame(cocos2d::Scene* scene, std::string name);
@@ -29,6 +22,11 @@ public:
 	* Change line frame
 	*/
 	void setTexture(std::string linenamepath);
+
+	/**
+	* Lerp color
+	*/
+	void LerpColor(cocos2d::Color3B color);
 
 	/**
 	* Set physics body for each image

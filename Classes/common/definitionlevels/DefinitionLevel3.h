@@ -1,7 +1,7 @@
 #pragma once
 
 #define LEVEL_SPEED 1.7
-#define LEVEL_TIME 70
+#define LEVEL_TIME 2
 #define FADE_OUT_STEP 1.5
 
 // background

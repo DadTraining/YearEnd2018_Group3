@@ -214,8 +214,7 @@ void VerticalLinePath::Update()
 	{
 		auto fadeOutAction = cocos2d::FadeOut::create(SPRITES_FADING_OUT_TIME_DURATION);
 
-		mBalloonSprite->runAction(fadeOutAction);
-		mPathSprite->runAction(fadeOutAction->clone());
+		CorePath::Disappear();
 
 		mCurrentStage = DONE;
 	}

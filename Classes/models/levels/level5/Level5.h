@@ -23,6 +23,10 @@ private:
 	int mMode;
 	cocos2d::EventListenerPhysicsContact *mContact;
 
+	std::vector<cocos2d::Color3B> mListOfColors;
+	int mCurrentColorIndex;
+	int mRandomTimeLerpColor;
+
 	/**
 	* Get Line Frame name Path
 	*/
@@ -37,6 +41,11 @@ private:
 	* Disapear balloon when it collision with line frame
 	*/
 	void DisappearBalloon(cocos2d::Node* node);
+
+	/**
+	* Lerp color for line frame
+	*/
+	void LerpColor();
 
 	/**
 	* Collision detection
