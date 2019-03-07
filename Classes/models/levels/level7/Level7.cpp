@@ -5,13 +5,13 @@
 Level7::Level7(cocos2d::Scene *scene)
 {
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-	auto backgroundSprite = cocos2d::Sprite::create(BACKGROUND_PATH);
+	auto backgroundSprite = cocos2d::Sprite::create("sprites/gameplay/level5/background.png");
 	backgroundSprite->setPosition(backgroundSprite->getContentSize().width / 2, visibleSize.height / 2);
 	scene->addChild(backgroundSprite, -1);
 
 	mCircleLine = new CircleLineModel(scene, CIRCLE_LINE_PATH, CircleLineModel::PATH);
 	mCircleLine->SetPosition(visibleSize.width / 2, visibleSize.height / 2);
-	
+
 	mBarriersCreation = new BarriersCreation(scene);
 
 	auto contactListener = cocos2d::EventListenerPhysicsContact::create();
@@ -62,7 +62,7 @@ bool Level7::OnContactBegin(cocos2d::PhysicsContact & contact)
 
 void Level7::DisappearNode(cocos2d::Node * node)
 {
-	node->setOpacity(0);
+	node->runAction(cocos2d::FadeOut::create(BARRIER_OBSTACLES_FADE_OUT_TIME));
 	node->getPhysicsBody()->setEnabled(false);
 }
 
@@ -74,7 +74,7 @@ void Level7::Init()
 void Level7::Update()
 {
 	mFrameCount++;
-	
+
 	mCircleLine->Update();
 
 	mBarriersCreation->Update();
@@ -84,8 +84,9 @@ void Level7::Update()
 		mIsCompletedLevel = true;
 	}
 
-	if (mIsCompletedLevel || mIsGameOver)
+	if (mIsGameOver)
 	{
 		mBarriersCreation->InactiveBarrier();
+		mCircleLine->FadeOutModel(3);
 	}
 }

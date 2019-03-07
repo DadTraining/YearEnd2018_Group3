@@ -57,6 +57,9 @@ bool Level9::OnContactBegin(const cocos2d::PhysicsContact& contact)
 				// Make the balloon disappear from the scene //
 				mCirclePath->Disappear();
 
+				// Make all the objects disappear also //
+				mDestroyersCreation->DisappearActiveObjects();
+
 				// Set the game state //
 				mIsGameOver = true;
 			}
@@ -77,8 +80,19 @@ void Level9::Update()
 	{
 		// Update the path controller //
 		mCirclePath->Update();
+	}
 
+	if (!mIsGameOver && !mIsCompletedLevel)
+	{
 		// Update the destroyers creation controller//
 		mDestroyersCreation->Update(mCirclePath->GetTheBalloonPosition());
+
+		if(mDestroyersCreation->GetCreationStage() == CREATION_STAGE_DONE)
+		{
+			// Make the balloon disappear from the scene //
+			mCirclePath->TurnOffPhysics();
+
+			mIsCompletedLevel = true;
+		}
 	}
 }

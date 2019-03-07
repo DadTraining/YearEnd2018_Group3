@@ -62,17 +62,14 @@ cocos2d::Vec2 DestroyersMovingPath::GetThePosition(const bool& isOnTheLeft)
 			this->mRightMovingPath1Sprite->getPositionY() * 2 + POSITION_DESTROYERS_OFFSET);
 }
 
-void DestroyersMovingPath::Disappear()
+void DestroyersMovingPath::StopMoving()
 {
-	// Create a fade-out effect and run it //
-	auto fadeOutAction = cocos2d::FadeOut::create(SPRITES_FADING_OUT_TIME_DURATION);
-
-	mLeftMovingPath1Sprite->runAction(fadeOutAction);
-	mLeftMovingPath2Sprite->runAction(fadeOutAction->clone());
-	mCenterMovingPath1Sprite->runAction(fadeOutAction->clone());
-	mCenterMovingPath2Sprite->runAction(fadeOutAction->clone());
-	mRightMovingPath1Sprite->runAction(fadeOutAction->clone());
-	mRightMovingPath2Sprite->runAction(fadeOutAction->clone());
+	mLeftMovingPath1Sprite->stopAllActions();
+	mLeftMovingPath2Sprite->stopAllActions();
+	mRightMovingPath1Sprite->stopAllActions();
+	mRightMovingPath2Sprite->stopAllActions();
+	mCenterMovingPath1Sprite->stopAllActions();
+	mCenterMovingPath2Sprite->stopAllActions();
 }
 
 void DestroyersMovingPath::Update()

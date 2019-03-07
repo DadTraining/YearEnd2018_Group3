@@ -27,7 +27,7 @@ void Level3Frame1::Init()
 void Level3Frame1::Update()
 {
     mFrameCount++;
-    if (mFrameCount % 20 == 0)
+    if (mFrameCount % 10 == 0)
     {
         mSpeed += 0.2;
         mFrameCount = 0;

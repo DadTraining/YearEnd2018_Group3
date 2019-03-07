@@ -3,7 +3,7 @@
 #include "common/definitionlevels/DefinitionLevel9.h"
 #include "common/Definition.h"
 
-Cannon::Cannon(cocos2d::Scene* scene, const float& travelingSpeed, const cocos2d::Vec2& departingPosition)
+Cannon::Cannon(cocos2d::Scene* scene, const float& travelingSpeed, const cocos2d::Vec2& departingPosition, const bool& isDepartingOnTheRight)
 	: CoreDestroyer(travelingSpeed, departingPosition, "Cannon")
 {
 	// The core sprite //
@@ -18,6 +18,11 @@ Cannon::Cannon(cocos2d::Scene* scene, const float& travelingSpeed, const cocos2d
 	mExtraComponentSprite = cocos2d::Sprite::create("sprites/gameplay/level9/head_cannon_destroyer.png");
 	mExtraComponentSprite->setPosition(mCoreSprite->getContentSize().width / 2, mCoreSprite->getContentSize().height / 2);
 	mCoreSprite->addChild(mExtraComponentSprite);
+
+	if(!isDepartingOnTheRight)
+	{
+		mExtraComponentSprite->setFlippedX(true);
+	}
 
 	// Initialize a vector of missles for this cannon //
 	for (int i = 0; i < NUMBER_OF_DESTROYING_WEAPONS_EACH_TYPE; i++)
@@ -34,7 +39,7 @@ void Cannon::Update(const cocos2d::Vec2& balloonPosition)
 	mFrameCount++;
 
 	// Destroy behavior trigger //
-	if (IsAbleToDestroy() && mFrameCount % (int(FPS * 2 * 0.8F)) == 0)
+	if (IsAbleToDestroy() && mFrameCount % (int(FPS * 2 * 0.85F)) == 0)
 	{
 		mFrameCount = 0;
 

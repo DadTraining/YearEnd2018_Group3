@@ -63,6 +63,8 @@ void Level4::Update()
         {
             mLevelFrames.at(i)->FadeOutFrame(FADE_OUT_STEP);
         }
+
+        mCirclePath->Disappear(FADE_OUT_STEP);
     }
 }
 

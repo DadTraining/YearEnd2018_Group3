@@ -21,7 +21,9 @@ public:
 	CirclePath(cocos2d::Scene* scene, const float& circlePathRadius,
 	const std::string& balloonNamePath, const std::string& pathNamePath,
 	const float& pathPositionY, const float& ballooonMovingSpeed);
-	 
+
+	void TurnOffPhysics();
+
 	/**
 	 *  Update every single frame
 	 */ 

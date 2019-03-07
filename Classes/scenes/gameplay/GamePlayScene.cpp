@@ -34,7 +34,9 @@ bool GamePlayScene::init()
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 	auto origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
+	// Set local data //
 	mFrameCount = 0;
+    mHasVibrated = false;
 
 	// Assign the right level based on the index //
 	switch (sCurrentLevelIndex)
@@ -89,9 +91,16 @@ void GamePlayScene::update(float dt)
 
 	if (mCurrentLevel->IsGameOver() || mCurrentLevel->IsCompletedLevel())
 	{
+		if (mCurrentLevel->IsGameOver() && !mHasVibrated)
+		{
+            mHasVibrated = true;
+            
+			cocos2d::Device::vibrate(0.3f);
+		}
+
 		mFrameCount++;
 
-		if (mFrameCount >= FPS * 3)
+		if (mFrameCount >= FPS * TIME_DELAY_BEFORE_OPENING_PANELS)
 		{
 			if(mCurrentLevel->IsGameOver())
 			{

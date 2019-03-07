@@ -13,26 +13,29 @@ DestroyersCreation::DestroyersCreation(cocos2d::Scene* scene) : Creator()
 	// Set default creation stage //
 	mCreationStage = CREATION_STAGE_1;
 
+
+	// Keep track of departing position side //
+    bool isDeparting;
+
 	// Create initial destroyers and store it in the map // 
 	for (int i = 0; i < NUMBER_OF_INTIAL_DESTROYERS_PER_TYPE; i++)
 	{
+        isDeparting = cocos2d::random(1, 2) % 2 == 0;
+
 		// Shooters //
-		mMapOfObjects[0].push_back(new Shooter(scene, 3.0F,
-			cocos2d::random(1, 2) % 2 == 0 ?
+		mMapOfObjects[0].push_back(new Shooter(scene, 3.0F, isDeparting ?
 			mDestroyersMovingPath->GetThePosition(true) :
 			mDestroyersMovingPath->GetThePosition(false)));
 
 		// Archers //
-		mMapOfObjects[1].push_back(new Archer(scene, 2.5F,
-			cocos2d::random(1, 2) % 2 == 0 ?
+		mMapOfObjects[1].push_back(new Archer(scene, 2.5F, isDeparting ?
 			mDestroyersMovingPath->GetThePosition(true) :
 			mDestroyersMovingPath->GetThePosition(false)));
 
 		// Cannons //
-		mMapOfObjects[2].push_back(new Cannon(scene, 2.0F,
-			cocos2d::random(1, 2) % 2 == 0 ?
+		mMapOfObjects[2].push_back(new Cannon(scene, 2.0F, isDeparting ?
 			mDestroyersMovingPath->GetThePosition(true) :
-			mDestroyersMovingPath->GetThePosition(false)));
+			mDestroyersMovingPath->GetThePosition(false),isDeparting));
 	}
 }
 
@@ -45,6 +48,11 @@ CoreDestroyer* DestroyersCreation::GetAnInactiveObject(const int& mapIndex)
 	}
 
 	return nullptr;
+}
+
+CreationStage DestroyersCreation::GetCreationStage() const
+{
+	return mCreationStage;
 }
 
 void DestroyersCreation::DisappearActiveObjects()
@@ -67,17 +75,12 @@ void DestroyersCreation::DisappearActiveObjects()
 		vectorOfActiveObjects[i]->Disappear();
 	}
 
-	// Make the destroyers moving path stop all of its actions //
-	mDestroyersMovingPath->Disappear();
+	// Stop moving the paths //
+	mDestroyersMovingPath->StopMoving();
 }
 
 void DestroyersCreation::Update(const cocos2d::Vec2& balloonPosition)
 {
-	if (mCreationStage == CREATION_STAGE_DONE)
-	{
-		return;
-	}
-
 	mFrameCount++;
 
 	// On stage 1: Make some destroyers move downwards (Shooter Destroyers) //
@@ -142,6 +145,8 @@ void DestroyersCreation::Update(const cocos2d::Vec2& balloonPosition)
 	{
 		if(mFrameCount >= FPS * TIME_RUNNING_STAGE_IDLE)
 		{
+			DisappearActiveObjects();
+
 			mCreationStage = CREATION_STAGE_DONE;
 		}
 	}
