@@ -5,8 +5,7 @@
 class LevelsSelectionScene : public cocos2d::Scene
 {
 private:
-	int mCurrentPassedLevelIndex;
-
+	int mCount;
 	void OpenGamePlayScene(const int& levelIndex);
 	void GoBackToMenuScene();
 

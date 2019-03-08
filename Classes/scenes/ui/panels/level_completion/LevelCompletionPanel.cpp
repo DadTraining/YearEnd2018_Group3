@@ -2,6 +2,7 @@
 #include "scenes/ui/menu/MenuScene.h"
 #include "scenes/gameplay/GamePlayScene.h"
 #include "common/DefinitionUI.h"
+#include "utils/helper/Helper.h"
 
 #include "ui/CocosGUI.h"
 
@@ -9,6 +10,12 @@ LevelCompletionPanel::LevelCompletionPanel(cocos2d::Scene* scene)
 {
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
+
+    // Save the new level index if player has passed the level //
+    if (Helper::GetTheCurrentPassedLevelIndex() <= GamePlayScene::sCurrentLevelIndex && GamePlayScene::sCurrentLevelIndex != 5)
+    {
+        Helper::SetTheCurrentPassedLevelIndex();
+    }
 
 	// The background sprite //
 	char str[100];

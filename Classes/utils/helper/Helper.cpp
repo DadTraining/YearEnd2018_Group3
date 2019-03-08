@@ -1,7 +1,10 @@
+#include <scenes/gameplay/GamePlayScene.h>
 #include "Helper.h"
 
-char* Helper::SKIP_INTRO_SCENE_VALUE = "SKIP_INTRO_SCENE_VALUE_1";
-std::string Helper::sLevelNames[] = { "Duc Gioi", "Nhat Thien", "Nhi Thien", "Tam Thien", "Tu Thien", "Khong Vo Bien Xu","Thuc Vo Bien Xu","Vo So Huu Xu","Phi Tuong Phi Phi Tuong Xu" };
+char* Helper::SKIP_INTRO_SCENE_VALUE = "SKIP_INTROSCENE_VALUE";
+char* Helper::CURRENT_PASSED_LEVEL_INDEX = "CURRENT_PASSED_LEVELINDEX_VALUE";
+
+std::string Helper::sLevelNames[] = { "Uranus", "Neptune", "Saturn", "Pluto", "Mars", "Earth","Jupiter","Venus","Mercury" };
 std::string Helper::sLevelDescriptions[] = { "The personification of heaven", "Roman God of water",
                                              "God of agriculture", "Roman God of the underworld, Hades", "Roman God of war", "World of Gods",
                                              "Ruler of the Roman Gods","Goddess of love and beauty","Messenger of the Roman Gods" };
@@ -42,4 +45,16 @@ std::string Helper::GetTheLevelNameBasedOnTheIndex(const int& index)
 std::string Helper::GetTheLevelDescriptionBasedOnTheIndex(const int& index)
 {
     return sLevelDescriptions[index];
+}
+
+int Helper::GetTheCurrentPassedLevelIndex()
+{
+    cocos2d::UserDefault* userDefault = cocos2d::UserDefault::getInstance();
+    return userDefault->getIntegerForKey(CURRENT_PASSED_LEVEL_INDEX, 0);
+}
+
+void Helper::SetTheCurrentPassedLevelIndex()
+{
+    cocos2d::UserDefault* userDefault = cocos2d::UserDefault::getInstance();
+    userDefault->setIntegerForKey(CURRENT_PASSED_LEVEL_INDEX, GamePlayScene::sCurrentLevelIndex + 1);
 }

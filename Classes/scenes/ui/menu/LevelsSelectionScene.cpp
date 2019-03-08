@@ -21,13 +21,41 @@ bool LevelsSelectionScene::init()
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 	cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
 
-	// Set local data //
-	mCurrentPassedLevelIndex = 63;
-
 	// The background sprite //
 	auto backgroundMenuSprite = cocos2d::Sprite::create("sprites/ui/levels_selection_scene/f1.png");
 	backgroundMenuSprite->setPosition(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2);
 	this->addChild(backgroundMenuSprite, 0);
+
+	// Hack Trick open all levels button  //
+	auto openAllLevelsButton = cocos2d::ui::Button::create("sprites/ui/levels_selection_scene/open_all_level_button.png",
+		"sprites/ui/levels_selection_scene/open_all_level_button.png", "sprites/ui/levels_selection_scene/open_all_level_button.png");
+	openAllLevelsButton->setPosition(cocos2d::Vec2(origin.x + visibleSize.width / 2,
+			visibleSize.height - openAllLevelsButton->getContentSize().height/2));
+	this->addChild(openAllLevelsButton, 1);
+
+	openAllLevelsButton->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+		switch (type)
+		{
+			case cocos2d::ui::Widget::TouchEventType::ENDED:
+				mCount++;
+				if(mCount == 5)
+				{
+					mCount = 0;
+
+					// Open all levels //
+					GamePlayScene::sCurrentLevelIndex = 4;
+					Helper::SetTheCurrentPassedLevelIndex();
+
+					// Open the levels selection scene again //
+					auto newScene = LevelsSelectionScene::createScene();
+					cocos2d::Director::getInstance()->replaceScene(cocos2d::TransitionFade::create(SCENE_TRANSITION_TIME, newScene));
+				}
+				break;
+			default:
+				break;
+		}
+	});
+
 
 	// The levels scrollview //
 	auto levelsScrollView = cocos2d::ui::ScrollView::create();
@@ -70,7 +98,7 @@ bool LevelsSelectionScene::init()
 		levelsScrollView->addChild(levelDescriptionLabel, 1);
 
 		// The level locking handler //
-		if (((1 << i) & mCurrentPassedLevelIndex) != (1 << i))
+		if (i > Helper::GetTheCurrentPassedLevelIndex())
 		{
 			auto lockSprite = cocos2d::Sprite::create("sprites/ui/levels_selection_scene/lock_level_buttons/lock.png");
 			lockSprite->setPosition(levelButton->getPosition());

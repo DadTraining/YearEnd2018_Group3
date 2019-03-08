@@ -8,24 +8,25 @@ Level5::Level5(cocos2d::Scene *scene)
 	mIndexPath = cocos2d::random(1, 4);
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
 
-	mCurrentColorIndex = 0;
 	mRandomTimeLerpColor = cocos2d::random(LINE_FRAME_LERP_COLOR_TIME_MIN, LINE_FRAME_LERP_COLOR_TIME_MAX);
 
 	/* generate color */
-	mListOfColors.push_back(cocos2d::Color3B(115,158,60)); // Red
-	mListOfColors.push_back(cocos2d::Color3B(245,148,83)); // Pink
-	mListOfColors.push_back(cocos2d::Color3B(170, 0, 255)); // Purple
-	mListOfColors.push_back(cocos2d::Color3B(40,54,84)); // blue
-	mListOfColors.push_back(cocos2d::Color3B(0, 184, 212)); // Cyan
-	mListOfColors.push_back(cocos2d::Color3B(0, 200, 83)); // Green
-	mListOfColors.push_back(cocos2d::Color3B(255, 109, 0)); // Orange
-	mListOfColors.push_back(cocos2d::Color3B(255, 214, 0)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(250,110,88)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(75,63,83)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(250,64,50)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(35,27,18)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(37,92,0)); // Yellow
-	mListOfColors.push_back(cocos2d::Color3B(18,129,119)); // Yellow
+	mListOfColors.push_back(cocos2d::Color3B(115,158,60));
+	mListOfColors.push_back(cocos2d::Color3B(245,148,83));
+	mListOfColors.push_back(cocos2d::Color3B(170, 0, 255));
+	mListOfColors.push_back(cocos2d::Color3B(40,54,84));
+	mListOfColors.push_back(cocos2d::Color3B(0, 184, 212));
+	mListOfColors.push_back(cocos2d::Color3B(0, 200, 83));
+	mListOfColors.push_back(cocos2d::Color3B(255, 109, 0));
+	mListOfColors.push_back(cocos2d::Color3B(255, 214, 0));
+	mListOfColors.push_back(cocos2d::Color3B(250,110,88));
+	mListOfColors.push_back(cocos2d::Color3B(75,63,83));
+	mListOfColors.push_back(cocos2d::Color3B(250,64,50));
+	mListOfColors.push_back(cocos2d::Color3B(35,27,18));
+	mListOfColors.push_back(cocos2d::Color3B(37,92,0));
+	mListOfColors.push_back(cocos2d::Color3B(18,129,119));
+
+    mCurrentColorIndex = cocos2d::random(0, 13);
 
 	/* Background sprite */
 	auto backgroundSprite = cocos2d::Sprite::create(BACKGROUND_PATH);

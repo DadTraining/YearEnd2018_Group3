@@ -8,6 +8,8 @@ class Helper
 {
 private:
     static char* SKIP_INTRO_SCENE_VALUE;
+    static char* CURRENT_PASSED_LEVEL_INDEX;
+
     static std::string sLevelNames[];
     static std::string sLevelDescriptions[];
 
@@ -17,4 +19,6 @@ public:
     static void SkipTheIntroScene();
     static std::string GetTheLevelNameBasedOnTheIndex(const int& index);
     static std::string GetTheLevelDescriptionBasedOnTheIndex(const int& index);
+    static int GetTheCurrentPassedLevelIndex();
+    static void SetTheCurrentPassedLevelIndex();
 };
